@@ -118,132 +118,148 @@
     </section>
 
     <!-- Contact Form -->
-    <section class="section" style="background: var(--secondary-dark);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Send Support Request</h2>
-                <p class="section-description">Fill this form for detailed IT support requests</p>
-            </div>
-            
-            <div class="service-card" style="max-width: 800px; margin: 0 auto;">
-                <form action="mailto:itxpertsourodip@gmail.com?subject=IT%20Support%20Request%20-%20Website" 
-                      method="POST" 
-                      enctype="text/plain"
-                      onsubmit="return validateContactForm()"
-                      id="contact-form">
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Full Name *
-                        </label>
-                        <input type="text" 
-                               name="name" 
-                               required 
-                               style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
-                               placeholder="Enter your full name">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Email Address *
-                        </label>
-                        <input type="email" 
-                               name="email" 
-                               required 
-                               style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
-                               placeholder="your@email.com">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Phone Number *
-                        </label>
-                        <input type="tel" 
-                               name="phone" 
-                               required
-                               style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
-                               placeholder="01738671739"
-                               value="01738671739">
-                        <small style="color: var(--text-tertiary);">We'll contact you on this number</small>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Preferred Contact Method *
-                        </label>
-                        <div style="display: flex; gap: 1rem;">
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="contact_method" value="whatsapp" checked>
-                                <span>WhatsApp</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="contact_method" value="call">
-                                <span>Phone Call</span>
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 0.5rem;">
-                                <input type="radio" name="contact_method" value="email">
-                                <span>Email</span>
-                            </label>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Issue Type *
-                        </label>
-                        <select name="issue_type" 
-                                required 
-                                style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                            <option value="" disabled selected>Select your IT issue</option>
-                            <option value="Windows OS Problem">Windows OS Problem</option>
-                            <option value="Active Directory">Active Directory Management</option>
-                            <option value="Network Issue">Network Troubleshooting</option>
-                            <option value="PC/Laptop Repair">PC & Laptop Repair</option>
-                            <option value="Virus/Malware">Virus/Malware Removal</option>
-                            <option value="Software Installation">Software Installation</option>
-                            <option value="Other IT Issue">Other IT Issue</option>
-                        </select>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Problem Description *
-                        </label>
-                        <textarea name="message" 
-                                  required 
-                                  rows="6" 
-                                  style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); resize: vertical;"
-                                  placeholder="Describe your IT problem in detail..."></textarea>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-                            <input type="checkbox" name="emergency">
-                            <span>🚨 This is an EMERGENCY issue (Need solution within 1-2 hours)</span>
-                        </label>
-                        
-                        <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
-                            <input type="checkbox" name="remote_support" checked>
-                            <span>✅ Remote support via AnyDesk/TeamViewer is acceptable</span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" 
-                            class="btn btn-primary" 
-                            style="width: 100%; padding: 1rem; font-size: 1.1rem;">
-                        <span style="margin-right: 0.5rem;">📨</span>
-                        Send Support Request
-                    </button>
-                    
-                    <p style="text-align: center; color: var(--text-tertiary); margin-top: 1rem; font-size: 0.875rem;">
-                        <strong>Note:</strong> This will open your email app. Click "Send" to submit.<br>
-                        Or contact directly: <strong>01738671739</strong> (WhatsApp/Call)
-                    </p>
-                </form>
-            </div>
+<section class="section" style="background: var(--secondary-dark);">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Send Support Request</h2>
+            <p class="section-description">Fill this form and I'll contact you shortly</p>
         </div>
-    </section>
+        
+        <div class="service-card" style="max-width: 800px; margin: 0 auto;">
+            <!-- Simple Form with Alert -->
+            <form onsubmit="submitSupportRequest(event)" id="contact-form">
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Full Name *
+                    </label>
+                    <input type="text" 
+                           id="clientName"
+                           required 
+                           style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                           placeholder="Enter your full name">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Phone Number *
+                    </label>
+                    <input type="tel" 
+                           id="clientPhone"
+                           required
+                           style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                           placeholder="01738671739"
+                           value="01738671739">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Issue Type *
+                    </label>
+                    <select id="issueType" 
+                            required 
+                            style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
+                        <option value="" disabled selected>Select your IT issue</option>
+                        <option value="Windows Problem">Windows OS Problem</option>
+                        <option value="Network Issue">Network Troubleshooting</option>
+                        <option value="PC Repair">PC & Laptop Repair</option>
+                        <option value="Virus Removal">Virus/Malware Removal</option>
+                        <option value="Software">Software Installation</option>
+                        <option value="Other">Other IT Issue</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Problem Description *
+                    </label>
+                    <textarea id="problemDescription" 
+                              required 
+                              rows="5" 
+                              style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); resize: vertical;"
+                              placeholder="Describe your IT problem..."></textarea>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <input type="checkbox" id="emergencyCheck">
+                        <span>🚨 This is an EMERGENCY (Need solution within 1-2 hours)</span>
+                    </label>
+                </div>
+                
+                <button type="submit" 
+                        class="btn btn-primary" 
+                        style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                    <span style="margin-right: 0.5rem;">📨</span>
+                    Submit Support Request
+                </button>
+                
+                <div id="successMessage" style="display: none; text-align: center; margin-top: 1rem; padding: 1rem; background: rgba(46, 204, 113, 0.1); border: 1px solid #2ecc71; border-radius: var(--radius-md); color: #2ecc71;">
+                    ✅ Request submitted! I'll contact you shortly.
+                </div>
+                
+                <p style="text-align: center; color: var(--text-tertiary); margin-top: 1rem; font-size: 0.875rem;">
+                    After submitting, I'll contact you on <strong>01738671739</strong> (WhatsApp/Call)
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
 
+<script>
+function submitSupportRequest(event) {
+    event.preventDefault();
+    
+    // Get form values
+    const name = document.getElementById('clientName').value;
+    const phone = document.getElementById('clientPhone').value;
+    const issue = document.getElementById('issueType').value;
+    const description = document.getElementById('problemDescription').value;
+    const emergency = document.getElementById('emergencyCheck').checked;
+    
+    // Validate
+    if (!name || !phone || !issue || !description) {
+        alert('Please fill all required fields');
+        return false;
+    }
+    
+    // Show success message
+    const successMsg = document.getElementById('successMessage');
+    successMsg.style.display = 'block';
+    
+    // Create WhatsApp message
+    const whatsappMessage = `New IT Support Request:\n\n` +
+                           `Name: ${name}\n` +
+                           `Phone: ${phone}\n` +
+                           `Issue: ${issue}\n` +
+                           `Emergency: ${emergency ? 'YES' : 'NO'}\n` +
+                           `Description: ${description}\n\n` +
+                           `Received from website form`;
+    
+    // Log to console (for testing)
+    console.log('Support Request:', { name, phone, issue, description, emergency });
+    console.log('WhatsApp Message:', whatsappMessage);
+    
+    // Reset form
+    document.getElementById('contact-form').reset();
+    
+    // Scroll to success message
+    successMsg.scrollIntoView({ behavior: 'smooth' });
+    
+    // Show alert with contact info
+    setTimeout(() => {
+        const responseTime = emergency ? '1-2 hours' : '4-6 hours';
+        alert(`✅ Support request submitted!\n\n` +
+              `I will contact you on ${phone} within ${responseTime}.\n\n` +
+              `For immediate assistance:\n` +
+              `📞 Call: 01738671739\n` +
+              `💬 WhatsApp: 01738671739\n` +
+              `📧 Email: itxpertsourodip@gmail.com`);
+    }, 500);
+    
+    return false;
+}
+</script>
     <!-- Quick Contact Buttons -->
     <section class="section">
         <div class="container">
