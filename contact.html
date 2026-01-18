@@ -125,70 +125,176 @@
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section class="section" style="background: var(--secondary-dark);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Send a Message</h2>
-                <p class="section-description">Describe your IT issue and I'll get back to you with a solution.</p>
-            </div>
-            
-            <div class="service-card" style="max-width: 800px; margin: 0 auto;">
-                <form id="contact-form">
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Full Name *</label>
-                        <input type="text" required style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Email Address *</label>
-                        <input type="email" required style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Subject *</label>
-                        <select required style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                            <option value="" disabled selected>Select your IT issue</option>
-                            <option value="windows-support">Windows OS Support</option>
-                            <option value="active-directory">Active Directory Management</option>
-                            <option value="network">Network Troubleshooting</option>
-                            <option value="pc-repair">PC & Laptop Repair</option>
-                            <option value="backup">Backup & Recovery</option>
-                            <option value="other">Other IT Issue</option>
-                        </select>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Message *</label>
-                        <textarea required rows="6" style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); resize: vertical;"></textarea>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
-                            <input type="checkbox">
-                            <span>This is an emergency issue requiring immediate attention</span>
-                        </label>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
-                            <input type="checkbox" checked>
-                            <span>Remote support is acceptable for this issue</span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">
-                        <span style="margin-right: 0.5rem;">📨</span>
-                        Send Support Request
-                    </button>
-                    
-                    <p style="text-align: center; color: var(--text-tertiary); margin-top: 1rem; font-size: 0.875rem;">
-                        I'll respond to your inquiry within 4-6 hours. For emergencies, please include "EMERGENCY" in your message.
-                    </p>
-                </form>
-            </div>
+<!-- Contact Form -->
+<section class="section" style="background: var(--secondary-dark);">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Send a Message</h2>
+            <p class="section-description">Describe your IT issue and I'll get back to you with a solution.</p>
         </div>
-    </section>
+        
+        <div class="service-card" style="max-width: 800px; margin: 0 auto;">
+            <!-- পুরো form টি এই code দিয়ে replace করুন -->
+            <form action="mailto:itxpertsourodip@gmail.com?subject=IT%20Support%20Request" 
+                  method="POST" 
+                  enctype="text/plain"
+                  onsubmit="return validateContactForm()">
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Full Name *
+                    </label>
+                    <input type="text" 
+                           name="name" 
+                           required 
+                           style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                           placeholder="Enter your full name">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Email Address *
+                    </label>
+                    <input type="email" 
+                           name="email" 
+                           required 
+                           style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                           placeholder="your@email.com">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Phone Number (Optional)
+                    </label>
+                    <input type="tel" 
+                           name="phone" 
+                           style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                           placeholder="+8801XXXXXXXXX">
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Issue Type *
+                    </label>
+                    <select name="issue_type" 
+                            required 
+                            style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
+                        <option value="" disabled selected>Select your IT issue</option>
+                        <option value="Windows OS Problem">Windows OS Problem</option>
+                        <option value="Active Directory">Active Directory Management</option>
+                        <option value="Network Issue">Network Troubleshooting</option>
+                        <option value="PC/Laptop Repair">PC & Laptop Repair</option>
+                        <option value="Backup Recovery">Backup & Recovery</option>
+                        <option value="Other IT Issue">Other IT Issue</option>
+                    </select>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Message *
+                    </label>
+                    <textarea name="message" 
+                              required 
+                              rows="6" 
+                              style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); resize: vertical;"
+                              placeholder="Describe your IT problem in detail..."></textarea>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <input type="checkbox" name="emergency">
+                        <span>This is an EMERGENCY issue (1-2 hour response)</span>
+                    </label>
+                    
+                    <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                        <input type="checkbox" name="remote_support" checked>
+                        <span>Remote support is acceptable for this issue</span>
+                    </label>
+                </div>
+                
+                <button type="submit" 
+                        class="btn btn-primary" 
+                        style="width: 100%;">
+                    <span style="margin-right: 0.5rem;">📨</span>
+                    Send Support Request
+                </button>
+                
+                <p style="text-align: center; color: var(--text-tertiary); margin-top: 1rem; font-size: 0.875rem;">
+                    <strong>Note:</strong> This will open your email app. Click "Send" to submit.<br>
+                    I'll respond within 4-6 hours (1-2 hours for emergencies).
+                </p>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- WhatsApp Quick Contact -->
+<section class="section">
+    <div class="container">
+        <div class="service-card" style="text-align: center;">
+            <h3 style="margin-bottom: 1rem;">💬 Quick Contact via WhatsApp</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">For faster response, message me directly</p>
+            
+            <!-- আপনার WhatsApp number দিয়ে change করুন -->
+            <a href="https://wa.me/8801738671739?text=Hello%20Sourodip,%20I%20need%20IT%20support%20for:" 
+               class="btn btn-primary" 
+               style="background-color: #25D366; border-color: #25D366;">
+                💬 Message on WhatsApp
+            </a>
+            
+            <p style="color: var(--text-tertiary); margin-top: 1rem; font-size: 0.875rem;">
+                Available: 9 AM - 9 PM (GMT+6)
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- JavaScript Validation -->
+<script>
+function validateContactForm() {
+    const name = document.querySelector('input[name="name"]');
+    const email = document.querySelector('input[name="email"]');
+    const message = document.querySelector('textarea[name="message"]');
+    
+    // Check required fields
+    if (!name.value.trim()) {
+        alert('Please enter your name');
+        name.focus();
+        return false;
+    }
+    
+    if (!email.value.trim()) {
+        alert('Please enter your email address');
+        email.focus();
+        return false;
+    }
+    
+    // Validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value)) {
+        alert('Please enter a valid email address (example: user@email.com)');
+        email.focus();
+        return false;
+    }
+    
+    if (!message.value.trim()) {
+        alert('Please describe your IT problem');
+        message.focus();
+        return false;
+    }
+    
+    // Check if emergency is checked
+    const emergency = document.querySelector('input[name="emergency"]').checked;
+    
+    // Show confirmation message
+    const confirmMsg = emergency ? 
+        '🚨 EMERGENCY REQUEST\n\nYour request will be prioritized (1-2 hour response).\n\nThis will open your email app. Please click "Send" to submit.' :
+        '✅ Support Request Ready\n\nI will respond within 4-6 hours.\n\nThis will open your email app. Please click "Send" to submit.';
+    
+    alert(confirmMsg);
+    return true;
+}
+</script>
 
     <!-- Support Options -->
     <section class="section">
