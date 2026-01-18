@@ -117,95 +117,162 @@
         </div>
     </section>
 
-    <!-- Contact Form -->
+<!-- Contact Form - WhatsApp Version -->
 <section class="section" style="background: var(--secondary-dark);">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">Send Support Request</h2>
-            <p class="section-description">Fill this form and I'll contact you shortly</p>
+            <h2 class="section-title">Send Support Request via WhatsApp</h2>
+            <p class="section-description">Fill & send directly to my WhatsApp</p>
         </div>
         
         <div class="service-card" style="max-width: 800px; margin: 0 auto;">
-            <!-- Simple Form with Alert -->
-            <form onsubmit="submitSupportRequest(event)" id="contact-form">
+            <form onsubmit="sendToWhatsApp(event)" id="contact-form">
                 
                 <div style="margin-bottom: 1.5rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                        Full Name *
+                        Your Name *
                     </label>
                     <input type="text" 
-                           id="clientName"
+                           id="userName"
                            required 
                            style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
-                           placeholder="Enter your full name">
+                           placeholder="Enter your name">
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                        Phone Number *
+                        Your Phone Number *
                     </label>
                     <input type="tel" 
-                           id="clientPhone"
+                           id="userPhone"
                            required
                            style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
-                           placeholder="01738671739"
-                           value="01738671739">
+                           placeholder="017XXXXXXXX">
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                        Issue Type *
+                        What's the problem? *
                     </label>
-                    <select id="issueType" 
+                    <select id="userIssue" 
                             required 
                             style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                        <option value="" disabled selected>Select your IT issue</option>
-                        <option value="Windows Problem">Windows OS Problem</option>
-                        <option value="Network Issue">Network Troubleshooting</option>
-                        <option value="PC Repair">PC & Laptop Repair</option>
-                        <option value="Virus Removal">Virus/Malware Removal</option>
-                        <option value="Software">Software Installation</option>
-                        <option value="Other">Other IT Issue</option>
+                        <option value="" disabled selected>Select issue type</option>
+                        <option value="Windows not starting/opening">Windows not starting</option>
+                        <option value="Computer very slow">Computer very slow</option>
+                        <option value="Internet/WiFi problem">Internet/WiFi problem</option>
+                        <option value="Virus/Malware detected">Virus/Malware issue</option>
+                        <option value="Software installation needed">Need software installed</option>
+                        <option value="Printer not working">Printer not working</option>
+                        <option value="Other problem">Other problem</option>
                     </select>
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
                     <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                        Problem Description *
+                        Describe the problem *
                     </label>
-                    <textarea id="problemDescription" 
+                    <textarea id="userDescription" 
                               required 
-                              rows="5" 
+                              rows="4" 
                               style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary); resize: vertical;"
-                              placeholder="Describe your IT problem..."></textarea>
+                              placeholder="Example: My Windows 10 shows blue screen when starting..."></textarea>
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
-                        <input type="checkbox" id="emergencyCheck">
-                        <span>🚨 This is an EMERGENCY (Need solution within 1-2 hours)</span>
+                    <label style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary);">
+                        <input type="checkbox" id="userEmergency">
+                        <span>🚨 This is URGENT - Need help within 1-2 hours</span>
                     </label>
                 </div>
                 
                 <button type="submit" 
                         class="btn btn-primary" 
-                        style="width: 100%; padding: 1rem; font-size: 1.1rem;">
-                    <span style="margin-right: 0.5rem;">📨</span>
-                    Submit Support Request
+                        style="width: 100%; padding: 1rem; font-size: 1.1rem; background-color: #25D366; border-color: #25D366;">
+                    <span style="margin-right: 0.5rem;">💬</span>
+                    Open WhatsApp & Send
                 </button>
                 
                 <div id="successMessage" style="display: none; text-align: center; margin-top: 1rem; padding: 1rem; background: rgba(46, 204, 113, 0.1); border: 1px solid #2ecc71; border-radius: var(--radius-md); color: #2ecc71;">
-                    ✅ Request submitted! I'll contact you shortly.
+                    ✅ WhatsApp opened! Please click SEND in WhatsApp.
                 </div>
                 
                 <p style="text-align: center; color: var(--text-tertiary); margin-top: 1rem; font-size: 0.875rem;">
-                    After submitting, I'll contact you on <strong>01738671739</strong> (WhatsApp/Call)
+                    <strong>How it works:</strong><br>
+                    1. Fill form → 2. WhatsApp opens → 3. Click SEND → 4. I'll contact you!
                 </p>
             </form>
         </div>
     </div>
 </section>
 
+<script>
+function sendToWhatsApp(event) {
+    event.preventDefault();
+    
+    // Get values
+    const name = document.getElementById('userName').value.trim();
+    const phone = document.getElementById('userPhone').value.trim();
+    const issue = document.getElementById('userIssue').value;
+    const description = document.getElementById('userDescription').value.trim();
+    const emergency = document.getElementById('userEmergency').checked;
+    
+    // Validate
+    if (!name || !phone || !issue || !description) {
+        alert('❌ Please fill all fields marked with *');
+        return false;
+    }
+    
+    // Clean phone number
+    const cleanPhone = phone.replace(/\D/g, '');
+    if (cleanPhone.length !== 11 || !cleanPhone.startsWith('01')) {
+        alert('❌ Please enter valid Bangladeshi phone number (11 digits, starts with 01)');
+        document.getElementById('userPhone').focus();
+        return false;
+    }
+    
+    // Create message
+    const message = `🖥️ *IT SUPPORT REQUEST* 🖥️\n\n` +
+                   `👤 *Client Name:* ${name}\n` +
+                   `📱 *Contact:* ${cleanPhone}\n` +
+                   `🔧 *Issue Type:* ${issue}\n` +
+                   `🚨 *Urgent:* ${emergency ? 'YES - Need help ASAP' : 'No'}\n\n` +
+                   `📝 *Problem Details:*\n${description}\n\n` +
+                   `⏰ *Submitted:* ${new Date().toLocaleString('en-BD')}\n` +
+                   `🌐 *From:* Website Contact Form`;
+    
+    // Create WhatsApp URL
+    const whatsappURL = `https://wa.me/8801738671739?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappURL, '_blank');
+    
+    // Show success message
+    const successMsg = document.getElementById('successMessage');
+    successMsg.style.display = 'block';
+    successMsg.innerHTML = `✅ WhatsApp opened!<br>Please click <strong>SEND</strong> in WhatsApp.`;
+    
+    // Reset form
+    setTimeout(() => {
+        document.getElementById('contact-form').reset();
+        successMsg.scrollIntoView({ behavior: 'smooth' });
+    }, 1000);
+    
+    // Show instruction
+    setTimeout(() => {
+        alert(`📱 *WhatsApp Instructions:*\n\n` +
+              `1. WhatsApp should be open now\n` +
+              `2. You'll see your message ready\n` +
+              `3. Click the GREEN SEND button\n` +
+              `4. I'll contact you on ${cleanPhone}\n\n` +
+              `If WhatsApp didn't open, message directly:\n` +
+              `Phone: 01738671739\n` +
+              `Message: "IT Support for ${name}"`);
+    }, 1500);
+    
+    return false;
+}
+</script>
 <script>
 function submitSupportRequest(event) {
     event.preventDefault();
