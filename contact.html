@@ -534,226 +534,225 @@ const countries = [
     {name: "Yemen", code: "YE", phone: "+967", flag: "🇾🇪"},
     {name: "Zambia", code: "ZM", phone: "+260", flag: "🇿🇲"},
     {name: "Zimbabwe", code: "ZW", phone: "+263", flag: "🇿🇼"}
-</script>
+];
 
-<script>
-    // টাইমজোন এর লিস্ট
-    const timezones = [
-        "UTC-12:00 (International Date Line West)",
-        "UTC-11:00 (American Samoa, Midway Island)",
-        "UTC-10:00 (Hawaii)",
-        "UTC-09:00 (Alaska)",
-        "UTC-08:00 (Pacific Time US & Canada)",
-        "UTC-07:00 (Mountain Time US & Canada)",
-        "UTC-06:00 (Central Time US & Canada, Mexico City)",
-        "UTC-05:00 (Eastern Time US & Canada, Bogota)",
-        "UTC-04:00 (Atlantic Time Canada, Caracas)",
-        "UTC-03:00 (Brasilia, Buenos Aires)",
-        "UTC-02:00 (Mid-Atlantic)",
-        "UTC-01:00 (Azores, Cape Verde Islands)",
-        "UTC+00:00 (GMT, London, Dublin, Lisbon)",
-        "UTC+01:00 (Berlin, Paris, Rome, Amsterdam)",
-        "UTC+02:00 (Cairo, Jerusalem, Athens, Helsinki)",
-        "UTC+03:00 (Moscow, Istanbul, Riyadh, Nairobi)",
-        "UTC+03:30 (Tehran)",
-        "UTC+04:00 (Dubai, Abu Dhabi, Baku, Tbilisi)",
-        "UTC+04:30 (Kabul)",
-        "UTC+05:00 (Karachi, Tashkent, Islamabad)",
-        "UTC+05:30 (India, Sri Lanka)",
-        "UTC+05:45 (Kathmandu)",
-        "UTC+06:00 (Bangladesh, Kazakhstan)",
-        "UTC+06:30 (Myanmar, Cocos Islands)",
-        "UTC+07:00 (Bangkok, Jakarta, Hanoi)",
-        "UTC+08:00 (Singapore, Kuala Lumpur, Beijing, Perth)",
-        "UTC+08:45 (Eucla)",
-        "UTC+09:00 (Tokyo, Seoul, Pyongyang)",
-        "UTC+09:30 (Adelaide, Darwin)",
-        "UTC+10:00 (Sydney, Melbourne, Guam, Port Moresby)",
-        "UTC+10:30 (Lord Howe Island)",
-        "UTC+11:00 (Solomon Islands, Vanuatu)",
-        "UTC+12:00 (Auckland, Wellington, Fiji)",
-        "UTC+12:45 (Chatham Islands)",
-        "UTC+13:00 (Samoa, Tonga, Tokelau)",
-        "UTC+14:00 (Kiribati - Line Islands)"
-    ];
+// টাইমজোন এর লিস্ট
+const timezones = [
+    "UTC-12:00 (International Date Line West)",
+    "UTC-11:00 (American Samoa, Midway Island)",
+    "UTC-10:00 (Hawaii)",
+    "UTC-09:00 (Alaska)",
+    "UTC-08:00 (Pacific Time US & Canada)",
+    "UTC-07:00 (Mountain Time US & Canada)",
+    "UTC-06:00 (Central Time US & Canada, Mexico City)",
+    "UTC-05:00 (Eastern Time US & Canada, Bogota)",
+    "UTC-04:00 (Atlantic Time Canada, Caracas)",
+    "UTC-03:00 (Brasilia, Buenos Aires)",
+    "UTC-02:00 (Mid-Atlantic)",
+    "UTC-01:00 (Azores, Cape Verde Islands)",
+    "UTC+00:00 (GMT, London, Dublin, Lisbon)",
+    "UTC+01:00 (Berlin, Paris, Rome, Amsterdam)",
+    "UTC+02:00 (Cairo, Jerusalem, Athens, Helsinki)",
+    "UTC+03:00 (Moscow, Istanbul, Riyadh, Nairobi)",
+    "UTC+03:30 (Tehran)",
+    "UTC+04:00 (Dubai, Abu Dhabi, Baku, Tbilisi)",
+    "UTC+04:30 (Kabul)",
+    "UTC+05:00 (Karachi, Tashkent, Islamabad)",
+    "UTC+05:30 (India, Sri Lanka)",
+    "UTC+05:45 (Kathmandu)",
+    "UTC+06:00 (Bangladesh, Kazakhstan)",
+    "UTC+06:30 (Myanmar, Cocos Islands)",
+    "UTC+07:00 (Bangkok, Jakarta, Hanoi)",
+    "UTC+08:00 (Singapore, Kuala Lumpur, Beijing, Perth)",
+    "UTC+08:45 (Eucla)",
+    "UTC+09:00 (Tokyo, Seoul, Pyongyang)",
+    "UTC+09:30 (Adelaide, Darwin)",
+    "UTC+10:00 (Sydney, Melbourne, Guam, Port Moresby)",
+    "UTC+10:30 (Lord Howe Island)",
+    "UTC+11:00 (Solomon Islands, Vanuatu)",
+    "UTC+12:00 (Auckland, Wellington, Fiji)",
+    "UTC+12:45 (Chatham Islands)",
+    "UTC+13:00 (Samoa, Tonga, Tokelau)",
+    "UTC+14:00 (Kiribati - Line Islands)"
+];
 
-    // দেশ সিলেক্ট ড্রপডাউন লোড
-    function loadCountrySelect() {
-        const countrySelect = $('#userCountry');
-        
-        // প্রথমে খালি অপশন
-        countrySelect.append('<option value="" disabled selected>Select your country</option>');
-        
-        // সব দেশ যোগ করি
-        countries.forEach(country => {
-            countrySelect.append(`<option value="${country.name}">${country.flag} ${country.name} (${country.phone})</option>`);
-        });
-        
-        // শেষে "Other" অপশন যোগ করি
-        countrySelect.append('<option value="Other">🌍 Other (Not in list)</option>');
-        
-        // Select2 ইন্সট্যান্স তৈরি
-        countrySelect.select2({
-            placeholder: "Search or select your country",
-            allowClear: false,
-            templateResult: formatCountry,
-            templateSelection: formatCountrySelection,
-            width: '100%'
-        });
-        
-        // Other সিলেক্ট হলে ফিল্ড দেখাবে
-        countrySelect.on('change', function() {
-            const selectedValue = $(this).val();
-            if (selectedValue === "Other") {
-                $('#otherCountryField').show();
-                $('#otherCountryInput').prop('required', true);
-            } else {
-                $('#otherCountryField').hide();
-                $('#otherCountryInput').prop('required', false);
-            }
-        });
-    }
-
-    // দেশ ফরম্যাট ফাংশন
-    function formatCountry(country) {
-        if (!country.id) return country.text;
-        const $country = $('<span>' + country.text + '</span>');
-        return $country;
-    }
-
-    function formatCountrySelection(country) {
-        return country.text;
-    }
-
-    // দেশ কোড সিলেক্ট ড্রপডাউন লোড
-    function loadCountryCodeSelect() {
-        const countryCodeSelect = $('#countryCode');
-        
-        // ইউনিক দেশ কোডগুলো সংগ্রহ করি
-        const uniqueCountryCodes = [];
-        const addedCodes = new Set();
-        
-        countries.forEach(country => {
-            if (!addedCodes.has(country.phone)) {
-                addedCodes.add(country.phone);
-                uniqueCountryCodes.push({
-                    phone: country.phone,
-                    name: country.name,
-                    flag: country.flag
-                });
-            }
-        });
-        
-        // সাজাই কোড অনুযায়ী
-        uniqueCountryCodes.sort((a, b) => {
-            const numA = parseInt(a.phone.replace(/\D/g, '')) || 0;
-            const numB = parseInt(b.phone.replace(/\D/g, '')) || 0;
-            return numA - numB;
-        });
-        
-        // সব কোড যোগ করি
-        uniqueCountryCodes.forEach(code => {
-            countryCodeSelect.append(`<option value="${code.phone}">${code.flag} ${code.phone}</option>`);
-        });
-        
-        // ডিফল্ট হিসেবে বাংলাদেশ সেট করি
-        countryCodeSelect.val('+880');
-    }
-
-    // টাইমজোন সিলেক্ট ড্রপডাউন লোড
-    function loadTimezoneSelect() {
-        const timezoneSelect = $('#userTimezone');
-        
-        // প্রথমে খালি অপশন
-        timezoneSelect.append('<option value="" disabled selected>Select your time zone</option>');
-        
-        // সব টাইমজোন যোগ করি
-        timezones.forEach(timezone => {
-            timezoneSelect.append(`<option value="${timezone}">${timezone}</option>`);
-        });
-        
-        // Select2 ইন্সট্যান্স তৈরি
-        timezoneSelect.select2({
-            placeholder: "Search or select your time zone",
-            allowClear: false,
-            width: '100%'
-        });
-    }
-
-    // WhatsApp মেসেজ পাঠানোর ফাংশন
-    function sendInternationalWhatsApp(event) {
-        event.preventDefault();
-        
-        // ডেটা সংগ্রহ
-        const name = $('#userName').val();
-        const email = $('#userEmail').val();
-        const country = $('#userCountry').val();
-        const actualCountry = country === "Other" ? $('#otherCountryInput').val() : country;
-        const countryCode = $('#countryCode').val();
-        const phone = $('#userPhone').val();
-        const timezone = $('#userTimezone').val();
-        const issue = $('#userIssue').val();
-        const description = $('#userDescription').val();
-        const contactMethod = $('input[name="contactMethod"]:checked').val();
-        const emergency = $('#userEmergency').is(':checked');
-        
-        // ফুল ফোন নম্বর তৈরি
-        const fullPhone = countryCode + phone.replace(/\D/g, '');
-        
-        // WhatsApp মেসেজ তৈরি
-        const message = `*🌍 IT Support Request - International*\n\n` +
-                       `*Name:* ${name}\n` +
-                       `*Email:* ${email}\n` +
-                       `*Country:* ${actualCountry}\n` +
-                       `*Phone:* ${fullPhone}\n` +
-                       `*Time Zone:* ${timezone}\n` +
-                       `*Issue Type:* ${issue}\n` +
-                       `*Description:* ${description}\n` +
-                       `*Preferred Contact:* ${contactMethod}\n` +
-                       `*Urgent:* ${emergency ? 'YES 🚨' : 'No'}\n\n` +
-                       `*Sent via International Contact Form*`;
-        
-        // এনকোড URL
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappURL = `https://wa.me/8801738671739?text=${encodedMessage}`;
-        
-        // WhatsApp ওপেন
-        window.open(whatsappURL, '_blank');
-        
-        // সাকসেস মেসেজ দেখাও
-        $('#successMessage').show();
-        
-        // ফর্ম রিসেট করি (ঐচ্ছিক)
-        setTimeout(() => {
-            $('#contact-form')[0].reset();
-            $('#userCountry').val(null).trigger('change');
-            $('#userTimezone').val(null).trigger('change');
-            $('#otherCountryField').hide();
-            $('#successMessage').hide();
-        }, 5000);
-        
-        return false;
-    }
-
-    // DOM লোড হলে সবকিছু ইনিশিয়ালাইজ করি
-    $(document).ready(function() {
-        // ড্রপডাউনগুলো লোড করি
-        loadCountrySelect();
-        loadCountryCodeSelect();
-        loadTimezoneSelect();
-        
-        // মেনু টগল
-        $('.menu-toggle').click(function() {
-            $('.nav-menu').toggleClass('active');
-            $(this).toggleClass('active');
-        });
-        
-        // নেভ লিংক ক্লিক করলে মেনু বন্ধ করি
-        $('.nav-link').click(function() {
-            $('.nav-menu').removeClass('active');
-            $('.menu-toggle').removeClass('active');
-        });
+// দেশ সিলেক্ট ড্রপডাউন লোড
+function loadCountrySelect() {
+    const countrySelect = $('#userCountry');
+    
+    // প্রথমে খালি অপশন
+    countrySelect.append('<option value="" disabled selected>Select your country</option>');
+    
+    // সব দেশ যোগ করি
+    countries.forEach(country => {
+        countrySelect.append(`<option value="${country.name}">${country.flag} ${country.name} (${country.phone})</option>`);
     });
+    
+    // শেষে "Other" অপশন যোগ করি
+    countrySelect.append('<option value="Other">🌍 Other (Not in list)</option>');
+    
+    // Select2 ইন্সট্যান্স তৈরি
+    countrySelect.select2({
+        placeholder: "Search or select your country",
+        allowClear: false,
+        templateResult: formatCountry,
+        templateSelection: formatCountrySelection,
+        width: '100%'
+    });
+    
+    // Other সিলেক্ট হলে ফিল্ড দেখাবে
+    countrySelect.on('change', function() {
+        const selectedValue = $(this).val();
+        if (selectedValue === "Other") {
+            $('#otherCountryField').show();
+            $('#otherCountryInput').prop('required', true);
+        } else {
+            $('#otherCountryField').hide();
+            $('#otherCountryInput').prop('required', false);
+        }
+    });
+}
+
+// দেশ ফরম্যাট ফাংশন
+function formatCountry(country) {
+    if (!country.id) return country.text;
+    const $country = $('<span>' + country.text + '</span>');
+    return $country;
+}
+
+function formatCountrySelection(country) {
+    return country.text;
+}
+
+// দেশ কোড সিলেক্ট ড্রপডাউন লোড
+function loadCountryCodeSelect() {
+    const countryCodeSelect = $('#countryCode');
+    
+    // ইউনিক দেশ কোডগুলো সংগ্রহ করি
+    const uniqueCountryCodes = [];
+    const addedCodes = new Set();
+    
+    countries.forEach(country => {
+        if (!addedCodes.has(country.phone)) {
+            addedCodes.add(country.phone);
+            uniqueCountryCodes.push({
+                phone: country.phone,
+                name: country.name,
+                flag: country.flag
+            });
+        }
+    });
+    
+    // সাজাই কোড অনুযায়ী
+    uniqueCountryCodes.sort((a, b) => {
+        const numA = parseInt(a.phone.replace(/\D/g, '')) || 0;
+        const numB = parseInt(b.phone.replace(/\D/g, '')) || 0;
+        return numA - numB;
+    });
+    
+    // সব কোড যোগ করি
+    uniqueCountryCodes.forEach(code => {
+        countryCodeSelect.append(`<option value="${code.phone}">${code.flag} ${code.phone}</option>`);
+    });
+    
+    // ডিফল্ট হিসেবে বাংলাদেশ সেট করি
+    countryCodeSelect.val('+880');
+}
+
+// টাইমজোন সিলেক্ট ড্রপডাউন লোড
+function loadTimezoneSelect() {
+    const timezoneSelect = $('#userTimezone');
+    
+    // প্রথমে খালি অপশন
+    timezoneSelect.append('<option value="" disabled selected>Select your time zone</option>');
+    
+    // সব টাইমজোন যোগ করি
+    timezones.forEach(timezone => {
+        timezoneSelect.append(`<option value="${timezone}">${timezone}</option>`);
+    });
+    
+    // Select2 ইন্সট্যান্স তৈরি
+    timezoneSelect.select2({
+        placeholder: "Search or select your time zone",
+        allowClear: false,
+        width: '100%'
+    });
+}
+
+// WhatsApp মেসেজ পাঠানোর ফাংশন
+function sendInternationalWhatsApp(event) {
+    event.preventDefault();
+    
+    // ডেটা সংগ্রহ
+    const name = $('#userName').val();
+    const email = $('#userEmail').val();
+    const country = $('#userCountry').val();
+    const actualCountry = country === "Other" ? $('#otherCountryInput').val() : country;
+    const countryCode = $('#countryCode').val();
+    const phone = $('#userPhone').val();
+    const timezone = $('#userTimezone').val();
+    const issue = $('#userIssue').val();
+    const description = $('#userDescription').val();
+    const contactMethod = $('input[name="contactMethod"]:checked').val();
+    const emergency = $('#userEmergency').is(':checked');
+    
+    // ফুল ফোন নম্বর তৈরি
+    const fullPhone = countryCode + phone.replace(/\D/g, '');
+    
+    // WhatsApp মেসেজ তৈরি
+    const message = `*🌍 IT Support Request - International*\n\n` +
+                   `*Name:* ${name}\n` +
+                   `*Email:* ${email}\n` +
+                   `*Country:* ${actualCountry}\n` +
+                   `*Phone:* ${fullPhone}\n` +
+                   `*Time Zone:* ${timezone}\n` +
+                   `*Issue Type:* ${issue}\n` +
+                   `*Description:* ${description}\n` +
+                   `*Preferred Contact:* ${contactMethod}\n` +
+                   `*Urgent:* ${emergency ? 'YES 🚨' : 'No'}\n\n` +
+                   `*Sent via International Contact Form*`;
+    
+    // এনকোড URL
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/8801738671739?text=${encodedMessage}`;
+    
+    // WhatsApp ওপেন
+    window.open(whatsappURL, '_blank');
+    
+    // সাকসেস মেসেজ দেখাও
+    $('#successMessage').show();
+    
+    // ফর্ম রিসেট করি (ঐচ্ছিক)
+    setTimeout(() => {
+        $('#contact-form')[0].reset();
+        $('#userCountry').val(null).trigger('change');
+        $('#userTimezone').val(null).trigger('change');
+        $('#otherCountryField').hide();
+        $('#successMessage').hide();
+    }, 5000);
+    
+    return false;
+}
+
+// DOM লোড হলে সবকিছু ইনিশিয়ালাইজ করি
+$(document).ready(function() {
+    // ড্রপডাউনগুলো লোড করি
+    loadCountrySelect();
+    loadCountryCodeSelect();
+    loadTimezoneSelect();
+    
+    // মেনু টগল
+    $('.menu-toggle').click(function() {
+        $('.nav-menu').toggleClass('active');
+        $(this).toggleClass('active');
+    });
+    
+    // নেভ লিংক ক্লিক করলে মেনু বন্ধ করি
+    $('.nav-link').click(function() {
+        $('.nav-menu').removeClass('active');
+        $('.menu-toggle').removeClass('active');
+    });
+});
 </script>
 </body>
 </html>
