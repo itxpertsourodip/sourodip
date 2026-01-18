@@ -10,8 +10,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
+    <style>
+        .select2-container--default .select2-selection--single {
+            background-color: var(--tertiary-dark);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            height: 46px;
+            padding: 8px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            color: var(--text-primary);
+            line-height: 30px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            height: 44px;
+        }
+        .select2-dropdown {
+            background-color: var(--tertiary-dark);
+            border: 1px solid var(--border-color);
+        }
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: var(--accent-primary);
+        }
+        .select2-container--default .select2-search--dropdown .select2-search__field {
+            background-color: var(--secondary-dark);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+        .other-country-field {
+            display: none;
+            margin-top: 10px;
+        }
+        .country-flag {
+            display: inline-block;
+            width: 20px;
+            text-align: center;
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -54,6 +92,7 @@
                     <span style="background: #ff9933; color: white; padding: 5px 10px; border-radius: 4px;">🇮🇳 India</span>
                     <span style="background: #ce1126; color: white; padding: 5px 10px; border-radius: 4px;">🇨🇦 Canada</span>
                     <span style="background: #ff671f; color: white; padding: 5px 10px; border-radius: 4px;">🇦🇺 Australia</span>
+                    <span style="background: #000; color: white; padding: 5px 10px; border-radius: 4px;">🌍 100+ Countries</span>
                 </div>
             </div>
         </div>
@@ -72,7 +111,7 @@
                             <div style="margin-top: 2rem; background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px;">
                                 <p style="margin: 5px 0;">🕒 24/7 Remote Support</p>
                                 <p style="margin: 5px 0;">💬 Multilingual Communication</p>
-                                <p style="margin: 5px 0;">🌐 Worldwide Coverage</p>
+                                <p style="margin: 5px 0;">🌐 150+ Countries Supported</p>
                             </div>
                         </div>
                     </div>
@@ -127,6 +166,7 @@
                             <li>From India: <code>00 880 1738 671 739</code></li>
                             <li>From Australia: <code>0011 880 1738 671 739</code></li>
                             <li>From Middle East: <code>00 880 1738 671 739</code></li>
+                            <li>From any country: <code>+880 1738 671 739</code></li>
                         </ul>
                     </div>
                 </div>
@@ -169,61 +209,56 @@
                     </div>
                 </div>
                 
+                <div style="margin-bottom: 1.5rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                        Your Country *
+                    </label>
+                    <select id="userCountry" 
+                            class="country-select"
+                            required 
+                            style="width: 100%;">
+                        <!-- All countries will be loaded by JavaScript -->
+                    </select>
+                    
+                    <div id="otherCountryField" class="other-country-field">
+                        <label style="display: block; margin-top: 0.5rem; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
+                            Please specify your country
+                        </label>
+                        <input type="text" 
+                               id="otherCountryInput"
+                               style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                               placeholder="Enter your country name">
+                    </div>
+                </div>
+                
                 <div class="form-row" style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
                     <div style="flex: 2;">
                         <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Your Country *
+                            Phone Number with Country Code *
                         </label>
-                        <select id="userCountry" 
-                                required 
-                                style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                            <option value="" disabled selected>Select your country</option>
-                            <option value="Bangladesh">🇧🇩 Bangladesh</option>
-                            <option value="United States">🇺🇸 United States</option>
-                            <option value="United Kingdom">🇬🇧 United Kingdom</option>
-                            <option value="Canada">🇨🇦 Canada</option>
-                            <option value="Australia">🇦🇺 Australia</option>
-                            <option value="India">🇮🇳 India</option>
-                            <option value="Germany">🇩🇪 Germany</option>
-                            <option value="France">🇫🇷 France</option>
-                            <option value="Japan">🇯🇵 Japan</option>
-                            <option value="Singapore">🇸🇬 Singapore</option>
-                            <option value="United Arab Emirates">🇦🇪 UAE</option>
-                            <option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
-                            <option value="Other">🌍 Other Country</option>
-                        </select>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <select id="countryCode" 
+                                    style="flex: 1; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
+                                <!-- Country codes will be loaded by JavaScript -->
+                            </select>
+                            <input type="tel" 
+                                   id="userPhone"
+                                   required
+                                   style="flex: 3; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
+                                   placeholder="Phone number without country code">
+                        </div>
+                        <small style="color: var(--text-tertiary); display: block; margin-top: 0.25rem;">Select your country code first</small>
                     </div>
                     
                     <div style="flex: 2;">
-                        <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
-                            Phone Number *
-                        </label>
-                        <input type="tel" 
-                               id="userPhone"
-                               required
-                               style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);"
-                               placeholder="+1 (555) 123-4567">
-                        <small style="color: var(--text-tertiary); display: block; margin-top: 0.25rem;">Include country code (e.g., +1 for USA)</small>
-                    </div>
-                    
-                    <div style="flex: 1;">
                         <label style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">
                             Time Zone *
                         </label>
                         <select id="userTimezone" 
+                                class="timezone-select"
                                 required 
-                                style="width: 100%; padding: 0.75rem; background: var(--tertiary-dark); border: 1px solid var(--border-color); border-radius: var(--radius-md); color: var(--text-primary);">
-                            <option value="" disabled selected>Select Time Zone</option>
-                            <option value="GMT-8 (PST)">GMT-8 (PST) - USA West</option>
-                            <option value="GMT-5 (EST)">GMT-5 (EST) - USA East</option>
-                            <option value="GMT (GMT)">GMT - UK/London</option>
-                            <option value="GMT+1 (CET)">GMT+1 (CET) - Europe</option>
-                            <option value="GMT+2 (EET)">GMT+2 (EET) - Middle East</option>
-                            <option value="GMT+5:30 (IST)">GMT+5:30 (IST) - India</option>
-                            <option value="GMT+6 (BST)">GMT+6 (BST) - Bangladesh</option>
-                            <option value="GMT+8 (CST)">GMT+8 (CST) - China/Singapore</option>
-                            <option value="GMT+10 (AEST)">GMT+10 (AEST) - Australia</option>
-                            <option value="GMT+12 (NZST)">GMT+12 (NZST) - New Zealand</option>
+                                style="width: 100%;">
+                            <!-- Time zones will be loaded by JavaScript -->
                         </select>
                     </div>
                 </div>
@@ -311,312 +346,412 @@
     </div>
 </section>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <script>
-function sendInternationalWhatsApp(event) {
-    event.preventDefault();
-    
-    // Get values
-    const name = document.getElementById('userName').value.trim();
-    const email = document.getElementById('userEmail').value.trim();
-    const country = document.getElementById('userCountry').value;
-    const phone = document.getElementById('userPhone').value.trim();
-    const timezone = document.getElementById('userTimezone').value;
-    const issue = document.getElementById('userIssue').value;
-    const description = document.getElementById('userDescription').value.trim();
-    const emergency = document.getElementById('userEmergency').checked;
-    
-    // Get preferred contact method
-    const contactMethod = document.querySelector('input[name="contactMethod"]:checked').value;
-    
-    // Validate
-    if (!name || !email || !country || !phone || !timezone || !issue || !description) {
-        alert('❌ Please fill all required fields (*)');
-        return false;
-    }
-    
-    // Validate email
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('❌ Please enter a valid email address');
-        document.getElementById('userEmail').focus();
-        return false;
-    }
-    
-    // Create message
-    const message = `🌍 *INTERNATIONAL IT SUPPORT REQUEST* 🌍\n\n` +
-                   `👤 *Client Name:* ${name}\n` +
-                   `📧 *Email:* ${email}\n` +
-                   `🗺️ *Country:* ${country}\n` +
-                   `📱 *Phone:* ${phone}\n` +
-                   `🕐 *Time Zone:* ${timezone}\n` +
-                   `📞 *Preferred Contact:* ${contactMethod}\n` +
-                   `🔧 *Issue Type:* ${issue}\n` +
-                   `🚨 *Urgent:* ${emergency ? 'YES - Need help ASAP' : 'No'}\n\n` +
-                   `📝 *Problem Details:*\n${description}\n\n` +
-                   `⏰ *Submitted:* ${new Date().toLocaleString('en-US')}\n` +
-                   `🌐 *From:* International Website Form`;
-    
-    // Create WhatsApp URL
-    const whatsappURL = `https://wa.me/8801738671739?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp
-    window.open(whatsappURL, '_blank');
-    
-    // Show success message
-    const successMsg = document.getElementById('successMessage');
-    successMsg.style.display = 'block';
-    successMsg.innerHTML = `✅ WhatsApp opened!<br>Please click <strong>SEND</strong> in WhatsApp.`;
-    
-    // Reset form
-    setTimeout(() => {
-        document.getElementById('contact-form').reset();
-        successMsg.scrollIntoView({ behavior: 'smooth' });
-    }, 1000);
-    
-    // Show instruction
-    setTimeout(() => {
-        alert(`🌍 *International Support Request Sent!*\n\n` +
-              `✅ WhatsApp should be open now\n` +
-              `✅ Click the GREEN SEND button\n` +
-              `✅ I will contact you via ${contactMethod}\n` +
-              `✅ Based on your time zone: ${timezone}\n\n` +
-              `📧 Alternative contact: itxpertsourodip@gmail.com\n` +
-              `📞 Phone: +880 1738 671 739\n\n` +
-              `Thank you for choosing global IT support!`);
-    }, 1500);
-    
-    return false;
-}
+// সম্পূর্ণ দেশের লিস্ট
+const countries = [
+    {name: "Afghanistan", code: "AF", phone: "+93", flag: "🇦🇫"},
+    {name: "Albania", code: "AL", phone: "+355", flag: "🇦🇱"},
+    {name: "Algeria", code: "DZ", phone: "+213", flag: "🇩🇿"},
+    {name: "Andorra", code: "AD", phone: "+376", flag: "🇦🇩"},
+    {name: "Angola", code: "AO", phone: "+244", flag: "🇦🇴"},
+    {name: "Antigua and Barbuda", code: "AG", phone: "+1-268", flag: "🇦🇬"},
+    {name: "Argentina", code: "AR", phone: "+54", flag: "🇦🇷"},
+    {name: "Armenia", code: "AM", phone: "+374", flag: "🇦🇲"},
+    {name: "Australia", code: "AU", phone: "+61", flag: "🇦🇺"},
+    {name: "Austria", code: "AT", phone: "+43", flag: "🇦🇹"},
+    {name: "Azerbaijan", code: "AZ", phone: "+994", flag: "🇦🇿"},
+    {name: "Bahamas", code: "BS", phone: "+1-242", flag: "🇧🇸"},
+    {name: "Bahrain", code: "BH", phone: "+973", flag: "🇧🇭"},
+    {name: "Bangladesh", code: "BD", phone: "+880", flag: "🇧🇩"},
+    {name: "Barbados", code: "BB", phone: "+1-246", flag: "🇧🇧"},
+    {name: "Belarus", code: "BY", phone: "+375", flag: "🇧🇾"},
+    {name: "Belgium", code: "BE", phone: "+32", flag: "🇧🇪"},
+    {name: "Belize", code: "BZ", phone: "+501", flag: "🇧🇿"},
+    {name: "Benin", code: "BJ", phone: "+229", flag: "🇧🇯"},
+    {name: "Bhutan", code: "BT", phone: "+975", flag: "🇧🇹"},
+    {name: "Bolivia", code: "BO", phone: "+591", flag: "🇧🇴"},
+    {name: "Bosnia and Herzegovina", code: "BA", phone: "+387", flag: "🇧🇦"},
+    {name: "Botswana", code: "BW", phone: "+267", flag: "🇧🇼"},
+    {name: "Brazil", code: "BR", phone: "+55", flag: "🇧🇷"},
+    {name: "Brunei", code: "BN", phone: "+673", flag: "🇧🇳"},
+    {name: "Bulgaria", code: "BG", phone: "+359", flag: "🇧🇬"},
+    {name: "Burkina Faso", code: "BF", phone: "+226", flag: "🇧🇫"},
+    {name: "Burundi", code: "BI", phone: "+257", flag: "🇧🇮"},
+    {name: "Cabo Verde", code: "CV", phone: "+238", flag: "🇨🇻"},
+    {name: "Cambodia", code: "KH", phone: "+855", flag: "🇰🇭"},
+    {name: "Cameroon", code: "CM", phone: "+237", flag: "🇨🇲"},
+    {name: "Canada", code: "CA", phone: "+1", flag: "🇨🇦"},
+    {name: "Central African Republic", code: "CF", phone: "+236", flag: "🇨🇫"},
+    {name: "Chad", code: "TD", phone: "+235", flag: "🇹🇩"},
+    {name: "Chile", code: "CL", phone: "+56", flag: "🇨🇱"},
+    {name: "China", code: "CN", phone: "+86", flag: "🇨🇳"},
+    {name: "Colombia", code: "CO", phone: "+57", flag: "🇨🇴"},
+    {name: "Comoros", code: "KM", phone: "+269", flag: "🇰🇲"},
+    {name: "Congo", code: "CG", phone: "+242", flag: "🇨🇬"},
+    {name: "Costa Rica", code: "CR", phone: "+506", flag: "🇨🇷"},
+    {name: "Croatia", code: "HR", phone: "+385", flag: "🇭🇷"},
+    {name: "Cuba", code: "CU", phone: "+53", flag: "🇨🇺"},
+    {name: "Cyprus", code: "CY", phone: "+357", flag: "🇨🇾"},
+    {name: "Czech Republic", code: "CZ", phone: "+420", flag: "🇨🇿"},
+    {name: "Denmark", code: "DK", phone: "+45", flag: "🇩🇰"},
+    {name: "Djibouti", code: "DJ", phone: "+253", flag: "🇩🇯"},
+    {name: "Dominica", code: "DM", phone: "+1-767", flag: "🇩🇲"},
+    {name: "Dominican Republic", code: "DO", phone: "+1-809, +1-829, +1-849", flag: "🇩🇴"},
+    {name: "East Timor", code: "TL", phone: "+670", flag: "🇹🇱"},
+    {name: "Ecuador", code: "EC", phone: "+593", flag: "🇪🇨"},
+    {name: "Egypt", code: "EG", phone: "+20", flag: "🇪🇬"},
+    {name: "El Salvador", code: "SV", phone: "+503", flag: "🇸🇻"},
+    {name: "Equatorial Guinea", code: "GQ", phone: "+240", flag: "🇬🇶"},
+    {name: "Eritrea", code: "ER", phone: "+291", flag: "🇪🇷"},
+    {name: "Estonia", code: "EE", phone: "+372", flag: "🇪🇪"},
+    {name: "Eswatini", code: "SZ", phone: "+268", flag: "🇸🇿"},
+    {name: "Ethiopia", code: "ET", phone: "+251", flag: "🇪🇹"},
+    {name: "Fiji", code: "FJ", phone: "+679", flag: "🇫🇯"},
+    {name: "Finland", code: "FI", phone: "+358", flag: "🇫🇮"},
+    {name: "France", code: "FR", phone: "+33", flag: "🇫🇷"},
+    {name: "Gabon", code: "GA", phone: "+241", flag: "🇬🇦"},
+    {name: "Gambia", code: "GM", phone: "+220", flag: "🇬🇲"},
+    {name: "Georgia", code: "GE", phone: "+995", flag: "🇬🇪"},
+    {name: "Germany", code: "DE", phone: "+49", flag: "🇩🇪"},
+    {name: "Ghana", code: "GH", phone: "+233", flag: "🇬🇭"},
+    {name: "Greece", code: "GR", phone: "+30", flag: "🇬🇷"},
+    {name: "Grenada", code: "GD", phone: "+1-473", flag: "🇬🇩"},
+    {name: "Guatemala", code: "GT", phone: "+502", flag: "🇬🇹"},
+    {name: "Guinea", code: "GN", phone: "+224", flag: "🇬🇳"},
+    {name: "Guinea-Bissau", code: "GW", phone: "+245", flag: "🇬🇼"},
+    {name: "Guyana", code: "GY", phone: "+592", flag: "🇬🇾"},
+    {name: "Haiti", code: "HT", phone: "+509", flag: "🇭🇹"},
+    {name: "Honduras", code: "HN", phone: "+504", flag: "🇭🇳"},
+    {name: "Hungary", code: "HU", phone: "+36", flag: "🇭🇺"},
+    {name: "Iceland", code: "IS", phone: "+354", flag: "🇮🇸"},
+    {name: "India", code: "IN", phone: "+91", flag: "🇮🇳"},
+    {name: "Indonesia", code: "ID", phone: "+62", flag: "🇮🇩"},
+    {name: "Iran", code: "IR", phone: "+98", flag: "🇮🇷"},
+    {name: "Iraq", code: "IQ", phone: "+964", flag: "🇮🇶"},
+    {name: "Ireland", code: "IE", phone: "+353", flag: "🇮🇪"},
+    {name: "Israel", code: "IL", phone: "+972", flag: "🇮🇱"},
+    {name: "Italy", code: "IT", phone: "+39", flag: "🇮🇹"},
+    {name: "Jamaica", code: "JM", phone: "+1-876", flag: "🇯🇲"},
+    {name: "Japan", code: "JP", phone: "+81", flag: "🇯🇵"},
+    {name: "Jordan", code: "JO", phone: "+962", flag: "🇯🇴"},
+    {name: "Kazakhstan", code: "KZ", phone: "+7", flag: "🇰🇿"},
+    {name: "Kenya", code: "KE", phone: "+254", flag: "🇰🇪"},
+    {name: "Kiribati", code: "KI", phone: "+686", flag: "🇰🇮"},
+    {name: "Korea North", code: "KP", phone: "+850", flag: "🇰🇵"},
+    {name: "Korea South", code: "KR", phone: "+82", flag: "🇰🇷"},
+    {name: "Kosovo", code: "XK", phone: "+383", flag: "🇽🇰"},
+    {name: "Kuwait", code: "KW", phone: "+965", flag: "🇰🇼"},
+    {name: "Kyrgyzstan", code: "KG", phone: "+996", flag: "🇰🇬"},
+    {name: "Laos", code: "LA", phone: "+856", flag: "🇱🇦"},
+    {name: "Latvia", code: "LV", phone: "+371", flag: "🇱🇻"},
+    {name: "Lebanon", code: "LB", phone: "+961", flag: "🇱🇧"},
+    {name: "Lesotho", code: "LS", phone: "+266", flag: "🇱🇸"},
+    {name: "Liberia", code: "LR", phone: "+231", flag: "🇱🇷"},
+    {name: "Libya", code: "LY", phone: "+218", flag: "🇱🇾"},
+    {name: "Liechtenstein", code: "LI", phone: "+423", flag: "🇱🇮"},
+    {name: "Lithuania", code: "LT", phone: "+370", flag: "🇱🇹"},
+    {name: "Luxembourg", code: "LU", phone: "+352", flag: "🇱🇺"},
+    {name: "Madagascar", code: "MG", phone: "+261", flag: "🇲🇬"},
+    {name: "Malawi", code: "MW", phone: "+265", flag: "🇲🇼"},
+    {name: "Malaysia", code: "MY", phone: "+60", flag: "🇲🇾"},
+    {name: "Maldives", code: "MV", phone: "+960", flag: "🇲🇻"},
+    {name: "Mali", code: "ML", phone: "+223", flag: "🇲🇱"},
+    {name: "Malta", code: "MT", phone: "+356", flag: "🇲🇹"},
+    {name: "Marshall Islands", code: "MH", phone: "+692", flag: "🇲🇭"},
+    {name: "Mauritania", code: "MR", phone: "+222", flag: "🇲🇷"},
+    {name: "Mauritius", code: "MU", phone: "+230", flag: "🇲🇺"},
+    {name: "Mexico", code: "MX", phone: "+52", flag: "🇲🇽"},
+    {name: "Micronesia", code: "FM", phone: "+691", flag: "🇫🇲"},
+    {name: "Moldova", code: "MD", phone: "+373", flag: "🇲🇩"},
+    {name: "Monaco", code: "MC", phone: "+377", flag: "🇲🇨"},
+    {name: "Mongolia", code: "MN", phone: "+976", flag: "🇲🇳"},
+    {name: "Montenegro", code: "ME", phone: "+382", flag: "🇲🇪"},
+    {name: "Morocco", code: "MA", phone: "+212", flag: "🇲🇦"},
+    {name: "Mozambique", code: "MZ", phone: "+258", flag: "🇲🇿"},
+    {name: "Myanmar", code: "MM", phone: "+95", flag: "🇲🇲"},
+    {name: "Namibia", code: "NA", phone: "+264", flag: "🇳🇦"},
+    {name: "Nauru", code: "NR", phone: "+674", flag: "🇳🇷"},
+    {name: "Nepal", code: "NP", phone: "+977", flag: "🇳🇵"},
+    {name: "Netherlands", code: "NL", phone: "+31", flag: "🇳🇱"},
+    {name: "New Zealand", code: "NZ", phone: "+64", flag: "🇳🇿"},
+    {name: "Nicaragua", code: "NI", phone: "+505", flag: "🇳🇮"},
+    {name: "Niger", code: "NE", phone: "+227", flag: "🇳🇪"},
+    {name: "Nigeria", code: "NG", phone: "+234", flag: "🇳🇬"},
+    {name: "North Macedonia", code: "MK", phone: "+389", flag: "🇲🇰"},
+    {name: "Norway", code: "NO", phone: "+47", flag: "🇳🇴"},
+    {name: "Oman", code: "OM", phone: "+968", flag: "🇴🇲"},
+    {name: "Pakistan", code: "PK", phone: "+92", flag: "🇵🇰"},
+    {name: "Palau", code: "PW", phone: "+680", flag: "🇵🇼"},
+    {name: "Palestine", code: "PS", phone: "+970", flag: "🇵🇸"},
+    {name: "Panama", code: "PA", phone: "+507", flag: "🇵🇦"},
+    {name: "Papua New Guinea", code: "PG", phone: "+675", flag: "🇵🇬"},
+    {name: "Paraguay", code: "PY", phone: "+595", flag: "🇵🇾"},
+    {name: "Peru", code: "PE", phone: "+51", flag: "🇵🇪"},
+    {name: "Philippines", code: "PH", phone: "+63", flag: "🇵🇭"},
+    {name: "Poland", code: "PL", phone: "+48", flag: "🇵🇱"},
+    {name: "Portugal", code: "PT", phone: "+351", flag: "🇵🇹"},
+    {name: "Qatar", code: "QA", phone: "+974", flag: "🇶🇦"},
+    {name: "Romania", code: "RO", phone: "+40", flag: "🇷🇴"},
+    {name: "Russia", code: "RU", phone: "+7", flag: "🇷🇺"},
+    {name: "Rwanda", code: "RW", phone: "+250", flag: "🇷🇼"},
+    {name: "Saint Kitts and Nevis", code: "KN", phone: "+1-869", flag: "🇰🇳"},
+    {name: "Saint Lucia", code: "LC", phone: "+1-758", flag: "🇱🇨"},
+    {name: "Saint Vincent and the Grenadines", code: "VC", phone: "+1-784", flag: "🇻🇨"},
+    {name: "Samoa", code: "WS", phone: "+685", flag: "🇼🇸"},
+    {name: "San Marino", code: "SM", phone: "+378", flag: "🇸🇲"},
+    {name: "Sao Tome and Principe", code: "ST", phone: "+239", flag: "🇸🇹"},
+    {name: "Saudi Arabia", code: "SA", phone: "+966", flag: "🇸🇦"},
+    {name: "Senegal", code: "SN", phone: "+221", flag: "🇸🇳"},
+    {name: "Serbia", code: "RS", phone: "+381", flag: "🇷🇸"},
+    {name: "Seychelles", code: "SC", phone: "+248", flag: "🇸🇨"},
+    {name: "Sierra Leone", code: "SL", phone: "+232", flag: "🇸🇱"},
+    {name: "Singapore", code: "SG", phone: "+65", flag: "🇸🇬"},
+    {name: "Slovakia", code: "SK", phone: "+421", flag: "🇸🇰"},
+    {name: "Slovenia", code: "SI", phone: "+386", flag: "🇸🇮"},
+    {name: "Solomon Islands", code: "SB", phone: "+677", flag: "🇸🇧"},
+    {name: "Somalia", code: "SO", phone: "+252", flag: "🇸🇴"},
+    {name: "South Africa", code: "ZA", phone: "+27", flag: "🇿🇦"},
+    {name: "South Sudan", code: "SS", phone: "+211", flag: "🇸🇸"},
+    {name: "Spain", code: "ES", phone: "+34", flag: "🇪🇸"},
+    {name: "Sri Lanka", code: "LK", phone: "+94", flag: "🇱🇰"},
+    {name: "Sudan", code: "SD", phone: "+249", flag: "🇸🇩"},
+    {name: "Suriname", code: "SR", phone: "+597", flag: "🇸🇷"},
+    {name: "Sweden", code: "SE", phone: "+46", flag: "🇸🇪"},
+    {name: "Switzerland", code: "CH", phone: "+41", flag: "🇨🇭"},
+    {name: "Uganda", code: "UG", phone: "+256", flag: "🇺🇬"},
+    {name: "Ukraine", code: "UA", phone: "+380", flag: "🇺🇦"},
+    {name: "United Arab Emirates", code: "AE", phone: "+971", flag: "🇦🇪"},
+    {name: "United Kingdom", code: "GB", phone: "+44", flag: "🇬🇧"},
+    {name: "United States", code: "US", phone: "+1", flag: "🇺🇸"},
+    {name: "Uruguay", code: "UY", phone: "+598", flag: "🇺🇾"},
+    {name: "Uzbekistan", code: "UZ", phone: "+998", flag: "🇺🇿"},
+    {name: "Vanuatu", code: "VU", phone: "+678", flag: "🇻🇺"},
+    {name: "Vatican City", code: "VA", phone: "+379", flag: "🇻🇦"},
+    {name: "Venezuela", code: "VE", phone: "+58", flag: "🇻🇪"},
+    {name: "Vietnam", code: "VN", phone: "+84", flag: "🇻🇳"},
+    {name: "Yemen", code: "YE", phone: "+967", flag: "🇾🇪"},
+    {name: "Zambia", code: "ZM", phone: "+260", flag: "🇿🇲"},
+    {name: "Zimbabwe", code: "ZW", phone: "+263", flag: "🇿🇼"}
 </script>
+    // টাইমজোন এর লিস্ট
+    const timezones = [
+        "UTC-12:00 (International Date Line West)",
+        "UTC-11:00 (American Samoa, Midway Island)",
+        "UTC-10:00 (Hawaii)",
+        "UTC-09:00 (Alaska)",
+        "UTC-08:00 (Pacific Time US & Canada)",
+        "UTC-07:00 (Mountain Time US & Canada)",
+        "UTC-06:00 (Central Time US & Canada, Mexico City)",
+        "UTC-05:00 (Eastern Time US & Canada, Bogota)",
+        "UTC-04:00 (Atlantic Time Canada, Caracas)",
+        "UTC-03:00 (Brasilia, Buenos Aires)",
+        "UTC-02:00 (Mid-Atlantic)",
+        "UTC-01:00 (Azores, Cape Verde Islands)",
+        "UTC+00:00 (GMT, London, Dublin, Lisbon)",
+        "UTC+01:00 (Berlin, Paris, Rome, Amsterdam)",
+        "UTC+02:00 (Cairo, Jerusalem, Athens, Helsinki)",
+        "UTC+03:00 (Moscow, Istanbul, Riyadh, Nairobi)",
+        "UTC+03:30 (Tehran)",
+        "UTC+04:00 (Dubai, Abu Dhabi, Baku, Tbilisi)",
+        "UTC+04:30 (Kabul)",
+        "UTC+05:00 (Karachi, Tashkent, Islamabad)",
+        "UTC+05:30 (India, Sri Lanka)",
+        "UTC+05:45 (Kathmandu)",
+        "UTC+06:00 (Bangladesh, Kazakhstan)",
+        "UTC+06:30 (Myanmar, Cocos Islands)",
+        "UTC+07:00 (Bangkok, Jakarta, Hanoi)",
+        "UTC+08:00 (Singapore, Kuala Lumpur, Beijing, Perth)",
+        "UTC+08:45 (Eucla)",
+        "UTC+09:00 (Tokyo, Seoul, Pyongyang)",
+        "UTC+09:30 (Adelaide, Darwin)",
+        "UTC+10:00 (Sydney, Melbourne, Guam, Port Moresby)",
+        "UTC+10:30 (Lord Howe Island)",
+        "UTC+11:00 (Solomon Islands, Vanuatu)",
+        "UTC+12:00 (Auckland, Wellington, Fiji)",
+        "UTC+12:45 (Chatham Islands)",
+        "UTC+13:00 (Samoa, Tonga, Tokelau)",
+        "UTC+14:00 (Kiribati - Line Islands)"
+    ];
 
-    <!-- Quick Contact Buttons -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Global Contact Options</h2>
-                <p class="section-description">Multiple ways to contact me from anywhere in the world</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card" style="text-align: center;">
-                    <div class="service-icon" style="font-size: 3rem;">💬</div>
-                    <h3 class="service-title">WhatsApp Global</h3>
-                    <p class="service-description">Instant messaging worldwide. Fastest response time for international clients.</p>
-                    <a href="https://wa.me/8801738671739?text=Hello%20Sourodip,%20I%20need%20IT%20support%20from%20[Your%20Country]:" 
-                       class="btn btn-primary" 
-                       style="background-color: #25D366; border-color: #25D366; margin-top: 1rem;">
-                        💬 WhatsApp Global
-                    </a>
-                    <p style="color: var(--text-tertiary); margin-top: 0.5rem; font-size: 0.875rem;">
-                        Available 24/7 | All Countries
-                    </p>
-                </div>
-                
-                <div class="service-card" style="text-align: center;">
-                    <div class="service-icon" style="font-size: 3rem;">📧</div>
-                    <h3 class="service-title">Email Support</h3>
-                    <p class="service-description">Professional email support for detailed technical issues and documentation.</p>
-                    <a href="mailto:itxpertsourodip@gmail.com?subject=International%20IT%20Support%20Request&body=Country:%20[Your%20Country]%0APhone:%20[Your%20Phone%20with%20Country%20Code]" 
-                       class="btn btn-primary" 
-                       style="margin-top: 1rem;">
-                        📧 Email for Support
-                    </a>
-                    <p style="color: var(--text-tertiary); margin-top: 0.5rem; font-size: 0.875rem;">
-                        Response: 4-6 hours | All Time Zones
-                    </p>
-                </div>
-                
-                <div class="service-card" style="text-align: center;">
-                    <div class="service-icon" style="font-size: 3rem;">🎥</div>
-                    <h3 class="service-title">Video Call Support</h3>
-                    <p class="service-description">Live screen sharing and video support via Zoom, Google Meet, or Teams.</p>
-                    <a href="https://wa.me/8801738671739?text=I%20need%20video%20call%20support%20for%20[Brief%20Description]" 
-                       class="btn btn-primary" 
-                       style="background-color: #5865F2; border-color: #5865F2; margin-top: 1rem;">
-                        🎥 Schedule Video Call
-                    </a>
-                    <p style="color: var(--text-tertiary); margin-top: 0.5rem; font-size: 0.875rem;">
-                        Zoom | Google Meet | Microsoft Teams
-                    </p>
-                </div>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; color: white;">
-                <h3 style="color: white; margin-bottom: 0.5rem;">🌐 Global Support Coverage</h3>
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">I provide IT support to clients in:</p>
-                <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">North America</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">Europe</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">Asia Pacific</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">Middle East</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">Australia/NZ</span>
-                    <span style="background: rgba(255,255,255,0.2); padding: 5px 15px; border-radius: 20px;">Africa</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" style="background: var(--secondary-dark);">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Global Support FAQ</span>
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-description">Common questions about international IT support.</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3 class="service-title">How do I call from outside Bangladesh?</h3>
-                    <p class="service-description"><strong>Dialing format:</strong> International prefix + 880 + 1738 671 739<br>
-                    <strong>From USA:</strong> 011 880 1738 671 739<br>
-                    <strong>From UK:</strong> 00 880 1738 671 739<br>
-                    <strong>WhatsApp/Skype:</strong> Recommended for international calls</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3 class="service-title">What are your working hours?</h3>
-                    <p class="service-description"><strong>Bangladesh Time:</strong> 8 AM - 12 AM GMT+6<br>
-                    <strong>24/7 Emergency:</strong> Available for critical issues<br>
-                    <strong>Weekends:</strong> Available with prior appointment<br>
-                    <strong>Holidays:</strong> Available (check schedule)</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3 class="service-title">How do you handle time zone differences?</h3>
-                    <p class="service-description">• I work with clients across all time zones<br>
-                    • Flexible scheduling available<br>
-                    • Early morning/late night slots for different regions<br>
-                    • Automated reminders for scheduled calls<br>
-                    • Time zone converter on booking page</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3 class="service-title">What payment methods for international clients?</h3>
-                    <p class="service-description"><strong>For international clients:</strong><br>
-                    • PayPal (preferred)<br>
-                    • Wise (TransferWise)<br>
-                    • Bank Wire Transfer<br>
-                    • Cryptocurrency (BTC, ETH)<br>
-                    • Credit Card via PayPal<br>
-                    <strong>For Bangladesh clients:</strong> bKash, Nagad, Bank</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo footer-logo">
-                        <span class="logo-icon">IT</span>
-                        <span class="logo-text">Xpert<span class="accent">Sourodip</span></span>
-                    </a>
-                    <p class="footer-text">Professional IT Support Engineer providing reliable IT solutions worldwide.</p>
-                    <div class="social-links">
-                        <a href="https://wa.me/8801738671739" class="social-link" aria-label="WhatsApp" style="background-color: #25D366;">
-                            <span>WA</span>
-                        </a>
-                        <a href="mailto:itxpertsourodip@gmail.com" class="social-link" aria-label="Email">
-                            <span>✉️</span>
-                        </a>
-                        <a href="skype:live:.cid.1234567890?call" class="social-link" aria-label="Skype" style="background-color: #00AFF0;">
-                            <span>SK</span>
-                        </a>
-                        <a href="https://join.skype.com/invite/your-skype-id" class="social-link" aria-label="Zoom" style="background-color: #2D8CFF;">
-                            <span>ZM</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Global Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Remote Windows Support</a></li>
-                        <li><a href="services.html">Server Administration</a></li>
-                        <li><a href="services.html">Network Configuration</a></li>
-                        <li><a href="services.html">Cybersecurity</a></li>
-                        <li><a href="services.html">Cloud Solutions</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="experience.html">Experience</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">International Contact</h3>
-                    <ul class="footer-contact">
-                        <li>
-                            <span class="contact-icon">📱</span>
-                            <a href="tel:+8801738671739">+880 1738 671 739</a>
-                        </li>
-                        <li>
-                            <span class="contact-icon">💬</span>
-                            <a href="https://wa.me/8801738671739">WhatsApp Global</a>
-                        </li>
-                        <li>
-                            <span class="contact-icon">✉️</span>
-                            <a href="mailto:itxpertsourodip@gmail.com">itxpertsourodip@gmail.com</a>
-                        </li>
-                        <li>
-                            <span class="contact-icon">🌐</span>
-                            <span>Worldwide Remote Support</span>
-                        </li>
-                        <li>
-                            <span class="contact-icon">🕐</span>
-                            <span>GMT+6 | Available 24/7 for emergencies</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">&copy; <span id="current-year"></span> IT Xpert Sourodip - Global IT Support. All rights reserved.</p>
-                <p class="tagline">International: +880 1738 671 739 | WhatsApp Available Worldwide</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-    
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+    // দেশ সিলেক্ট ড্রপডাউন লোড
+    function loadCountrySelect() {
+        const countrySelect = $('#userCountry');
         
-        // Time zone detection
-        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        const timezoneSelect = document.getElementById('userTimezone');
+        // প্রথমে খালি অপশন
+        countrySelect.append('<option value="" disabled selected>Select your country</option>');
         
-        if (timezoneSelect && userTimezone) {
-            // Try to match user's timezone
-            const options = Array.from(timezoneSelect.options);
-            const userOption = options.find(opt => opt.text.includes(userTimezone));
-            if (userOption) {
-                userOption.selected = true;
+        // সব দেশ যোগ করি
+        countries.forEach(country => {
+            countrySelect.append(`<option value="${country.name}">${country.flag} ${country.name} (${country.phone})</option>`);
+        });
+        
+        // শেষে "Other" অপশন যোগ করি
+        countrySelect.append('<option value="Other">🌍 Other (Not in list)</option>');
+        
+        // Select2 ইন্সট্যান্স তৈরি
+        countrySelect.select2({
+            placeholder: "Search or select your country",
+            allowClear: false,
+            templateResult: formatCountry,
+            templateSelection: formatCountrySelection,
+            width: '100%'
+        });
+        
+        // Other সিলেক্ট হলে ফিল্ড দেখাবে
+        countrySelect.on('change', function() {
+            const selectedValue = $(this).val();
+            if (selectedValue === "Other") {
+                $('#otherCountryField').show();
+                $('#otherCountryInput').prop('required', true);
+            } else {
+                $('#otherCountryField').hide();
+                $('#otherCountryInput').prop('required', false);
             }
-        }
+        });
+    }
+
+    // দেশ ফরম্যাট ফাংশন
+    function formatCountry(country) {
+        if (!country.id) return country.text;
+        const $country = $('<span>' + country.text + '</span>');
+        return $country;
+    }
+
+    function formatCountrySelection(country) {
+        return country.text;
+    }
+
+    // দেশ কোড সিলেক্ট ড্রপডাউন লোড
+    function loadCountryCodeSelect() {
+        const countryCodeSelect = $('#countryCode');
         
-        // Country detection
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                const countrySelect = document.getElementById('userCountry');
-                if (countrySelect && data.country_name) {
-                    const options = Array.from(countrySelect.options);
-                    const countryOption = options.find(opt => opt.value === data.country_name);
-                    if (countryOption) {
-                        countryOption.selected = true;
-                    } else if (data.country_name) {
-                        // Add detected country if not in list
+        // ইউনিক দেশ কোডগুলো সংগ্রহ করি
+        const uniqueCountryCodes = [];
+        const addedCodes = new Set();
+        
+        countries.forEach(country => {
+            if (!addedCodes.has(country.phone)) {
+                addedCodes.add(country.phone);
+                uniqueCountryCodes.push({
+                    phone: country.phone,
+                    name: country.name,
+                    flag: country.flag
+                });
+            }
+        });
+        
+        // সাজাই কোড অনুযায়ী
+        uniqueCountryCodes.sort((a, b) => {
+            const numA = parseInt(a.phone.replace(/\D/g, '')) || 0;
+            const numB = parseInt(b.phone.replace(/\D/g, '')) || 0;
+            return numA - numB;
+        });
+        
+        // সব কোড যোগ করি
+        uniqueCountryCodes.forEach(code => {
+            countryCodeSelect.append(`<option value="${code.phone}">${code.flag} ${code.phone}</option>`);
+        });
+        
+        // ডিফল্ট হিসেবে বাংলাদেশ সেট করি
+        countryCodeSelect.val('+880');
+    }
+
+    // টাইমজোন সিলেক্ট ড্রপডাউন লোড
+    function loadTimezoneSelect() {
+        const timezoneSelect = $('#userTimezone');
+        
+        // প্রথমে খালি অপশন
+        timezoneSelect.append('<option value="" disabled selected>Select your time zone</option>');
+        
+        // সব টাইমজোন যোগ করি
+        timezones.forEach(timezone => {
+            timezoneSelect.append(`<option value="${timezone}">${timezone}</option>`);
+        });
+        
+        // Select2 ইন্সট্যান্স তৈরি
+        timezoneSelect.select2({
+            placeholder: "Search or select your time zone",
+            allowClear: false,
+            width: '100%'
+        });
+    }
+
+    // WhatsApp মেসেজ পাঠানোর ফাংশন
+    function sendInternationalWhatsApp(event) {
+        event.preventDefault();
+        
+        // ডেটা সংগ্রহ
+        const name = $('#userName').val();
+        const email = $('#userEmail').val();
+        const country = $('#userCountry').val();
+        const actualCountry = country === "Other" ? $('#otherCountryInput').val() : country;
+        const countryCode = $('#countryCode').val();
+        const phone = $('#userPhone').val();
+        const timezone = $('#userTimezone').val();
+        const issue = $('#userIssue').val();
+        const description = $('#userDescription').val();
+        const contactMethod = $('input[name="contactMethod"]:checked').val();
+        const emergency = $('#userEmergency').is(':checked');
+        
+        // ফুল ফোন নম্বর তৈরি
+        const fullPhone = countryCode + phone.replace(/\D/g, '');
+        
+        // WhatsApp মেসেজ তৈরি
+        const message = `*🌍 IT Support Request - International*\n\n` +
+                       `*Name:* ${name}\n` +
+                       `*Email:* ${email}\n` +
+                       `*Country:* ${actualCountry}\n` +
+                       `*Phone:* ${fullPhone}\n` +
+                       `*Time Zone:* ${timezone}\n` +
+                       `*Issue Type:* ${issue}\n` +
+                       `*Description:* ${description}\n` +
+                       `*Preferred Contact:* ${contactMethod}\n` +
+                       `*Urgent:* ${emergency ? 'YES 🚨' : 'No'}\n\n` +
+                       `*Sent via International Contact Form*`;
+        
+        // এনকোড URL
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/8801738671739?text=${encodedMessage}`;
+        
+        // WhatsApp ওপেন
+        window.open(whatsappURL, '_blank');
+        
+        // সাকসেস মেসেজ দেখাও
+        $('#successMessage').show();
+        
+        // ফর্ম রিসেট করি (ঐচ্ছিক)
+        setTimeout(() => {
+            $('#contact-form')[0].reset();
+            $('#userCountry').val(null).trigger('change');
+            $('#userTimezone').val(null).trigger('change');
+            $('#otherCountryField').hide();
+            $('#successMessage').hide();
+        }, 5000);
+        
+        return false;
+    }
+
+    // DOM লোড হলে সবকিছু ইনিশিয়ালাইজ করি
+    $(document).ready(function() {
+        // ড্রপডাউনগুলো লোড করি
+        loadCountrySelect();
+        loadCountryCodeSelect();
+        loadTimezoneSelect();
+        
+        // মেনু টগল
+        $('.menu-toggle').click(function() {
+            $('.nav-menu').toggleClass('active');
+            $(this).toggleClass('active');
+        });
+        
+        // নেভ লিংক ক্লিক করলে মেনু বন্ধ করি
+        $('.nav-link').click(function() {
+            $('.nav-menu').removeClass('active');
+            $('.menu-toggle').removeClass('active');
+        });
+    });
+</script>
+</body>
+</html>
