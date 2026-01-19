@@ -12,6 +12,111 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
+    
+    <!-- Additional CSS for profile image -->
+    <style>
+        /* Profile Image Specific Styling */
+        .profile-photo-container {
+            position: relative;
+            width: 900px;
+            height: 1000px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 6px solid var(--accent-primary);
+        }
+        
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-photo:hover {
+            transform: scale(1.03);
+        }
+        
+        .profile-badge {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 15px 30px;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(5px);
+            border: 2px solid var(--accent-primary);
+            text-align: center;
+            min-width: 300px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .profile-photo-container {
+                width: 700px;
+                height: 778px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .profile-photo-container {
+                width: 500px;
+                height: 556px;
+            }
+            
+            .profile-badge {
+                font-size: 1rem;
+                padding: 12px 20px;
+                min-width: 250px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .profile-photo-container {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 9/10; /* Maintain 900x1000 aspect ratio */
+                max-width: 400px;
+                margin: 0 auto;
+            }
+            
+            .profile-badge {
+                font-size: 0.9rem;
+                padding: 10px 15px;
+                min-width: 200px;
+                bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .profile-photo-container {
+                max-width: 320px;
+            }
+        }
+        
+        /* Animation for page load */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .about-image {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -55,7 +160,7 @@
     <section class="section about-preview">
         <div class="container">
             <div class="about-content">
-                <!-- Fixed profile image path -->
+                <!-- Profile image with 900x1000 dimensions -->
                 <div class="about-image">
                     <div class="profile-photo-container">
                         <!-- Place your actual profile.jpg in the same directory -->
@@ -99,6 +204,19 @@
                             My goal is to provide reliable and secure IT solutions that help businesses 
                             and home users maintain optimal system performance.
                         </p>
+                    </div>
+                    
+                    <!-- Technical Skills Section -->
+                    <div style="margin-top: 2.5rem;">
+                        <h3 style="margin-bottom: 1.5rem;">Technical Expertise</h3>
+                        <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 500;">Windows OS Support</span>
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 500;">Active Directory</span>
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 500;">Network Troubleshooting</span>
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 500;">PC & Laptop Repair</span>
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 500;">Backup & Recovery</span>
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-sm); font-weight: 500;">System Optimization</span>
+                        </div>
                     </div>
                 </div>
             </div>
