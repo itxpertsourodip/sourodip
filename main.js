@@ -321,3 +321,37 @@ function simpleSubmitForm() {
           'I will contact you on ' + phone + ' shortly.\n' +
           'For immediate help, call: 01738671739');
 }
+
+// Smooth scroll to section
+function scrollToSection(sectionId) {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        const header = document.querySelector('.header');
+        const headerHeight = header ? header.offsetHeight : 80;
+        const sectionPosition = section.offsetTop - headerHeight - 20;
+        
+        window.scrollTo({
+            top: sectionPosition,
+            behavior: 'smooth'
+        });
+    }
+}
+
+// Certification modal (if you want to add certificate images later)
+function showCertificate(certType) {
+    alert(`Certificate: ${certType}\n\nComing soon: Certificate image viewer will be added here.`);
+}
+
+// Initialize all functions when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Your existing main.js code here
+    
+    // Add click events for certification badges
+    const certBadges = document.querySelectorAll('.cert-badge, .nsda-badge');
+    certBadges.forEach(badge => {
+        badge.addEventListener('click', function() {
+            const certType = this.textContent || this.getAttribute('data-cert');
+            showCertificate(certType);
+        });
+    });
+});
