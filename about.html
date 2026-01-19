@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about Sourodip Dash Roy, NSDA Certified Level 3 IT Support Engineer with SSC (Science) background from Bangladesh.">
+    <meta name="description" content="Learn about Sourodip Dash Roy, aspiring IT professional studying Science in 11th grade and learning freelancing skills.">
     <title>About | IT Xpert Sourodip</title>
     
-    <!-- Fixed CSS reference -->
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
     
-    <!-- Fixed CSS for properly sized profile image -->
     <style>
-        /* Profile Image with better sizing */
         .profile-photo-container {
             position: relative;
             max-width: 400px;
@@ -25,7 +22,7 @@
             overflow: hidden;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             border: 4px solid var(--accent-primary);
-            aspect-ratio: 3/4; /* Better portrait ratio */
+            aspect-ratio: 3/4;
         }
         
         .profile-photo {
@@ -58,7 +55,6 @@
             min-width: 250px;
         }
         
-        /* About content layout improvements */
         .about-content {
             display: flex;
             flex-direction: column;
@@ -81,27 +77,6 @@
             }
         }
         
-        /* Animation for page load */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .about-image {
-            animation: fadeInUp 0.8s ease-out 0.2s both;
-        }
-        
-        .about-text {
-            animation: fadeInUp 0.8s ease-out 0.4s both;
-        }
-        
-        /* Technical Skills Styling */
         .skills-container {
             display: flex;
             flex-wrap: wrap;
@@ -125,38 +100,30 @@
             transform: translateY(-2px);
         }
         
-        /* Achievement Badges */
-        .achievement-badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
-        
-        .achievement-badge {
-            background: var(--accent-primary);
-            color: var(--primary-dark);
-            padding: 0.5rem 1rem;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .achievement-badge.secondary {
-            background: var(--secondary-dark);
-            color: var(--accent-primary);
-            border: 1px solid var(--accent-primary);
-        }
-        
-        /* Science Highlight Section */
-        .science-highlight {
+        .current-status {
             background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(17, 34, 64, 0.8) 100%);
             border-radius: var(--radius-lg);
             padding: 1.5rem;
             margin: 2rem 0;
             border-left: 4px solid var(--accent-primary);
+        }
+        
+        .learning-badge {
+            background: var(--accent-primary);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem;
+        }
+        
+        .learning-badge.secondary {
+            background: var(--secondary-dark);
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
         }
     </style>
 </head>
@@ -193,7 +160,7 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="hero-title">About Me</h1>
-                <p class="hero-description">Learn about my academic background, professional certifications, and approach to IT support.</p>
+                <p class="hero-description">Aspiring IT professional and Science student with passion for technology and freelancing.</p>
             </div>
         </div>
     </section>
@@ -202,15 +169,14 @@
     <section class="section about-preview">
         <div class="container">
             <div class="about-content">
-                <!-- Profile image with proper sizing -->
+                <!-- Profile image -->
                 <div class="about-image">
                     <div class="profile-photo-container">
-                        <!-- Place your actual profile.jpg in the same directory -->
                         <img src="profile.jpg" 
-                             alt="Sourodip Dash Roy - NSDA Certified IT Support Engineer" 
+                             alt="Sourodip Dash Roy - Aspiring IT Professional" 
                              class="profile-photo">
                         <div class="profile-badge">
-                            <span class="badge-text">NSDA Level 3 Certified | SSC 2025</span>
+                            <span class="badge-text">Science Student | Tech Enthusiast</span>
                         </div>
                     </div>
                 </div>
@@ -218,288 +184,214 @@
                 <div class="about-text">
                     <h2 class="section-title">Sourodip Dash Roy</h2>
                     
-                    <!-- Professional Headline -->
-                    <p style="font-size: 1.25rem; color: var(--accent-primary); margin-bottom: 1.5rem; font-weight: 500;">
-                        NSDA Certified Level 3 IT Support Engineer | SSC (Science) Graduate 2025
-                    </p>
-                    
-                    <!-- Achievement Badges -->
-                    <div class="achievement-badges">
-                        <div class="achievement-badge">
-                            🎓 SSC (Science) 2025
-                        </div>
-                        <div class="achievement-badge secondary">
-                            🏅 NSDA Level 3 Certified
-                        </div>
-                        <div class="achievement-badge secondary">
-                            💬 English Communication (Grade A)
-                        </div>
-                    </div>
-                    
-                    <!-- Professional Summary -->
-                    <p class="about-description">
-                        <strong>National Skills Development Authority (NSDA) Certified Level 3 IT Support Service Professional</strong>, officially certified by the Prime Minister's Office of Bangladesh. Recently completed <strong>Secondary School Certificate (SSC) with Science stream in 2025</strong>, which has equipped me with strong analytical thinking and systematic problem-solving skills.
-                    </p>
-                    
-                    <p class="about-description">
-                        I combine <strong>official NSDA certification</strong> with <strong>solid science education</strong> and <strong>practical freelance experience</strong> to provide comprehensive IT solutions. Certified in <strong>Professional English Communication (Grade A)</strong> for effective technical interaction and documentation.
-                    </p>
-                    
-                    <!-- Science Background Highlight -->
-                    <div class="science-highlight">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🎯 Science Background Advantage</h4>
-                        <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
-                            My Science education (Physics, Chemistry, Mathematics, ICT) provides:
-                        </p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Analytical Thinking</span>
-                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Logical Problem Solving</span>
-                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Systematic Approach</span>
-                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Technical Understanding</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Leadership Section -->
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--secondary-dark); border-radius: var(--radius-md); border-left: 4px solid var(--accent-primary);">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🌟 Leadership & Soft Skills</h4>
+                    <!-- Current Status -->
+                    <div class="current-status">
+                        <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">🎯 Current Status</h3>
                         <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                            <strong>Bangladesh Scouts Leadership:</strong> Served as Unit/Patrol Leader, developing essential soft skills in leadership, teamwork, and communication through national scouting activities.
+                            I am a <strong>Science student currently in 11th grade</strong> with a strong passion for technology. 
+                            Alongside my studies, I am actively learning freelancing skills to build a career in IT support and digital services.
                         </p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Leadership Development</span>
-                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Team Coordination</span>
-                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Communication Skills</span>
-                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Event Management</span>
+                        
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+                            <span class="learning-badge">🎓 11th Grade (Science)</span>
+                            <span class="learning-badge secondary">💻 Learning IT Support</span>
+                            <span class="learning-badge secondary">🚀 Freelancing Skills</span>
+                            <span class="learning-badge">🔬 Science Background</span>
                         </div>
                     </div>
                     
-                    <!-- Technical Skills Section -->
-                    <div style="margin-top: 2.5rem;">
-                        <h3 style="margin-bottom: 1.5rem;">🛠️ Technical & Professional Expertise</h3>
-                        <div class="skills-container">
-                            <span class="skill-tag">NSDA Certified Level 3</span>
-                            <span class="skill-tag">Hardware Maintenance</span>
-                            <span class="skill-tag">PC Assembling</span>
-                            <span class="skill-tag">Windows OS Support</span>
-                            <span class="skill-tag">Office Applications</span>
-                            <span class="skill-tag">Basic Networking</span>
-                            <span class="skill-tag">Internet Troubleshooting</span>
-                            <span class="skill-tag">Digital Literacy</span>
-                            <span class="skill-tag">Software Installation</span>
-                            <span class="skill-tag">Professional English</span>
-                            <span class="skill-tag">Technical Documentation</span>
-                            <span class="skill-tag">Web Research</span>
-                            <span class="skill-tag">Analytical Problem Solving</span>
-                            <span class="skill-tag">Science Background</span>
+                    <!-- Education Journey -->
+                    <h3 style="margin: 2rem 0 1rem;">📚 Education Journey</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Currently studying <strong>Science (Physics, Chemistry, Biology, ICT)</strong> in 11th grade. 
+                        My science education is helping me develop analytical thinking and problem-solving skills that are essential for IT work.
+                    </p>
+                    
+                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin: 1.5rem 0;">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Science Subjects:</h4>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Physics</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Chemistry</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Biology</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Mathematics</span>
+                            <span style="background: var(--tertiary-dark); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">ICT</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">English</span>
                         </div>
+                    </div>
+                    
+                    <!-- Freelancing Learning -->
+                    <h3 style="margin: 2rem 0 1rem;">🚀 Freelancing & Skill Development</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Currently enrolled in <strong>e-Learning & Earning Ltd</strong> to learn professional freelancing skills. 
+                        I am developing expertise in multiple areas to provide comprehensive digital services.
+                    </p>
+                    
+                    <div style="background: var(--secondary-dark); padding: 1.5rem; border-radius: var(--radius-md); margin: 1.5rem 0;">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 1rem;">Skills I'm Developing:</h4>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                            <div style="background: rgba(100, 255, 218, 0.1); padding: 1rem; border-radius: var(--radius-md);">
+                                <h5 style="color: var(--accent-primary); margin-bottom: 0.5rem;">🖥️ IT Support</h5>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                                    Basic troubleshooting, hardware maintenance, software installation
+                                </p>
+                            </div>
+                            
+                            <div style="background: rgba(100, 255, 218, 0.1); padding: 1rem; border-radius: var(--radius-md);">
+                                <h5 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📊 Data Entry</h5>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                                    Accurate data processing, Excel operations, database management
+                                </p>
+                            </div>
+                            
+                            <div style="background: rgba(100, 255, 218, 0.1); padding: 1rem; border-radius: var(--radius-md);">
+                                <h5 style="color: var(--accent-primary); margin-bottom: 0.5rem;">📱 Digital Marketing</h5>
+                                <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                                    Social media management, content creation, online promotion
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Technical Skills -->
+                    <div style="margin-top: 2.5rem;">
+                        <h3 style="margin-bottom: 1.5rem;">🛠️ Technical Skills & Knowledge</h3>
+                        <div class="skills-container">
+                            <span class="skill-tag">Basic IT Troubleshooting</span>
+                            <span class="skill-tag">Hardware Maintenance</span>
+                            <span class="skill-tag">Software Installation</span>
+                            <span class="skill-tag">Windows OS Support</span>
+                            <span class="skill-tag">MS Office Applications</span>
+                            <span class="skill-tag">Data Entry</span>
+                            <span class="skill-tag">Internet Research</span>
+                            <span class="skill-tag">Digital Literacy</span>
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Analytical Thinking</span>
+                            <span class="skill-tag">English Communication</span>
+                            <span class="skill-tag">Technical Learning</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Future Goals -->
+                    <div style="margin-top: 2.5rem; padding: 1.5rem; background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%); border-radius: var(--radius-lg);">
+                        <h3 style="color: var(--accent-primary); margin-bottom: 1rem;">🎯 Future Goals & Aspirations</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            My goal is to become a <strong>professional IT Support Specialist</strong> while continuing my education. 
+                            I plan to obtain <strong>NSDA certification</strong> and build a successful freelancing career alongside my studies.
+                        </p>
+                        
+                        <ul style="color: var(--text-secondary); padding-left: 1.5rem;">
+                            <li>Complete Science education with good results</li>
+                            <li>Obtain NSDA IT Support certification</li>
+                            <li>Build a portfolio of successful freelance projects</li>
+                            <li>Develop expertise in IT support and digital services</li>
+                            <li>Continue learning and growing in the tech field</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience & Education Timeline -->
+    <!-- Current Learning Section -->
     <section class="section" style="background: var(--secondary-dark);">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">My Journey</span>
-                <h2 class="section-title">Education & Professional Timeline</h2>
-                <p class="section-description">Accurate timeline based on completed education and official certifications.</p>
+                <span class="section-subtitle">Active Learning</span>
+                <h2 class="section-title">Currently Learning & Developing</h2>
+                <p class="section-description">Skills and knowledge I am actively developing through education and training.</p>
             </div>
             
             <div class="services-grid">
-                <!-- 1. Current Status -->
-                <div class="service-card" style="border: 2px solid var(--accent-primary);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                        <h3 style="margin: 0; color: var(--accent-primary);">Current Status (2025)</h3>
-                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">Achieved</span>
-                    </div>
+                <!-- Science Education -->
+                <div class="service-card">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">Science Education</h3>
+                    <p class="service-description">
+                        Currently studying Science in 11th grade. Developing strong analytical and problem-solving skills through Physics, Chemistry, Biology, and ICT subjects.
+                    </p>
                     
-                    <div style="margin-bottom: 1rem;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
-                            <span style="color: var(--accent-primary); font-size: 1.5rem;">🎓</span>
-                            <div>
-                                <h4 style="margin: 0; color: var(--text-primary);">Secondary School Certificate (SSC)</h4>
-                                <p style="color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.9rem;">
-                                    Science Stream - Completed 2025
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
-                            <span style="color: var(--accent-primary); font-size: 1.5rem;">🏅</span>
-                            <div>
-                                <h4 style="margin: 0; color: var(--text-primary);">NSDA Level 3 Certification</h4>
-                                <p style="color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.9rem;">
-                                    IT Support Service - Issued November 2025
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="background: rgba(100, 255, 218, 0.1); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <p style="color: var(--accent-primary); margin: 0; font-size: 0.875rem; text-align: center; font-weight: 500;">
-                            🚀 Ready for Professional IT Support Opportunities
-                        </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">Current Student</span>
                     </div>
                 </div>
                 
-                <!-- 2. Education Timeline -->
+                <!-- Freelancing Training -->
                 <div class="service-card">
-                    <h3 style="margin-bottom: 1rem; color: var(--accent-primary);">📚 Education Timeline</h3>
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Freelancing Skills</h3>
+                    <p class="service-description">
+                        Enrolled in e-Learning & Earning Ltd for professional freelancing training. Learning practical skills for online work and digital services.
+                    </p>
                     
-                    <div style="position: relative; padding-left: 1.5rem;">
-                        <!-- SSC 2025 -->
-                        <div style="margin-bottom: 1.5rem; position: relative;">
-                            <div style="position: absolute; left: -1.5rem; top: 0; width: 12px; height: 12px; background: var(--accent-primary); border-radius: 50%;"></div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
-                                <strong style="color: var(--text-primary);">SSC (Science Group)</strong>
-                                <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2025</span>
-                            </div>
-                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;">
-                                Physics, Chemistry, Mathematics, ICT
-                            </p>
-                            <p style="color: var(--accent-primary); font-size: 0.75rem; font-weight: 500;">
-                                Strong analytical foundation completed
-                            </p>
-                        </div>
-                        
-                        <!-- Secondary Education -->
-                        <div style="margin-bottom: 1.5rem; position: relative;">
-                            <div style="position: absolute; left: -1.5rem; top: 0; width: 12px; height: 12px; background: var(--text-secondary); border-radius: 50%;"></div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
-                                <strong style="color: var(--text-primary);">Secondary Education</strong>
-                                <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2020-2025</span>
-                            </div>
-                            <p style="color: var(--text-secondary); font-size: 0.875rem;">
-                                Full secondary education with Science specialization
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 1.5rem; padding: 0.75rem; background: rgba(100, 255, 218, 0.05); border-radius: var(--radius-md);">
-                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; text-align: center;">
-                            <strong>Science Background:</strong> Provides analytical and systematic problem-solving approach
-                        </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">Under Training</span>
                     </div>
                 </div>
                 
-                <!-- 3. Professional Development -->
+                <!-- IT Support Skills -->
                 <div class="service-card">
-                    <h3 style="margin-bottom: 1rem; color: var(--accent-primary);">📈 Professional Development</h3>
+                    <div class="service-icon">💻</div>
+                    <h3 class="service-title">IT Support Skills</h3>
+                    <p class="service-description">
+                        Developing practical IT support skills including troubleshooting, hardware maintenance, software installation, and system optimization.
+                    </p>
                     
-                    <div style="margin-bottom: 1.5rem;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <strong style="color: var(--text-primary);">NSDA Level 3 Certification</strong>
-                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">Nov 2025</span>
-                        </div>
-                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">
-                            IT Support Service - Certified by Prime Minister's Office
-                        </p>
-                    </div>
-                    
-                    <div style="margin-bottom: 1.5rem;">
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <strong style="color: var(--text-primary);">Freelance IT Support</strong>
-                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2022-2025</span>
-                        </div>
-                        <p style="color: var(--text-secondary); font-size: 0.875rem;">
-                            Part-time IT services during studies
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                            <strong style="color: var(--text-primary);">Additional Certifications</strong>
-                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2023-2025</span>
-                        </div>
-                        <p style="color: var(--text-secondary); font-size: 0.875rem;">
-                            Digital Literacy, Spoken English (Grade A), Code.org Programming
-                        </p>
-                    </div>
-                    
-                    <div style="margin-top: 1.5rem; padding: 0.75rem; background: rgba(100, 255, 218, 0.05); border-radius: var(--radius-md);">
-                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; text-align: center;">
-                            <strong>Professional English:</strong> Grade A certified for workplace communication
-                        </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">Skill Building</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
+    <!-- Services I Can Provide -->
     <section class="section">
         <div class="container">
             <div class="section-header">
-                <span class="section-subtitle">Official Credentials</span>
-                <h2 class="section-title">Academic & Professional Certifications</h2>
-                <p class="section-description">Verified qualifications that validate my expertise in IT support.</p>
+                <span class="section-subtitle">Current Capabilities</span>
+                <h2 class="section-title">Services I Can Provide</h2>
+                <p class="section-description">Based on my current skills and learning, I can provide these services.</p>
             </div>
             
             <div class="services-grid">
-                <!-- SSC Certificate -->
-                <div class="service-card" style="text-align: center; border: 2px solid var(--accent-primary);">
-                    <div class="service-icon">🎓</div>
-                    <h3 class="service-title">Secondary School Certificate (SSC)</h3>
-                    <p class="service-description" style="color: var(--accent-primary); font-weight: 500;">
-                        Science Stream - Completed 2025
-                    </p>
-                    <p class="service-description">
-                        Successfully completed secondary education with Science specialization, building strong foundation in analytical thinking and problem-solving.
-                    </p>
-                    <div style="margin-top: 1rem;">
-                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-weight: 600;">Academic Qualification</span>
-                    </div>
-                </div>
-                
-                <!-- NSDA Level 3 -->
-                <div class="service-card" style="text-align: center;">
-                    <div class="service-icon">🏅</div>
-                    <h3 class="service-title">National Skills Certificate Level-3</h3>
-                    <p class="service-description" style="color: var(--accent-primary); font-weight: 500;">
-                        IT Support Service - NSDA Certified
-                    </p>
-                    <p class="service-description">
-                        Issued by: <strong>National Skills Development Authority (NSDA)</strong><br>
-                        Under: <strong>Prime Minister's Office, Bangladesh</strong><br>
-                        Issue Date: 1 November 2025
-                    </p>
-                    <div style="margin-top: 1rem;">
-                        <span style="background: var(--secondary-dark); color: var(--accent-primary); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-weight: 600; border: 1px solid var(--accent-primary);">Professional Certification</span>
-                    </div>
-                </div>
-                
-                <!-- Additional Certifications -->
-                <div class="service-card" style="text-align: center;">
-                    <div class="service-icon">📚</div>
-                    <h3 class="service-title">Additional Certifications</h3>
+                <div class="service-card">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Data Entry Services</h3>
+                    <p class="service-description">Accurate and efficient data entry, Excel operations, document formatting, and database management services.</p>
                     
-                    <div style="text-align: left; margin-top: 1rem;">
-                        <!-- Spoken English -->
-                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
-                            <strong style="color: var(--accent-primary);">💬 Spoken English Certification</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.875rem;">Hexa's, Moulvibazar - Grade A</span>
-                        </div>
-                        
-                        <!-- Digital Literacy -->
-                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
-                            <strong style="color: var(--accent-primary);">🌐 Digital Literacy Course</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.875rem;">ICT Division, Bangladesh</span>
-                        </div>
-                        
-                        <!-- Code.org -->
-                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
-                            <strong style="color: var(--accent-primary);">💻 Coding Concepts Certification</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.875rem;">Code.org (Hour of Code & Space Adventure)</span>
-                        </div>
-                        
-                        <!-- Workplace English -->
-                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md);">
-                            <strong style="color: var(--accent-primary);">📝 Workplace English Interaction</strong><br>
-                            <span style="color: var(--text-secondary); font-size: 0.875rem;">Carry Out Workplace Interaction in English</span>
-                        </div>
-                    </div>
+                    <ul style="margin-top: 1rem; color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
+                        <li>MS Excel data entry and formatting</li>
+                        <li>Word document processing</li>
+                        <li>Data cleaning and organization</li>
+                        <li>Basic database management</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3 class="service-title">Basic IT Support</h3>
+                    <p class="service-description">Basic computer troubleshooting, software installation, hardware maintenance guidance, and system optimization help.</p>
+                    
+                    <ul style="margin-top: 1rem; color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
+                        <li>Basic computer troubleshooting</li>
+                        <li>Software installation guidance</li>
+                        <li>System optimization tips</li>
+                        <li>Internet connectivity help</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">💬</div>
+                    <h3 class="service-title">Technical Assistance</h3>
+                    <p class="service-description">Technical guidance, research assistance, and problem-solving support using my analytical skills from science education.</p>
+                    
+                    <ul style="margin-top: 1rem; color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
+                        <li>Technical research assistance</li>
+                        <li>Problem-solving support</li>
+                        <li>Learning guidance</li>
+                        <li>Analytical task help</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -509,9 +401,9 @@
     <section class="section cta">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">Need Professional IT Support?</h2>
-                <p class="cta-description">Contact me today for NSDA certified IT support services with science-based problem-solving approach.</p>
-                <a href="contact.html" class="btn btn-primary btn-lg">Contact Now</a>
+                <h2 class="cta-title">Need Help with Basic IT Tasks?</h2>
+                <p class="cta-description">I can assist with data entry, basic IT troubleshooting, and technical guidance while continuing to develop my skills.</p>
+                <a href="contact.html" class="btn btn-primary btn-lg">Contact for Assistance</a>
             </div>
         </div>
     </section>
@@ -525,7 +417,7 @@
                         <span class="logo-icon">IT</span>
                         <span class="logo-text">Xpert<span class="accent">Sourodip</span></span>
                     </a>
-                    <p class="footer-text">NSDA Certified Level 3 IT Support Engineer providing reliable and secure IT solutions for home users and businesses in Bangladesh.</p>
+                    <p class="footer-text">Aspiring IT professional and Science student developing skills in IT support and freelancing services.</p>
                     <div class="social-links">
                         <a href="https://instagram.com/itxpertsourodip" class="social-link" aria-label="Instagram">
                             <span>IG</span>
@@ -545,11 +437,11 @@
                 <div class="footer-col">
                     <h3 class="footer-title">Services</h3>
                     <ul class="footer-links">
-                        <li><a href="services.html">Windows OS Support</a></li>
-                        <li><a href="services.html">Hardware Maintenance</a></li>
-                        <li><a href="services.html">Network Troubleshooting</a></li>
-                        <li><a href="services.html">PC & Laptop Repair</a></li>
-                        <li><a href="services.html">Office Application Support</a></li>
+                        <li><a href="services.html">Data Entry</a></li>
+                        <li><a href="services.html">Basic IT Support</a></li>
+                        <li><a href="services.html">Technical Assistance</a></li>
+                        <li><a href="services.html">Research Help</a></li>
+                        <li><a href="services.html">Learning Support</a></li>
                     </ul>
                 </div>
                 
@@ -576,21 +468,20 @@
                             <span>Bangladesh</span>
                         </li>
                         <li>
-                            <span class="contact-icon">🕒</span>
-                            <span>24/7 Emergency Support Available</span>
+                            <span class="contact-icon">📚</span>
+                            <span>Science Student & Learner</span>
                         </li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p class="copyright">&copy; <span id="current-year"></span> IT Xpert Sourodip. All rights reserved.</p>
-                <p class="tagline">NSDA Certified IT Support for Reliable & Secure Systems</p>
+                <p class="copyright">&copy; <span id="current-year"></span> Sourodip Dash Roy. All rights reserved.</p>
+                <p class="tagline">Aspiring IT Professional & Science Student</p>
             </div>
         </div>
     </footer>
 
-    <!-- Fixed JS reference -->
     <script src="main.js"></script>
 </body>
 </html>
