@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn more about Sourodip Dash Roy, Level 3 IT Support Engineer with 2+ years of experience in Bangladesh.">
+    <meta name="description" content="Learn more about Sourodip Dash Roy, NSDA Certified Level 3 IT Support Engineer with SSC (Science) background from Bangladesh.">
     <title>About | IT Xpert Sourodip</title>
     
     <!-- Fixed CSS reference -->
@@ -124,6 +124,40 @@
             color: var(--primary-dark);
             transform: translateY(-2px);
         }
+        
+        /* Achievement Badges */
+        .achievement-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .achievement-badge {
+            background: var(--accent-primary);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .achievement-badge.secondary {
+            background: var(--secondary-dark);
+            color: var(--accent-primary);
+            border: 1px solid var(--accent-primary);
+        }
+        
+        /* Science Highlight Section */
+        .science-highlight {
+            background: linear-gradient(135deg, rgba(100, 255, 218, 0.1) 0%, rgba(17, 34, 64, 0.8) 100%);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-primary);
+        }
     </style>
 </head>
 <body>
@@ -159,7 +193,7 @@
         <div class="container">
             <div class="page-header-content">
                 <h1 class="hero-title">About Me</h1>
-                <p class="hero-description">Learn more about my experience, skills, and approach to IT support.</p>
+                <p class="hero-description">Learn about my academic background, professional certifications, and approach to IT support.</p>
             </div>
         </div>
     </section>
@@ -173,61 +207,90 @@
                     <div class="profile-photo-container">
                         <!-- Place your actual profile.jpg in the same directory -->
                         <img src="profile.jpg" 
-                             alt="Sourodip Dash Roy - IT Support Engineer" 
+                             alt="Sourodip Dash Roy - NSDA Certified IT Support Engineer" 
                              class="profile-photo">
                         <div class="profile-badge">
-                            <span class="badge-text">IT Support Engineer - Level 3</span>
+                            <span class="badge-text">NSDA Level 3 Certified | SSC 2025</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-text">
                     <h2 class="section-title">Sourodip Dash Roy</h2>
-                    <p class="about-description">I am a Level 3 IT Support Engineer and IT Support Service Provider based in Bangladesh. I deliver complete IT support solutions ranging from end-user support to advanced system, software, and network troubleshooting.</p>
                     
-                    <div class="about-highlights">
-                        <div class="highlight">
-                            <div class="highlight-icon">⚡</div>
-                            <div class="highlight-text">Fast Response & Clear Communication</div>
+                    <!-- Professional Headline -->
+                    <p style="font-size: 1.25rem; color: var(--accent-primary); margin-bottom: 1.5rem; font-weight: 500;">
+                        NSDA Certified Level 3 IT Support Engineer | SSC (Science) Graduate 2025
+                    </p>
+                    
+                    <!-- Achievement Badges -->
+                    <div class="achievement-badges">
+                        <div class="achievement-badge">
+                            🎓 SSC (Science) 2025
                         </div>
-                        <div class="highlight">
-                            <div class="highlight-icon">🔍</div>
-                            <div class="highlight-text">Advanced Problem Solving & Troubleshooting</div>
+                        <div class="achievement-badge secondary">
+                            🏅 NSDA Level 3 Certified
                         </div>
-                        <div class="highlight">
-                            <div class="highlight-icon">✅</div>
-                            <div class="highlight-text">Permanent Solutions & Root Cause Analysis</div>
-                        </div>
-                        <div class="highlight">
-                            <div class="highlight-icon">⏱️</div>
-                            <div class="highlight-text">Time Management & Documentation</div>
+                        <div class="achievement-badge secondary">
+                            💬 English Communication (Grade A)
                         </div>
                     </div>
                     
-                    <div style="margin-top: 2rem;">
-                        <h3 style="margin-bottom: 1rem;">Professional Summary</h3>
-                        <p style="color: var(--text-secondary);">
-                            With 2+ years of experience in IT support, I specialize in Windows environments, 
-                            Active Directory management, network troubleshooting, and system optimization. 
-                            My goal is to provide reliable and secure IT solutions that help businesses 
-                            and home users maintain optimal system performance.
+                    <!-- Professional Summary -->
+                    <p class="about-description">
+                        <strong>National Skills Development Authority (NSDA) Certified Level 3 IT Support Service Professional</strong>, officially certified by the Prime Minister's Office of Bangladesh. Recently completed <strong>Secondary School Certificate (SSC) with Science stream in 2025</strong>, which has equipped me with strong analytical thinking and systematic problem-solving skills.
+                    </p>
+                    
+                    <p class="about-description">
+                        I combine <strong>official NSDA certification</strong> with <strong>solid science education</strong> and <strong>practical freelance experience</strong> to provide comprehensive IT solutions. Certified in <strong>Professional English Communication (Grade A)</strong> for effective technical interaction and documentation.
+                    </p>
+                    
+                    <!-- Science Background Highlight -->
+                    <div class="science-highlight">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🎯 Science Background Advantage</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                            My Science education (Physics, Chemistry, Mathematics, ICT) provides:
                         </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Analytical Thinking</span>
+                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Logical Problem Solving</span>
+                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Systematic Approach</span>
+                            <span style="background: rgba(100, 255, 218, 0.2); color: var(--accent-primary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Technical Understanding</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Leadership Section -->
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: var(--secondary-dark); border-radius: var(--radius-md); border-left: 4px solid var(--accent-primary);">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🌟 Leadership & Soft Skills</h4>
+                        <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                            <strong>Bangladesh Scouts Leadership:</strong> Served as Unit/Patrol Leader, developing essential soft skills in leadership, teamwork, and communication through national scouting activities.
+                        </p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Leadership Development</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Team Coordination</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Communication Skills</span>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem;">Event Management</span>
+                        </div>
                     </div>
                     
                     <!-- Technical Skills Section -->
                     <div style="margin-top: 2.5rem;">
-                        <h3 style="margin-bottom: 1.5rem;">Technical Expertise</h3>
+                        <h3 style="margin-bottom: 1.5rem;">🛠️ Technical & Professional Expertise</h3>
                         <div class="skills-container">
-                            <span class="skill-tag">Windows OS Support</span>
-                            <span class="skill-tag">Active Directory</span>
-                            <span class="skill-tag">Network Troubleshooting</span>
-                            <span class="skill-tag">PC & Laptop Repair</span>
-                            <span class="skill-tag">Backup & Recovery</span>
-                            <span class="skill-tag">System Optimization</span>
+                            <span class="skill-tag">NSDA Certified Level 3</span>
                             <span class="skill-tag">Hardware Maintenance</span>
+                            <span class="skill-tag">PC Assembling</span>
+                            <span class="skill-tag">Windows OS Support</span>
+                            <span class="skill-tag">Office Applications</span>
+                            <span class="skill-tag">Basic Networking</span>
+                            <span class="skill-tag">Internet Troubleshooting</span>
+                            <span class="skill-tag">Digital Literacy</span>
                             <span class="skill-tag">Software Installation</span>
-                            <span class="skill-tag">Virus Removal</span>
-                            <span class="skill-tag">Data Recovery</span>
+                            <span class="skill-tag">Professional English</span>
+                            <span class="skill-tag">Technical Documentation</span>
+                            <span class="skill-tag">Web Research</span>
+                            <span class="skill-tag">Analytical Problem Solving</span>
+                            <span class="skill-tag">Science Background</span>
                         </div>
                     </div>
                 </div>
@@ -235,74 +298,219 @@
         </div>
     </section>
 
-<!-- Experience Section -->
-<section class="section" style="background: var(--secondary-dark);">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-subtitle">My Professional Journey</span>
-            <h2 class="section-title">Experience & Education Timeline</h2>
-        </div>
-        
-        <div class="services-grid">
-            <!-- 1. NSDA Certified Level 3 -->
-            <div class="service-card">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                    <h3 style="margin: 0;">Level 3 IT Support Engineer</h3>
-                    <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">Nov 2025 - Present</span>
+    <!-- Experience & Education Timeline -->
+    <section class="section" style="background: var(--secondary-dark);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">My Journey</span>
+                <h2 class="section-title">Education & Professional Timeline</h2>
+                <p class="section-description">Accurate timeline based on completed education and official certifications.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- 1. Current Status -->
+                <div class="service-card" style="border: 2px solid var(--accent-primary);">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                        <h3 style="margin: 0; color: var(--accent-primary);">Current Status (2025)</h3>
+                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">Achieved</span>
+                    </div>
+                    
+                    <div style="margin-bottom: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                            <span style="color: var(--accent-primary); font-size: 1.5rem;">🎓</span>
+                            <div>
+                                <h4 style="margin: 0; color: var(--text-primary);">Secondary School Certificate (SSC)</h4>
+                                <p style="color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.9rem;">
+                                    Science Stream - Completed 2025
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                            <span style="color: var(--accent-primary); font-size: 1.5rem;">🏅</span>
+                            <div>
+                                <h4 style="margin: 0; color: var(--text-primary);">NSDA Level 3 Certification</h4>
+                                <p style="color: var(--text-secondary); margin: 0.25rem 0 0; font-size: 0.9rem;">
+                                    IT Support Service - Issued November 2025
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(100, 255, 218, 0.1); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
+                        <p style="color: var(--accent-primary); margin: 0; font-size: 0.875rem; text-align: center; font-weight: 500;">
+                            🚀 Ready for Professional IT Support Opportunities
+                        </p>
+                    </div>
                 </div>
-                <p style="color: var(--accent-primary); font-weight: 500; margin-bottom: 1rem;">NSDA Certified Professional</p>
-                <p class="service-description">Officially certified by National Skills Development Authority (NSDA), Prime Minister's Office of Bangladesh as Level 3 IT Support Service Professional.</p>
                 
-                <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(100, 255, 218, 0.1); border-radius: var(--radius-md); border-left: 3px solid var(--accent-primary);">
-                    <p style="color: var(--accent-primary); margin: 0; font-size: 0.875rem; font-weight: 500;">
-                        🎓 NSDA Certificate Issued: 1 November 2025
+                <!-- 2. Education Timeline -->
+                <div class="service-card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-primary);">📚 Education Timeline</h3>
+                    
+                    <div style="position: relative; padding-left: 1.5rem;">
+                        <!-- SSC 2025 -->
+                        <div style="margin-bottom: 1.5rem; position: relative;">
+                            <div style="position: absolute; left: -1.5rem; top: 0; width: 12px; height: 12px; background: var(--accent-primary); border-radius: 50%;"></div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <strong style="color: var(--text-primary);">SSC (Science Group)</strong>
+                                <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2025</span>
+                            </div>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem;">
+                                Physics, Chemistry, Mathematics, ICT
+                            </p>
+                            <p style="color: var(--accent-primary); font-size: 0.75rem; font-weight: 500;">
+                                Strong analytical foundation completed
+                            </p>
+                        </div>
+                        
+                        <!-- Secondary Education -->
+                        <div style="margin-bottom: 1.5rem; position: relative;">
+                            <div style="position: absolute; left: -1.5rem; top: 0; width: 12px; height: 12px; background: var(--text-secondary); border-radius: 50%;"></div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                                <strong style="color: var(--text-primary);">Secondary Education</strong>
+                                <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2020-2025</span>
+                            </div>
+                            <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                                Full secondary education with Science specialization
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 0.75rem; background: rgba(100, 255, 218, 0.05); border-radius: var(--radius-md);">
+                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; text-align: center;">
+                            <strong>Science Background:</strong> Provides analytical and systematic problem-solving approach
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 3. Professional Development -->
+                <div class="service-card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent-primary);">📈 Professional Development</h3>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong style="color: var(--text-primary);">NSDA Level 3 Certification</strong>
+                            <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">Nov 2025</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.5rem;">
+                            IT Support Service - Certified by Prime Minister's Office
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong style="color: var(--text-primary);">Freelance IT Support</strong>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2022-2025</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                            Part-time IT services during studies
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <strong style="color: var(--text-primary);">Additional Certifications</strong>
+                            <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.125rem 0.5rem; border-radius: var(--radius-sm); font-size: 0.75rem; font-weight: 600;">2023-2025</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                            Digital Literacy, Spoken English (Grade A), Code.org Programming
+                        </p>
+                    </div>
+                    
+                    <div style="margin-top: 1.5rem; padding: 0.75rem; background: rgba(100, 255, 218, 0.05); border-radius: var(--radius-md);">
+                        <p style="color: var(--text-secondary); margin: 0; font-size: 0.875rem; text-align: center;">
+                            <strong>Professional English:</strong> Grade A certified for workplace communication
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Official Credentials</span>
+                <h2 class="section-title">Academic & Professional Certifications</h2>
+                <p class="section-description">Verified qualifications that validate my expertise in IT support.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- SSC Certificate -->
+                <div class="service-card" style="text-align: center; border: 2px solid var(--accent-primary);">
+                    <div class="service-icon">🎓</div>
+                    <h3 class="service-title">Secondary School Certificate (SSC)</h3>
+                    <p class="service-description" style="color: var(--accent-primary); font-weight: 500;">
+                        Science Stream - Completed 2025
                     </p>
+                    <p class="service-description">
+                        Successfully completed secondary education with Science specialization, building strong foundation in analytical thinking and problem-solving.
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-weight: 600;">Academic Qualification</span>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- 2. SSC Completion -->
-            <div class="service-card">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                    <h3 style="margin: 0;">Secondary Education</h3>
-                    <span style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">2025</span>
-                </div>
-                <p style="color: var(--accent-primary); font-weight: 500; margin-bottom: 1rem;">SSC (Science Group) - Completed</p>
-                <p class="service-description">Successfully completed Secondary School Certificate (SSC) examination with Science background, building strong foundation in analytical thinking and problem-solving.</p>
                 
-                <ul style="margin-top: 1rem; color: var(--text-secondary); padding-left: 1.5rem;">
-                    <li>Science Stream (Physics, Chemistry, Mathematics, ICT)</li>
-                    <li>Strong analytical and logical skills development</li>
-                    <li>Science-based problem-solving approach</li>
-                    <li>Academic foundation for technical career</li>
-                </ul>
-            </div>
-            
-            <!-- 3. Freelance Experience -->
-            <div class="service-card">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                    <h3 style="margin: 0;">Freelance IT Support</h3>
-                    <span style="background: var(--tertiary-dark); color: var(--text-secondary); padding: 0.25rem 0.75rem; border-radius: var(--radius-sm); font-size: 0.875rem; font-weight: 600;">2022 - 2025</span>
+                <!-- NSDA Level 3 -->
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">🏅</div>
+                    <h3 class="service-title">National Skills Certificate Level-3</h3>
+                    <p class="service-description" style="color: var(--accent-primary); font-weight: 500;">
+                        IT Support Service - NSDA Certified
+                    </p>
+                    <p class="service-description">
+                        Issued by: <strong>National Skills Development Authority (NSDA)</strong><br>
+                        Under: <strong>Prime Minister's Office, Bangladesh</strong><br>
+                        Issue Date: 1 November 2025
+                    </p>
+                    <div style="margin-top: 1rem;">
+                        <span style="background: var(--secondary-dark); color: var(--accent-primary); padding: 0.5rem 1rem; border-radius: var(--radius-md); font-weight: 600; border: 1px solid var(--accent-primary);">Professional Certification</span>
+                    </div>
                 </div>
-                <p style="color: var(--accent-primary); font-weight: 500; margin-bottom: 1rem;">Part-time IT Services during Studies</p>
-                <p class="service-description">Provided freelance IT support services while completing secondary education. Developed practical skills through hands-on experience with local clients.</p>
                 
-                <ul style="margin-top: 1rem; color: var(--text-secondary); padding-left: 1.5rem;">
-                    <li>Basic computer troubleshooting and repair</li>
-                    <li>Software installation and configuration</li>
-                    <li>Digital literacy training and support</li>
-                    <li>Client communication and service delivery</li>
-                </ul>
+                <!-- Additional Certifications -->
+                <div class="service-card" style="text-align: center;">
+                    <div class="service-icon">📚</div>
+                    <h3 class="service-title">Additional Certifications</h3>
+                    
+                    <div style="text-align: left; margin-top: 1rem;">
+                        <!-- Spoken English -->
+                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
+                            <strong style="color: var(--accent-primary);">💬 Spoken English Certification</strong><br>
+                            <span style="color: var(--text-secondary); font-size: 0.875rem;">Hexa's, Moulvibazar - Grade A</span>
+                        </div>
+                        
+                        <!-- Digital Literacy -->
+                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
+                            <strong style="color: var(--accent-primary);">🌐 Digital Literacy Course</strong><br>
+                            <span style="color: var(--text-secondary); font-size: 0.875rem;">ICT Division, Bangladesh</span>
+                        </div>
+                        
+                        <!-- Code.org -->
+                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md); margin-bottom: 0.75rem;">
+                            <strong style="color: var(--accent-primary);">💻 Coding Concepts Certification</strong><br>
+                            <span style="color: var(--text-secondary); font-size: 0.875rem;">Code.org (Hour of Code & Space Adventure)</span>
+                        </div>
+                        
+                        <!-- Workplace English -->
+                        <div style="background: var(--tertiary-dark); padding: 0.75rem; border-radius: var(--radius-md);">
+                            <strong style="color: var(--accent-primary);">📝 Workplace English Interaction</strong><br>
+                            <span style="color: var(--text-secondary); font-size: 0.875rem;">Carry Out Workplace Interaction in English</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- CTA -->
     <section class="section cta">
         <div class="container">
             <div class="cta-content">
-                <h2 class="cta-title">Need IT Support?</h2>
-                <p class="cta-description">Contact me today for professional IT support services.</p>
+                <h2 class="cta-title">Need Professional IT Support?</h2>
+                <p class="cta-description">Contact me today for NSDA certified IT support services with science-based problem-solving approach.</p>
                 <a href="contact.html" class="btn btn-primary btn-lg">Contact Now</a>
             </div>
         </div>
@@ -317,7 +525,7 @@
                         <span class="logo-icon">IT</span>
                         <span class="logo-text">Xpert<span class="accent">Sourodip</span></span>
                     </a>
-                    <p class="footer-text">Professional IT Support Engineer providing reliable and secure IT solutions for home users and businesses in Bangladesh.</p>
+                    <p class="footer-text">NSDA Certified Level 3 IT Support Engineer providing reliable and secure IT solutions for home users and businesses in Bangladesh.</p>
                     <div class="social-links">
                         <a href="https://instagram.com/itxpertsourodip" class="social-link" aria-label="Instagram">
                             <span>IG</span>
@@ -338,10 +546,10 @@
                     <h3 class="footer-title">Services</h3>
                     <ul class="footer-links">
                         <li><a href="services.html">Windows OS Support</a></li>
-                        <li><a href="services.html">Active Directory</a></li>
+                        <li><a href="services.html">Hardware Maintenance</a></li>
                         <li><a href="services.html">Network Troubleshooting</a></li>
                         <li><a href="services.html">PC & Laptop Repair</a></li>
-                        <li><a href="services.html">Backup & Recovery</a></li>
+                        <li><a href="services.html">Office Application Support</a></li>
                     </ul>
                 </div>
                 
@@ -377,7 +585,7 @@
             
             <div class="footer-bottom">
                 <p class="copyright">&copy; <span id="current-year"></span> IT Xpert Sourodip. All rights reserved.</p>
-                <p class="tagline">Professional IT Support for Reliable & Secure Systems</p>
+                <p class="tagline">NSDA Certified IT Support for Reliable & Secure Systems</p>
             </div>
         </div>
     </footer>
