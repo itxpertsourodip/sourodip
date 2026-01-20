@@ -1,497 +1,223 @@
-// ===== main.js - Modern Website Scripts =====
+// Mobile Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functions
-    initMobileMenu();
-    initSmoothScrolling();
-    initCounters();
-    initAnimations();
-    initCurrentYear();
-    initFormValidation();
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        menuToggle.innerHTML = navMenu.classList.contains('active') 
+            ? '<i class="fas fa-times"></i>' 
+            : '<i class="fas fa-bars"></i>';
+    });
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.navbar') && navMenu.classList.contains('active')) {
+        navMenu.classList.remove('active');
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
 });
 
-// ===== MOBILE MENU TOGGLE =====
-function initMobileMenu() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            
-            // Toggle body scroll
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        // Close menu when clicking on a link
-        const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
         
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.navbar') && navMenu.classList.contains('active')) {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-}
-
-// ===== SMOOTH SCROLLING =====
-function initSmoothScrolling() {
-    const anchorLinks = document.querySelectorAll('a[href^="#"]');
-    
-    anchorLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            // Close mobile menu if open
+            navMenu.classList.remove('active');
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
             
-            // Skip if it's just "#" or external link
-            if (href === '#' || href.startsWith('#!') || href.includes('mailto:') || href.includes('tel:')) return;
-            
-            // Check if it's an on-page anchor
-            if (href.startsWith('#') && document.querySelector(href)) {
-                e.preventDefault();
-                const targetElement = document.querySelector(href);
-                
-                if (targetElement) {
-                    const header = document.querySelector('.header');
-                    const headerHeight = header ? header.offsetHeight : 80;
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
-    });
-}
-
-// ===== ANIMATED COUNTERS =====
-function initCounters() {
-    const counters = document.querySelectorAll('.stat-number[data-count]');
-    
-    if (!counters.length) return;
-    
-    const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.getAttribute('data-count'));
-                const duration = 2000;
-                const increment = target / (duration / 16);
-                let current = 0;
-                
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        if (current > target) current = target;
-                        counter.textContent = Math.floor(current);
-                        setTimeout(updateCounter, 16);
-                    } else {
-                        counter.textContent = target;
-                    }
-                };
-                
-                updateCounter();
-                observer.unobserve(counter);
-            }
-        });
-    }, observerOptions);
-    
-    counters.forEach(counter => {
-        observer.observe(counter);
-    });
-}
-
-// ===== SCROLL ANIMATIONS =====
-function initAnimations() {
-    const animatedElements = document.querySelectorAll('.fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3');
-    
-    if (!animatedElements.length) return;
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.animationPlayState = 'running';
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    animatedElements.forEach(element => {
-        element.style.animationPlayState = 'paused';
-        observer.observe(element);
-    });
-}
-
-// ===== SET CURRENT YEAR =====
-function initCurrentYear() {
-    const currentYearElement = document.getElementById('current-year');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
-}
-
-// ===== FORM VALIDATION =====
-function initFormValidation() {
-    const contactForm = document.getElementById('contact-form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            if (validateForm(this)) {
-                // Show loading state
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<div class="loading"></div> Sending...';
-                submitBtn.disabled = true;
-                
-                // Simulate API call
-                setTimeout(() => {
-                    // Show success message
-                    showNotification('✅ Message sent successfully! I will contact you soon.', 'success');
-                    
-                    // Reset form
-                    this.reset();
-                    
-                    // Reset button
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
-                }, 1500);
-            }
-        });
-        
-        // Real-time validation
-        const inputs = contactForm.querySelectorAll('input, textarea');
-        inputs.forEach(input => {
-            input.addEventListener('blur', function() {
-                validateField(this);
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
             });
-            
-            input.addEventListener('input', function() {
-                clearFieldError(this);
-            });
-        });
-    }
-}
-
-// Form validation helper functions
-function validateForm(form) {
-    let isValid = true;
-    const inputs = form.querySelectorAll('input[required], textarea[required]');
-    
-    inputs.forEach(input => {
-        if (!validateField(input)) {
-            isValid = false;
         }
-    });
-    
-    return isValid;
-}
-
-function validateField(field) {
-    const value = field.value.trim();
-    let isValid = true;
-    let errorMessage = '';
-    
-    // Clear previous error
-    clearFieldError(field);
-    
-    // Check required
-    if (field.hasAttribute('required') && !value) {
-        errorMessage = 'This field is required';
-        isValid = false;
-    }
-    // Check email format
-    else if (field.type === 'email' && value && !isValidEmail(value)) {
-        errorMessage = 'Please enter a valid email address';
-        isValid = false;
-    }
-    // Check phone format (basic)
-    else if (field.type === 'tel' && value && !isValidPhone(value)) {
-        errorMessage = 'Please enter a valid phone number';
-        isValid = false;
-    }
-    
-    // Show error if any
-    if (!isValid) {
-        showFieldError(field, errorMessage);
-    }
-    
-    return isValid;
-}
-
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-function isValidPhone(phone) {
-    const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
-    return phoneRegex.test(phone);
-}
-
-function showFieldError(field, message) {
-    field.classList.add('error');
-    
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'field-error';
-    errorDiv.textContent = message;
-    errorDiv.style.color = '#EF4444';
-    errorDiv.style.fontSize = '0.875rem';
-    errorDiv.style.marginTop = '0.5rem';
-    
-    field.parentNode.appendChild(errorDiv);
-}
-
-function clearFieldError(field) {
-    field.classList.remove('error');
-    
-    const existingError = field.parentNode.querySelector('.field-error');
-    if (existingError) {
-        existingError.remove();
-    }
-}
-
-// ===== NOTIFICATION SYSTEM =====
-function showNotification(message, type = 'info') {
-    // Remove existing notification
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Create notification
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <span>${message}</span>
-            <button class="notification-close">&times;</button>
-        </div>
-    `;
-    
-    // Add styles
-    notification.style.position = 'fixed';
-    notification.style.top = '20px';
-    notification.style.right = '20px';
-    notification.style.zIndex = '9999';
-    notification.style.padding = '1rem 1.5rem';
-    notification.style.borderRadius = 'var(--radius-md)';
-    notification.style.boxShadow = 'var(--shadow-lg)';
-    notification.style.animation = 'slideInRight 0.3s ease';
-    
-    // Type-based styling
-    if (type === 'success') {
-        notification.style.background = 'linear-gradient(135deg, #10B981, #34D399)';
-        notification.style.color = 'white';
-    } else if (type === 'error') {
-        notification.style.background = 'linear-gradient(135deg, #EF4444, #F87171)';
-        notification.style.color = 'white';
-    } else {
-        notification.style.background = 'white';
-        notification.style.color = 'var(--text-primary)';
-        notification.style.border = '1px solid rgba(99, 102, 241, 0.2)';
-    }
-    
-    // Close button
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.style.background = 'none';
-    closeBtn.style.border = 'none';
-    closeBtn.style.color = 'inherit';
-    closeBtn.style.fontSize = '1.5rem';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.marginLeft = '1rem';
-    
-    closeBtn.addEventListener('click', () => {
-        notification.style.animation = 'slideOutRight 0.3s ease';
-        setTimeout(() => notification.remove(), 300);
-    });
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.style.animation = 'slideOutRight 0.3s ease';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
-    
-    document.body.appendChild(notification);
-}
-
-// Add animation keyframes
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
-    
-    @keyframes slideOutRight {
-        from {
-            transform: translateX(0);
-            opacity: 1;
-        }
-        to {
-            transform: translateX(100%);
-            opacity: 0;
-        }
-    }
-    
-    input.error,
-    textarea.error {
-        border-color: #EF4444 !important;
-    }
-`;
-document.head.appendChild(style);
-
-// ===== PARALLAX EFFECT =====
-window.addEventListener('scroll', function() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-image, .shape');
-    
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.3 + (index * 0.1);
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translateY(${yPos}px)`;
     });
 });
 
-// ===== LAZY LOAD IMAGES =====
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
+// Animated counter
+function animateCounter(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 16);
     
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.classList.add('loaded');
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    } else {
-        // Fallback for older browsers
-        images.forEach(img => {
-            img.src = img.dataset.src;
-        });
-    }
-}
-
-// Initialize lazy loading
-document.addEventListener('DOMContentLoaded', lazyLoadImages);
-
-// ===== BACK TO TOP BUTTON =====
-function initBackToTop() {
-    const backToTop = document.createElement('button');
-    backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    backToTop.className = 'back-to-top';
-    backToTop.setAttribute('aria-label', 'Back to top');
-    
-    // Style the button
-    backToTop.style.position = 'fixed';
-    backToTop.style.bottom = '30px';
-    backToTop.style.right = '30px';
-    backToTop.style.width = '50px';
-    backToTop.style.height = '50px';
-    backToTop.style.borderRadius = '50%';
-    backToTop.style.background = 'var(--gradient-primary)';
-    backToTop.style.color = 'white';
-    backToTop.style.border = 'none';
-    backToTop.style.cursor = 'pointer';
-    backToTop.style.boxShadow = 'var(--shadow-lg)';
-    backToTop.style.opacity = '0';
-    backToTop.style.visibility = 'hidden';
-    backToTop.style.transition = 'all 0.3s ease';
-    backToTop.style.zIndex = '1000';
-    backToTop.style.display = 'flex';
-    backToTop.style.alignItems = 'center';
-    backToTop.style.justifyContent = 'center';
-    backToTop.style.fontSize = '1.25rem';
-    
-    document.body.appendChild(backToTop);
-    
-    // Show/hide button
-    window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
-            backToTop.style.opacity = '1';
-            backToTop.style.visibility = 'visible';
+    const updateCounter = () => {
+        start += increment;
+        if (start < target) {
+            element.textContent = Math.floor(start);
+            requestAnimationFrame(updateCounter);
         } else {
-            backToTop.style.opacity = '0';
-            backToTop.style.visibility = 'hidden';
+            element.textContent = target;
+        }
+    };
+    
+    updateCounter();
+}
+
+// Initialize counters when in viewport
+const observerOptions = {
+    threshold: 0.5,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const counters = entry.target.querySelectorAll('.stat-number');
+            counters.forEach(counter => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                animateCounter(counter, target);
+            });
+            observer.unobserve(entry.target);
         }
     });
-    
-    // Scroll to top
-    backToTop.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+}, observerOptions);
+
+// Observe hero section for counters
+const heroSection = document.querySelector('.hero');
+if (heroSection) {
+    observer.observe(heroSection);
+}
+
+// Form submission
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form data
+        const formData = new FormData(contactForm);
+        const data = Object.fromEntries(formData);
+        
+        // Show success message
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
+        
+        // Simulate API call
+        setTimeout(() => {
+            alert('Thank you! Your message has been sent. I will contact you soon.');
+            contactForm.reset();
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }, 1500);
     });
 }
 
-// Initialize back to top button
-initBackToTop();
-
-// ===== TYPING ANIMATION FOR HERO TEXT =====
-function initTypingAnimation() {
-    const heroTitle = document.querySelector('.hero-title');
-    if (!heroTitle) return;
+// Skill bar animation
+const skillBars = document.querySelectorAll('.skill-level');
+if (skillBars.length > 0) {
+    const skillsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                skillBars.forEach(bar => {
+                    const width = bar.style.width;
+                    bar.style.width = '0';
+                    setTimeout(() => {
+                        bar.style.width = width;
+                    }, 300);
+                });
+                skillsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
     
-    const text = heroTitle.textContent;
-    heroTitle.textContent = '';
+    const aboutSection = document.querySelector('.about');
+    if (aboutSection) {
+        skillsObserver.observe(aboutSection);
+    }
+}
+
+// Add animation to service cards on scroll
+const serviceCards = document.querySelectorAll('.service-card');
+const projectCards = document.querySelectorAll('.project-card');
+
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            cardObserver.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+});
+
+// Set initial state
+serviceCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s ease';
+    cardObserver.observe(card);
+});
+
+projectCards.forEach(card => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = 'all 0.6s ease';
+    cardObserver.observe(card);
+});
+
+// Add active class to nav links on scroll
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
+
+// Typing effect
+const typewriterElement = document.querySelector('.typewriter');
+if (typewriterElement) {
+    const text = typewriterElement.textContent;
+    typewriterElement.textContent = '';
     
     let i = 0;
-    const typeWriter = () => {
+    function typeWriter() {
         if (i < text.length) {
-            heroTitle.textContent += text.charAt(i);
+            typewriterElement.textContent += text.charAt(i);
             i++;
-            setTimeout(typeWriter, 50);
+            setTimeout(typeWriter, 100);
         }
-    };
+    }
     
-    // Start typing animation when hero section is in view
-    const observer = new IntersectionObserver((entries) => {
+    // Start typing when hero section is in view
+    const heroObserver = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
             typeWriter();
-            observer.unobserve(entries[0].target);
+            heroObserver.unobserve(entries[0].target);
         }
     }, { threshold: 0.5 });
     
-    observer.observe(heroTitle);
+    heroObserver.observe(typewriterElement);
 }
 
-// Start typing animation
-setTimeout(initTypingAnimation, 1000);
+// Initialize everything when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('IT Xpert Sourodip website loaded successfully!');
+});
