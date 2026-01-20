@@ -3,222 +3,285 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NSDA Certified IT Support Services: Hardware, Windows OS, Data Entry, Digital Marketing & Professional IT solutions.">
     <title>Services | IT Xpert Sourodip</title>
     
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖥️</text></svg>">
+    
+    <style>
+        /* Services Page Specific Styles */
+        .service-detail {
+            margin: 4rem 0;
+        }
+        
+        .service-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .service-icon-large {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .service-feature {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 204, 0.1);
+        }
+        
+        .service-feature i {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .pricing-table {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(0, 255, 204, 0.1);
+        }
+        
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-item:last-child {
+            border-bottom: none;
+        }
+        
+        .process-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .process-step {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: var(--accent);
+            color: var(--bg-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <header class="header">
+    <nav class="navbar">
         <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <span class="logo-icon">IT</span>
-                    <span class="logo-text">Xpert<span class="accent">Sourodip</span></span>
-                </a>
-                
-                <button class="menu-toggle" aria-label="Toggle menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="services.html" class="nav-link active">Services</a></li>
-                    <li><a href="experience.html" class="nav-link">Experience</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="contact.html" class="btn btn-primary">Get Support</a></li>
-                </ul>
-            </nav>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">IT</div>
+                <span class="logo-text">Xpert<span class="accent">Sourodip</span></span>
+            </a>
+            
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="services.html" class="nav-link active">Services</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="contact.html" class="btn btn-primary">Get Support</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <!-- Page Header -->
-    <section class="hero">
+    <section class="page-header">
         <div class="container">
-            <div class="page-header-content">
-                <h1 class="hero-title">IT Support Services</h1>
-                <p class="hero-description">NSDA Certified Level 3 IT Support Services with science-based approach.</p>
-                <div style="background: var(--accent-primary); color: var(--primary-dark); padding: 0.5rem 1.5rem; border-radius: var(--radius-md); font-weight: 600; display: inline-block; margin-top: 1rem;">
-                    🏅 NSDA Level 3 Certified Professional
-                </div>
-            </div>
+            <h1 class="page-title" data-aos="fade-up">My Services</h1>
+            <p class="page-description" data-aos="fade-up" data-aos-delay="100">
+                Professional solutions for your technical and creative needs
+            </p>
         </div>
     </section>
 
-    <!-- Services -->
-    <section class="section services-preview">
+    <!-- Canva Design Service -->
+    <section id="canva" class="section service-detail">
         <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Professional Services</span>
-                <h2 class="section-title">NSDA Certified IT Support Solutions</h2>
-                <p class="section-description">Comprehensive IT solutions backed by government certification and science education.</p>
+            <div class="service-header" data-aos="fade-up">
+                <div class="service-icon-large">
+                    <i class="fab fa-canva"></i>
+                </div>
+                <h2>Canva Design Services</h2>
+                <p>Professional graphics and visual content creation</p>
             </div>
             
-            <div class="services-grid">
-                <!-- Hardware Support -->
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3 class="service-title">Hardware Maintenance & PC Assembling</h3>
-                    <p class="service-description">Professional hardware troubleshooting, repair, and custom PC building with component compatibility analysis.</p>
+            <div class="service-content" data-aos="fade-up">
+                <p>I create stunning visual content using Canva Pro that helps businesses stand out. From logos to complete brand identity packages, I ensure your visual communication is professional and effective.</p>
+                
+                <div class="service-feature-grid">
+                    <div class="service-feature" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-palette"></i>
+                        <h4>Logo Design</h4>
+                        <p>Custom logo creation that represents your brand identity perfectly.</p>
+                    </div>
                     
-                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Service Includes:</h4>
-                        <ul style="color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
-                            <li>PC/Laptop hardware diagnostics and repair</li>
-                            <li>Custom PC assembling with component selection</li>
-                            <li>BIOS/UEFI configuration and optimization</li>
-                            <li>Hardware performance testing</li>
-                            <li>Preventive maintenance and cleaning</li>
-                        </ul>
+                    <div class="service-feature" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-images"></i>
+                        <h4>Social Media Graphics</h4>
+                        <p>Eye-catching posts, stories, and banners for all social platforms.</p>
+                    </div>
+                    
+                    <div class="service-feature" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-presentation"></i>
+                        <h4>Presentation Design</h4>
+                        <p>Professional PowerPoint and Google Slides presentations.</p>
                     </div>
                 </div>
                 
-                <!-- Windows OS Support -->
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3 class="service-title">Windows OS & Software Support</h3>
-                    <p class="service-description">Complete Windows operating system installation, configuration, optimization, and troubleshooting services.</p>
-                    
-                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Service Includes:</h4>
-                        <ul style="color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
-                            <li>Windows 10/11 installation and configuration</li>
-                            <li>Driver installation and updates</li>
-                            <li>System optimization and performance tuning</li>
-                            <li>Software installation and compatibility checking</li>
-                            <li>OS troubleshooting and error resolution</li>
-                        </ul>
+                <div class="pricing-table" data-aos="fade-up">
+                    <h3>Package Options</h3>
+                    <div class="pricing-item">
+                        <span>Basic Logo Design</span>
+                        <span>৳ 1,500</span>
                     </div>
-                </div>
-                
-                <!-- Data Entry Services -->
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3 class="service-title">Data Entry & Office Support</h3>
-                    <p class="service-description">Professional data entry services, MS Office application support, and database management.</p>
-                    
-                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Service Includes:</h4>
-                        <ul style="color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
-                            <li>MS Excel data entry and processing</li>
-                            <li>Document formatting and template creation</li>
-                            <li>Database management and organization</li>
-                            <li>Data cleaning and validation</li>
-                            <li>Office application troubleshooting</li>
-                        </ul>
+                    <div class="pricing-item">
+                        <span>Social Media Kit (10 posts)</span>
+                        <span>৳ 2,500</span>
                     </div>
-                </div>
-                
-                <!-- Digital Marketing -->
-                <div class="service-card">
-                    <div class="service-icon">📱</div>
-                    <h3 class="service-title">Digital Marketing Support</h3>
-                    <p class="service-description">Social media management, content creation, and online promotion services.</p>
-                    
-                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Service Includes:</h4>
-                        <ul style="color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
-                            <li>Social media profile setup and management</li>
-                            <li>Content creation and scheduling</li>
-                            <li>Basic SEO optimization</li>
-                            <li>Online promotion strategy</li>
-                            <li>Analytics and performance tracking</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Network Support -->
-                <div class="service-card">
-                    <div class="service-icon">📶</div>
-                    <h3 class="service-title">Basic Network Support</h3>
-                    <p class="service-description">Network setup, internet troubleshooting, and connectivity solutions.</p>
-                    
-                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Service Includes:</h4>
-                        <ul style="color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
-                            <li>Basic network setup and configuration</li>
-                            <li>Internet connectivity troubleshooting</li>
-                            <li>Router and modem configuration</li>
-                            <li>Wi-Fi network optimization</li>
-                            <li>Network security basics</li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <!-- Technical Assistance -->
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3 class="service-title">Technical Assistance & Guidance</h3>
-                    <p class="service-description">Technical guidance, research assistance, and problem-solving support.</p>
-                    
-                    <div style="background: var(--secondary-dark); padding: 1rem; border-radius: var(--radius-md); margin-top: 1rem;">
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Service Includes:</h4>
-                        <ul style="color: var(--text-secondary); padding-left: 1.5rem; font-size: 0.95rem;">
-                            <li>Technical research assistance</li>
-                            <li>Problem-solving guidance</li>
-                            <li>Software and tool recommendations</li>
-                            <li>Learning and training support</li>
-                            <li>Technical documentation help</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Why Choose Section -->
-            <div style="margin-top: 4rem; background: var(--secondary-dark); padding: 2.5rem; border-radius: var(--radius-lg);">
-                <div class="section-header" style="text-align: left;">
-                    <span class="section-subtitle">Advantages</span>
-                    <h3 class="section-title" style="font-size: 1.75rem;">Why Choose My Services?</h3>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
-                    <div>
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🏅 NSDA Certified Professional</h4>
-                        <p style="color: var(--text-secondary);">
-                            Officially certified by National Skills Development Authority, Prime Minister's Office - highest recognition for IT support skills.
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🔬 Science-Based Approach</h4>
-                        <p style="color: var(--text-secondary);">
-                            SSC & HSC Science background provides analytical thinking, systematic problem-solving, and logical approach.
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">💬 Professional Communication</h4>
-                        <p style="color: var(--text-secondary);">
-                            Grade A certified in Spoken English for clear technical communication and professional documentation.
-                        </p>
-                    </div>
-                    
-                    <div>
-                        <h4 style="color: var(--accent-primary); margin-bottom: 0.75rem;">🎯 Comprehensive Solutions</h4>
-                        <p style="color: var(--text-secondary);">
-                            From hardware maintenance to data entry and digital marketing - complete IT solutions in one place.
-                        </p>
+                    <div class="pricing-item">
+                        <span>Complete Brand Package</span>
+                        <span>৳ 5,000</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA -->
+    <!-- MS Office Service -->
+    <section id="office" class="section service-detail bg-dark">
+        <div class="container">
+            <div class="service-header" data-aos="fade-up">
+                <div class="service-icon-large">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <h2>MS Office Expert Services</h2>
+                <p>Advanced solutions for Excel, PowerPoint, and Word</p>
+            </div>
+            
+            <div class="service-content" data-aos="fade-up">
+                <p>I provide expert MS Office solutions including complex Excel formulas, interactive dashboards, professional PowerPoint presentations, and perfectly formatted Word documents.</p>
+                
+                <div class="process-steps">
+                    <div class="process-step" data-aos="fade-right">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4>Requirement Analysis</h4>
+                            <p>Understanding your specific needs and business requirements.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="100">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4>Solution Design</h4>
+                            <p>Creating the optimal structure and design for your documents.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step" data-aos="fade-right" data-aos-delay="200">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4>Development & Testing</h4>
+                            <p>Building and thoroughly testing all formulas and functions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Support Service -->
+    <section id="support" class="section service-detail">
+        <div class="container">
+            <div class="service-header" data-aos="fade-up">
+                <div class="service-icon-large">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h2>Technical Support Services</h2>
+                <p>24/7 remote and on-site IT support</p>
+            </div>
+            
+            <div class="service-content" data-aos="fade-up">
+                <p>I offer comprehensive technical support services for both individuals and businesses. From software troubleshooting to hardware setup, I ensure your systems run smoothly.</p>
+                
+                <div class="service-feature-grid">
+                    <div class="service-feature" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-laptop-medical"></i>
+                        <h4>Software Troubleshooting</h4>
+                        <p>Fix software errors, installation issues, and compatibility problems.</p>
+                    </div>
+                    
+                    <div class="service-feature" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Virus & Malware Removal</h4>
+                        <p>Complete virus scanning and removal with security optimization.</p>
+                    </div>
+                    
+                    <div class="service-feature" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-network-wired"></i>
+                        <h4>Network Setup</h4>
+                        <p>WiFi setup, router configuration, and network troubleshooting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
     <section class="section cta">
         <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Need NSDA Certified IT Support?</h2>
-                <p class="cta-description">Get professional IT support services backed by government certification and science education.</p>
-                <a href="contact.html" class="btn btn-primary btn-lg">Get Support Now</a>
+            <div class="cta-content" data-aos="zoom-in">
+                <h2 class="cta-title">Need Professional IT Services?</h2>
+                <p class="cta-description">
+                    Contact me today to discuss your requirements and get a customized solution.
+                </p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-primary btn-lg">
+                        <i class="fas fa-envelope"></i> Send Inquiry
+                    </a>
+                    <a href="tel:+8801738677139" class="btn btn-outline btn-lg">
+                        <i class="fas fa-phone"></i> Call for Quote
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -226,77 +289,69 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <a href="index.html" class="logo footer-logo">
-                        <span class="logo-icon">IT</span>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">IT</div>
                         <span class="logo-text">Xpert<span class="accent">Sourodip</span></span>
                     </a>
-                    <p class="footer-text">NSDA Certified Level 3 IT Support Engineer providing reliable and secure IT solutions for home users and businesses in Bangladesh.</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/itxpertsourodip" class="social-link" aria-label="Instagram">
-                            <span>IG</span>
-                        </a>
-                        <a href="https://x.com/itxpertsourodip" class="social-link" aria-label="X (Twitter)">
-                            <span>X</span>
-                        </a>
-                        <a href="https://facebook.com/itxpertsourodip" class="social-link" aria-label="Facebook">
-                            <span>FB</span>
-                        </a>
-                        <a href="https://linkedin.com/in/itxpertsourodip" class="social-link" aria-label="LinkedIn">
-                            <span>IN</span>
-                        </a>
+                    <p>Professional IT Support & Creative Design Services</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
                     </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Hardware Maintenance</a></li>
-                        <li><a href="services.html">Windows OS Support</a></li>
-                        <li><a href="services.html">Data Entry Services</a></li>
-                        <li><a href="services.html">Digital Marketing</a></li>
-                        <li><a href="services.html">Network Support</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="experience.html">Experience</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3 class="footer-title">Contact Info</h3>
-                    <ul class="footer-contact">
-                        <li>
-                            <span class="contact-icon">✉️</span>
-                            <a href="mailto:itxpertsourodip@gmail.com">itxpertsourodip@gmail.com</a>
-                        </li>
-                        <li>
-                            <span class="contact-icon">📍</span>
-                            <span>Bangladesh</span>
-                        </li>
-                        <li>
-                            <span class="contact-icon">🏅</span>
-                            <span>NSDA Certified Professional</span>
-                        </li>
-                    </ul>
+                    
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="services.html#canva">Canva Design</a></li>
+                            <li><a href="services.html#office">MS Office</a></li>
+                            <li><a href="services.html#support">Tech Support</a></li>
+                            <li><a href="services.html#marketing">Digital Marketing</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><i class="fas fa-envelope"></i> itxpertsourodip@gmail.com</li>
+                            <li><i class="fas fa-phone"></i> +880 1738 677139</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Bangladesh</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p class="copyright">&copy; <span id="current-year"></span> IT Xpert Sourodip. All rights reserved.</p>
-                <p class="tagline">NSDA Certified IT Support for Reliable & Secure Systems</p>
+                <p>&copy; 2024 IT Xpert Sourodip. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+    </script>
 </body>
 </html>
