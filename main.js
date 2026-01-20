@@ -1,18 +1,13 @@
-// ===== main.js =====
+// ===== main.js - Modern Website Scripts =====
 
-// DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current year in footer
-    const currentYearElement = document.getElementById('current-year');
-    if (currentYearElement) {
-        currentYearElement.textContent = new Date().getFullYear();
-    }
-    
-    // Initialize mobile menu toggle
+    // Initialize all functions
     initMobileMenu();
-    
-    // Initialize smooth scrolling
     initSmoothScrolling();
+    initCounters();
+    initAnimations();
+    initCurrentYear();
+    initFormValidation();
 });
 
 // ===== MOBILE MENU TOGGLE =====
@@ -38,6 +33,15 @@ function initMobileMenu() {
                 document.body.style.overflow = '';
             });
         });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.navbar') && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
     }
 }
 
@@ -50,18 +54,17 @@ function initSmoothScrolling() {
             const href = this.getAttribute('href');
             
             // Skip if it's just "#" or external link
-            if (href === '#' || href.startsWith('#!')) return;
+            if (href === '#' || href.startsWith('#!') || href.includes('mailto:') || href.includes('tel:')) return;
             
             // Check if it's an on-page anchor
-            if (href.startsWith('#')) {
+            if (href.startsWith('#') && document.querySelector(href)) {
                 e.preventDefault();
-                const targetId = href.substring(1);
-                const targetElement = document.getElementById(targetId);
+                const targetElement = document.querySelector(href);
                 
                 if (targetElement) {
                     const header = document.querySelector('.header');
                     const headerHeight = header ? header.offsetHeight : 80;
-                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 40;
                     
                     window.scrollTo({
                         top: targetPosition,
@@ -73,71 +76,133 @@ function initSmoothScrolling() {
     });
 }
 
-// ===== CONTACT FORM HANDLING =====
-function initContactForm() {
+// ===== ANIMATED COUNTERS =====
+function initCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    
+    if (!counters.length) return;
+    
+    const observerOptions = {
+        threshold: 0.5,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-count'));
+                const duration = 2000;
+                const increment = target / (duration / 16);
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        if (current > target) current = target;
+                        counter.textContent = Math.floor(current);
+                        setTimeout(updateCounter, 16);
+                    } else {
+                        counter.textContent = target;
+                    }
+                };
+                
+                updateCounter();
+                observer.unobserve(counter);
+            }
+        });
+    }, observerOptions);
+    
+    counters.forEach(counter => {
+        observer.observe(counter);
+    });
+}
+
+// ===== SCROLL ANIMATIONS =====
+function initAnimations() {
+    const animatedElements = document.querySelectorAll('.fade-in, .fade-in-delay-1, .fade-in-delay-2, .fade-in-delay-3');
+    
+    if (!animatedElements.length) return;
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = 'running';
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    animatedElements.forEach(element => {
+        element.style.animationPlayState = 'paused';
+        observer.observe(element);
+    });
+}
+
+// ===== SET CURRENT YEAR =====
+function initCurrentYear() {
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+}
+
+// ===== FORM VALIDATION =====
+function initFormValidation() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validate form
-            if (!validateContactForm()) {
-                return;
+            if (validateForm(this)) {
+                // Show loading state
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<div class="loading"></div> Sending...';
+                submitBtn.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Show success message
+                    showNotification('✅ Message sent successfully! I will contact you soon.', 'success');
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }, 1500);
             }
+        });
+        
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                validateField(this);
+            });
             
-            // Show loading state
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<span>Sending...</span>';
-            submitBtn.disabled = true;
-            
-            // Collect form data
-            const formData = {
-                from_name: contactForm.querySelector('input[type="text"]').value,
-                from_email: contactForm.querySelector('input[type="email"]').value,
-                subject: contactForm.querySelector('select').value,
-                message: contactForm.querySelector('textarea').value,
-                emergency: contactForm.querySelector('input[type="checkbox"]').checked ? 'Yes' : 'No',
-                remote_support: contactForm.querySelectorAll('input[type="checkbox"]')[1].checked ? 'Yes' : 'No',
-                timestamp: new Date().toLocaleString('en-BD')
-            };
-            
-            // Here you would typically send to a server
-            // For now, we'll just show the alert and log data
-            console.log('Support Request Submitted:', formData);
-            
-            // Show success message
-            showFormMessage('success', 'Thank you for your message! I will get back to you within 4-6 hours. For emergencies, expect a response in 1-2 hours.');
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Reset button
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-            
-            // Scroll to top of form
-            contactForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            input.addEventListener('input', function() {
+                clearFieldError(this);
+            });
         });
     }
 }
 
-// Form validation
-function validateContactForm() {
-    const contactForm = document.getElementById('contact-form');
-    const inputs = contactForm.querySelectorAll('input[required], select[required], textarea[required]');
+// Form validation helper functions
+function validateForm(form) {
     let isValid = true;
-    
-    // Clear previous error messages
-    clearFormErrors();
+    const inputs = form.querySelectorAll('input[required], textarea[required]');
     
     inputs.forEach(input => {
-        if (!input.value.trim()) {
-            showInputError(input, 'This field is required');
-            isValid = false;
-        } else if (input.type === 'email' && !isValidEmail(input.value)) {
-            showInputError(input, 'Please enter a valid email address');
+        if (!validateField(input)) {
             isValid = false;
         }
     });
@@ -145,213 +210,288 @@ function validateContactForm() {
     return isValid;
 }
 
-// Email validation
+function validateField(field) {
+    const value = field.value.trim();
+    let isValid = true;
+    let errorMessage = '';
+    
+    // Clear previous error
+    clearFieldError(field);
+    
+    // Check required
+    if (field.hasAttribute('required') && !value) {
+        errorMessage = 'This field is required';
+        isValid = false;
+    }
+    // Check email format
+    else if (field.type === 'email' && value && !isValidEmail(value)) {
+        errorMessage = 'Please enter a valid email address';
+        isValid = false;
+    }
+    // Check phone format (basic)
+    else if (field.type === 'tel' && value && !isValidPhone(value)) {
+        errorMessage = 'Please enter a valid phone number';
+        isValid = false;
+    }
+    
+    // Show error if any
+    if (!isValid) {
+        showFieldError(field, errorMessage);
+    }
+    
+    return isValid;
+}
+
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
-// Show input error
-function showInputError(input, message) {
-    const formGroup = input.closest('div');
-    if (!formGroup) return;
-    
-    // Remove existing error
-    const existingError = formGroup.querySelector('.error-message');
-    if (existingError) existingError.remove();
-    
-    // Add error message
-    const errorElement = document.createElement('div');
-    errorElement.className = 'error-message';
-    errorElement.textContent = message;
-    errorElement.style.color = '#ff6b6b';
-    errorElement.style.fontSize = '0.875rem';
-    errorElement.style.marginTop = '0.5rem';
-    
-    // Add error class to input
-    input.style.borderColor = '#ff6b6b';
-    
-    formGroup.appendChild(errorElement);
+function isValidPhone(phone) {
+    const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+    return phoneRegex.test(phone);
 }
 
-// Clear form errors
-function clearFormErrors() {
-    const errors = document.querySelectorAll('.error-message');
-    errors.forEach(error => error.remove());
+function showFieldError(field, message) {
+    field.classList.add('error');
     
-    const inputs = document.querySelectorAll('#contact-form input, #contact-form select, #contact-form textarea');
-    inputs.forEach(input => {
-        input.style.borderColor = '';
-    });
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'field-error';
+    errorDiv.textContent = message;
+    errorDiv.style.color = '#EF4444';
+    errorDiv.style.fontSize = '0.875rem';
+    errorDiv.style.marginTop = '0.5rem';
+    
+    field.parentNode.appendChild(errorDiv);
 }
 
-// Show form message (success/error)
-function showFormMessage(type, message) {
-    // Remove existing message
-    const existingMessage = document.querySelector('.form-message');
-    if (existingMessage) existingMessage.remove();
+function clearFieldError(field) {
+    field.classList.remove('error');
     
-    // Create message element
-    const messageElement = document.createElement('div');
-    messageElement.className = `form-message form-message-${type}`;
-    messageElement.textContent = message;
+    const existingError = field.parentNode.querySelector('.field-error');
+    if (existingError) {
+        existingError.remove();
+    }
+}
+
+// ===== NOTIFICATION SYSTEM =====
+function showNotification(message, type = 'info') {
+    // Remove existing notification
+    const existingNotification = document.querySelector('.notification');
+    if (existingNotification) {
+        existingNotification.remove();
+    }
     
-    // Style the message
-    messageElement.style.padding = '1rem';
-    messageElement.style.borderRadius = 'var(--radius-md)';
-    messageElement.style.marginBottom = '1.5rem';
-    messageElement.style.textAlign = 'center';
-    messageElement.style.fontWeight = '500';
+    // Create notification
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <span>${message}</span>
+            <button class="notification-close">&times;</button>
+        </div>
+    `;
     
+    // Add styles
+    notification.style.position = 'fixed';
+    notification.style.top = '20px';
+    notification.style.right = '20px';
+    notification.style.zIndex = '9999';
+    notification.style.padding = '1rem 1.5rem';
+    notification.style.borderRadius = 'var(--radius-md)';
+    notification.style.boxShadow = 'var(--shadow-lg)';
+    notification.style.animation = 'slideInRight 0.3s ease';
+    
+    // Type-based styling
     if (type === 'success') {
-        messageElement.style.backgroundColor = 'rgba(46, 204, 113, 0.1)';
-        messageElement.style.color = '#2ecc71';
-        messageElement.style.border = '1px solid #2ecc71';
+        notification.style.background = 'linear-gradient(135deg, #10B981, #34D399)';
+        notification.style.color = 'white';
+    } else if (type === 'error') {
+        notification.style.background = 'linear-gradient(135deg, #EF4444, #F87171)';
+        notification.style.color = 'white';
     } else {
-        messageElement.style.backgroundColor = 'rgba(231, 76, 60, 0.1)';
-        messageElement.style.color = '#e74c3c';
-        messageElement.style.border = '1px solid #e74c3c';
+        notification.style.background = 'white';
+        notification.style.color = 'var(--text-primary)';
+        notification.style.border = '1px solid rgba(99, 102, 241, 0.2)';
     }
     
-    // Insert message before form
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.parentNode.insertBefore(messageElement, contactForm);
-    }
-}
-
-// WhatsApp Form Submission
-function sendToWhatsAppDirect(event) {
-    event.preventDefault();
+    // Close button
+    const closeBtn = notification.querySelector('.notification-close');
+    closeBtn.style.background = 'none';
+    closeBtn.style.border = 'none';
+    closeBtn.style.color = 'inherit';
+    closeBtn.style.fontSize = '1.5rem';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.marginLeft = '1rem';
     
-    // Get form values
-    const name = document.getElementById('clientName').value.trim();
-    const phone = document.getElementById('clientPhone').value.trim();
-    const issue = document.getElementById('clientIssue').value;
-    const description = document.getElementById('clientDescription').value.trim();
-    const emergency = document.getElementById('clientEmergency').checked;
-    
-    // Validate
-    if (!name || !phone || !issue || !description) {
-        alert('Please fill all required fields');
-        return false;
-    }
-    
-    // Create WhatsApp message
-    const message = `New IT Support Request:\n\n` +
-                   `Name: ${name}\n` +
-                   `Phone: ${phone}\n` +
-                   `Issue: ${issue}\n` +
-                   `Emergency: ${emergency ? 'YES (1-2 hour response)' : 'NO'}\n\n` +
-                   `Problem Details:\n${description}\n\n` +
-                   `Sent from website contact form`;
-    
-    // Encode for URL
-    const encodedMessage = encodeURIComponent(message);
-    
-    // WhatsApp URL
-    const whatsappURL = `https://wa.me/8801738671739?text=${encodedMessage}`;
-    
-    // Open WhatsApp
-    window.open(whatsappURL, '_blank');
-    
-    // Show success message
-    const successMsg = document.getElementById('formSuccess');
-    if (successMsg) {
-        successMsg.style.display = 'block';
-        successMsg.innerHTML = '✅ WhatsApp opened! Please click <strong>SEND</strong> in WhatsApp.';
-    }
-    
-    // Reset form
-    setTimeout(() => {
-        document.getElementById('whatsapp-form').reset();
-        if (successMsg) {
-            successMsg.scrollIntoView({ behavior: 'smooth' });
-        }
-    }, 1000);
-    
-    // Show instructions
-    setTimeout(() => {
-        alert(`📱 Message sent to WhatsApp!\n\n` +
-              `1. WhatsApp should be open now\n` +
-              `2. Your message is ready\n` +
-              `3. Click the GREEN SEND button\n` +
-              `4. I'll contact you on ${phone}\n\n` +
-              `If WhatsApp didn't open, contact directly:\n` +
-              `📞 Call: 01738671739\n` +
-              `💬 WhatsApp: Same number`);
-    }, 1500);
-    
-    return false;
-}
-
-// Copy phone number to clipboard
-function copyPhoneNumber() {
-    const phoneNumber = '01738671739';
-    navigator.clipboard.writeText(phoneNumber).then(() => {
-        alert('Phone number copied to clipboard: ' + phoneNumber);
-    }).catch(err => {
-        prompt('Copy this number:', phoneNumber);
+    closeBtn.addEventListener('click', () => {
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
     });
+    
+    // Auto remove after 5 seconds
+    setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
+    
+    document.body.appendChild(notification);
 }
 
-// Save contact instructions
-function saveContact() {
-    alert('To save my contact:\n\n' +
-          '1. Open your phone contacts\n' +
-          '2. Add new contact\n' +
-          '3. Name: Sourodip (IT Support)\n' +
-          '4. Phone: 01738671739\n' +
-          '5. Save contact\n\n' +
-          'You can call or WhatsApp anytime!');
-}
-
-// Simple form submission (backup)
-function simpleSubmitForm() {
-    const name = prompt('Your name?');
-    if (!name) return;
-    
-    const phone = prompt('Your phone number?');
-    if (!phone) return;
-    
-    const issue = prompt('What IT problem do you have?');
-    if (!issue) return;
-    
-    alert('✅ Thank you ' + name + '!\n\n' +
-          'I will contact you on ' + phone + ' shortly.\n' +
-          'For immediate help, call: 01738671739');
-}
-
-// Smooth scroll to section
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        const header = document.querySelector('.header');
-        const headerHeight = header ? header.offsetHeight : 80;
-        const sectionPosition = section.offsetTop - headerHeight - 20;
-        
-        window.scrollTo({
-            top: sectionPosition,
-            behavior: 'smooth'
-        });
+// Add animation keyframes
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
     }
-}
-
-// Certification modal (if you want to add certificate images later)
-function showCertificate(certType) {
-    alert(`Certificate: ${certType}\n\nComing soon: Certificate image viewer will be added here.`);
-}
-
-// Initialize all functions when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Your existing main.js code here
     
-    // Add click events for certification badges
-    const certBadges = document.querySelectorAll('.cert-badge, .nsda-badge');
-    certBadges.forEach(badge => {
-        badge.addEventListener('click', function() {
-            const certType = this.textContent || this.getAttribute('data-cert');
-            showCertificate(certType);
-        });
+    @keyframes slideOutRight {
+        from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        to {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+    }
+    
+    input.error,
+    textarea.error {
+        border-color: #EF4444 !important;
+    }
+`;
+document.head.appendChild(style);
+
+// ===== PARALLAX EFFECT =====
+window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const parallaxElements = document.querySelectorAll('.hero-image, .shape');
+    
+    parallaxElements.forEach((element, index) => {
+        const speed = 0.3 + (index * 0.1);
+        const yPos = -(scrolled * speed);
+        element.style.transform = `translateY(${yPos}px)`;
     });
 });
+
+// ===== LAZY LOAD IMAGES =====
+function lazyLoadImages() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback for older browsers
+        images.forEach(img => {
+            img.src = img.dataset.src;
+        });
+    }
+}
+
+// Initialize lazy loading
+document.addEventListener('DOMContentLoaded', lazyLoadImages);
+
+// ===== BACK TO TOP BUTTON =====
+function initBackToTop() {
+    const backToTop = document.createElement('button');
+    backToTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backToTop.className = 'back-to-top';
+    backToTop.setAttribute('aria-label', 'Back to top');
+    
+    // Style the button
+    backToTop.style.position = 'fixed';
+    backToTop.style.bottom = '30px';
+    backToTop.style.right = '30px';
+    backToTop.style.width = '50px';
+    backToTop.style.height = '50px';
+    backToTop.style.borderRadius = '50%';
+    backToTop.style.background = 'var(--gradient-primary)';
+    backToTop.style.color = 'white';
+    backToTop.style.border = 'none';
+    backToTop.style.cursor = 'pointer';
+    backToTop.style.boxShadow = 'var(--shadow-lg)';
+    backToTop.style.opacity = '0';
+    backToTop.style.visibility = 'hidden';
+    backToTop.style.transition = 'all 0.3s ease';
+    backToTop.style.zIndex = '1000';
+    backToTop.style.display = 'flex';
+    backToTop.style.alignItems = 'center';
+    backToTop.style.justifyContent = 'center';
+    backToTop.style.fontSize = '1.25rem';
+    
+    document.body.appendChild(backToTop);
+    
+    // Show/hide button
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.visibility = 'hidden';
+        }
+    });
+    
+    // Scroll to top
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Initialize back to top button
+initBackToTop();
+
+// ===== TYPING ANIMATION FOR HERO TEXT =====
+function initTypingAnimation() {
+    const heroTitle = document.querySelector('.hero-title');
+    if (!heroTitle) return;
+    
+    const text = heroTitle.textContent;
+    heroTitle.textContent = '';
+    
+    let i = 0;
+    const typeWriter = () => {
+        if (i < text.length) {
+            heroTitle.textContent += text.charAt(i);
+            i++;
+            setTimeout(typeWriter, 50);
+        }
+    };
+    
+    // Start typing animation when hero section is in view
+    const observer = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting) {
+            typeWriter();
+            observer.unobserve(entries[0].target);
+        }
+    }, { threshold: 0.5 });
+    
+    observer.observe(heroTitle);
+}
+
+// Start typing animation
+setTimeout(initTypingAnimation, 1000);
