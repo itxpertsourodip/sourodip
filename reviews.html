@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Reviews | IT Xpert Sourodip</title>
+    <title>Reviews | IT Xpert Sourodip</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,27 +11,25 @@
     <div id="particles-js"></div>
 
     <nav class="navbar">
-        <div class="container nav-flex">
+        <div class="container nav-wrapper">
             <a href="index.html" class="logo"><img src="logo.png" alt="Logo"></a>
             <div class="menu-btn"><i class="fas fa-bars"></i></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="reviews.html" class="active">Reviews</a></li>
-                <li><a href="contact.html" class="btn btn-primary" style="padding: 8px 20px;">Support</a></li>
+                <li><a href="contact.html" class="btn-nav">Get Support</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="section" style="padding-top: 150px;">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h1>Client <span class="gradient-text">Feedback</span></h1>
-                <p class="lead">What our enterprise clients say about our services.</p>
+            <div class="page-header">
+                <h1>Client <span class="highlight">Feedback</span></h1>
+                <p class="lead">What international clients say about my services.</p>
             </div>
-
-            <div class="grid-3" id="review-grid">
-                </div>
+            <div class="grid-3" id="reviews-grid"></div>
         </div>
     </section>
 
@@ -42,28 +40,5 @@
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="database.js"></script>
     <script src="script.js"></script>
-    <script>
-        // Logic to load reviews
-        const grid = document.getElementById('review-grid');
-        reviewsData.forEach(review => {
-            let stars = '';
-            for(let i=0; i<5; i++) {
-                if(i < review.rating) stars += '<i class="fas fa-star" style="color: #fbbf24;"></i>';
-                else stars += '<i class="far fa-star" style="color: #4b5563;"></i>';
-            }
-            
-            const html = `
-                <div class="card review-card">
-                    <div class="stars" style="margin-bottom: 15px;">${stars}</div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"${review.text}"</p>
-                    <div class="client-info">
-                        <h4 style="color: var(--text-main); margin-bottom: 2px;">${review.name}</h4>
-                        <span style="font-size: 0.85rem; color: var(--accent);">${review.company}</span>
-                    </div>
-                </div>
-            `;
-            grid.innerHTML += html;
-        });
-    </script>
 </body>
 </html>
