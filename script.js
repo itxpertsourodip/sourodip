@@ -1,40 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. PARTICLES (SPIDER WEB)
-    if (typeof particlesJS !== 'undefined') {
-        particlesJS('particles-js', {
-            "particles": {
-                "number": { "value": 60 },
-                "color": { "value": "#00f2ff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.4 },
-                "size": { "value": 3 },
-                "line_linked": { "enable": true, "distance": 150, "color": "#00f2ff", "opacity": 0.15, "width": 1 },
-                "move": { "enable": true, "speed": 1.5 }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" } }
-            },
-            "retina_detect": true
-        });
-    }
-
-    // 2. MOBILE MENU
-    const menuBtn = document.querySelector('.menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-    if(menuBtn) {
-        menuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
-    }
-
-    // 3. LOAD DATA FROM DATABASE.JS
-    
-    // Profile
-    const pContainer = document.getElementById('profile-container');
-    if(pContainer && typeof profileData !== 'undefined') {
-        pContainer.innerHTML = `
-            <div class="profile-img-box"><img src="${profileData.image}" alt="Profile"></div>
-            <div class="profile-info-box">
+There was an error committing your changes: itxpertsourodip has committed since you started editing. See what changed            <div class="profile-info-box">
                 <span class="badge-neon">${profileData.title}</span>
                 <h2>${profileData.name}</h2>
                 <p class="lead">${profileData.bio}</p>
