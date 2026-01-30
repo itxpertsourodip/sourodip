@@ -3,51 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support | IT Xpert Sourodip</title>
+    <title>Contact | IT Xpert Sourodip</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .select2-container--default .select2-selection--single {
+            background-color: rgba(255,255,255,0.05); border: 1px solid var(--border);
+            border-radius: 8px; height: 50px; padding: 10px; color: white;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered { color: white; }
+        .select2-dropdown { background-color: #0f1420; border: 1px solid var(--border); color: white; }
+        .select2-search__field { background-color: #1a202c !important; color: white !important; }
+        .form-control {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border); border-radius: 8px; color: white;
+            margin-bottom: 20px; font-family: inherit;
+        }
+        .form-control:focus { outline: none; border-color: var(--primary); }
+    </style>
 </head>
 <body>
     <div id="particles-js"></div>
 
     <nav class="navbar">
-        <div class="container nav-flex">
+        <div class="container nav-wrapper">
             <a href="index.html" class="logo"><img src="logo.png" alt="Logo"></a>
             <div class="menu-btn"><i class="fas fa-bars"></i></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Portfolio</a></li>
-                <li><a href="contact.html" class="active">Support</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html" class="active btn-nav">Get Support</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
+    <section class="section" style="padding-top: 150px;">
         <div class="container">
-            <h1>Get Priority <span class="gradient-text">Support</span></h1>
-            <p class="lead">Connect directly with our engineering team for immediate assistance.</p>
-            
-            <div class="grid-3" style="margin-top: 40px;">
-                <a href="https://wa.me/8801738677139" target="_blank" class="card link-card">
-                    <div class="icon-glow"><i class="fab fa-whatsapp"></i></div>
-                    <h3>WhatsApp</h3>
-                    <p>Instant chat response.</p>
-                    <span class="action-text">Chat Now &rarr;</span>
-                </a>
-                
-                <a href="tel:+8801738677139" class="card link-card">
-                    <div class="icon-glow"><i class="fas fa-phone-alt"></i></div>
-                    <h3>Direct Call</h3>
-                    <p>24/7 Hotline.</p>
-                    <span class="action-text">+880 1738 677139</span>
-                </a>
-                
-                <a href="mailto:itxpertsourodip@gmail.com" class="card link-card">
-                    <div class="icon-glow"><i class="fas fa-envelope"></i></div>
-                    <h3>Email</h3>
-                    <p>Request quotes & proposals.</p>
-                    <span class="action-text">Send Email &rarr;</span>
-                </a>
+            <div class="page-header">
+                <h1>Global <span class="highlight">Support</span></h1>
+                <p class="lead">Fill the form below to open a direct support ticket via WhatsApp.</p>
+            </div>
+
+            <div class="card" style="max-width: 800px; margin: 0 auto;">
+                <form onsubmit="sendInternationalWhatsApp(event)" id="contact-form">
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <label>Full Name</label>
+                            <input type="text" id="userName" class="form-control" required placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label>Email Address</label>
+                            <input type="email" id="userEmail" class="form-control" required placeholder="john@example.com">
+                        </div>
+                    </div>
+
+                    <label>Country</label>
+                    <select id="userCountry" style="width: 100%; margin-bottom: 20px;"></select>
+
+                    <label>Problem Type</label>
+                    <select id="userIssue" class="form-control" style="height: 50px;">
+                        <option value="Network Issue">Network/Internet Issue</option>
+                        <option value="Data Recovery">Data Recovery</option>
+                        <option value="Software Error">Software/OS Error</option>
+                        <option value="Branding">Branding & Design</option>
+                        <option value="Other">Other Inquiry</option>
+                    </select>
+
+                    <label>Description</label>
+                    <textarea id="userDescription" class="form-control" rows="4" placeholder="Describe your issue..."></textarea>
+
+                    <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                        <input type="checkbox" id="userEmergency">
+                        <span style="color: #ff4757;">🚨 URGENT (Need help within 1 hour)</span>
+                    </label>
+
+                    <button type="submit" class="btn-nav" style="width: 100%; padding: 15px; font-size: 1.1rem; cursor: pointer;">
+                        Start WhatsApp Support <i class="fab fa-whatsapp"></i>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
@@ -56,7 +93,29 @@
         <div class="container"><p>&copy; 2024 IT Xpert Sourodip.</p></div>
     </footer>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
+    
+    <script>
+        // Initialize Select2 & Load Countries (Simplified logic for brevity)
+        $(document).ready(function() {
+            const countries = ["USA", "UK", "Canada", "Australia", "Bangladesh", "India", "Germany", "UAE", "Other"];
+            const $select = $('#userCountry');
+            countries.forEach(c => $select.append(new Option(c, c)));
+            $select.select2();
+        });
+
+        function sendInternationalWhatsApp(e) {
+            e.preventDefault();
+            const name = $('#userName').val();
+            const issue = $('#userIssue').val();
+            const urgent = $('#userEmergency').is(':checked') ? "URGENT 🚨" : "Normal";
+            
+            const msg = `*New Support Ticket*\nName: ${name}\nIssue: ${issue}\nStatus: ${urgent}\n\n*Message:* ${$('#userDescription').val()}`;
+            window.open(`https://wa.me/8801738677139?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+    </script>
 </body>
 </html>
