@@ -1,15 +1,15 @@
 /* =========================================
-   IT XPERT GLOBAL - MASTER STYLESHEET (FINAL)
+   IT XPERT GLOBAL - MASTER STYLESHEET (FIXED v3)
    ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --bg-main: #0a0f1c;
-    --bg-card: rgba(255, 255, 255, 0.03);
+    --bg-card: rgba(20, 25, 40, 0.7); /* কার্ডের ব্যাকগ্রাউন্ড একটু গাড় করা হলো */
     --primary: #00f2ff; /* Cyber Neon */
     --text-main: #ffffff;
     --text-muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.08);
+    --border: rgba(255, 255, 255, 0.1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -21,10 +21,21 @@ html, body {
     line-height: 1.6;
     overflow-x: hidden;
     width: 100%;
+    min-height: 100vh;
 }
 
-/* PARTICLES BACKGROUND */
-#particles-js { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
+/* PARTICLES BACKGROUND (FIXED FOR MOBILE) */
+#particles-js {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; 
+    background-color: var(--bg-main); /* ব্যাকগ্রাউন্ড কালার এখানে ফিক্সড */
+}
+
+canvas { display: block; vertical-align: bottom; }
 
 /* NAVBAR */
 .navbar {
@@ -32,8 +43,90 @@ html, body {
     padding: 15px 0; background: rgba(10, 15, 28, 0.95);
     backdrop-filter: blur(15px); border-bottom: 1px solid var(--border);
 }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 25px; width: 100%; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; width: 100%; }
 .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.logo img { height: 40px; width: auto; object-fit: contain; }
+
+/* MENU */
+.nav-links { display: flex; gap: 30px; list-style: none; }
+.nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: 0.3s; font-size: 0.95rem; }
+.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.menu-btn { display: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+/* SPECIFIC BUTTON STYLES */
+/* 1. Nav Button */
+.btn-nav { border: 1px solid var(--primary); padding: 8px 25px; border-radius: 50px; color: var(--primary) !important; }
+.btn-nav:hover { background: var(--primary); color: #000 !important; }
+
+/* 2. Form Submit Button (FIXED WHITE ISSUE) */
+.btn-submit {
+    background-color: var(--primary) !important; /* Force Cyan Background */
+    color: #000000 !important; /* Force Black Text */
+    font-weight: 800;
+    border: none;
+    border-radius: 50px;
+    padding: 15px;
+    width: 100%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+    margin-top: 10px;
+}
+.btn-submit:hover {
+    background-color: #ffffff !important;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/* SECTIONS & CARDS */
+.section { padding: 80px 0; position: relative; z-index: 1; }
+.page-header { text-align: center; margin-bottom: 50px; }
+h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 15px; }
+.highlight { color: var(--primary); }
+
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+
+.card {
+    background: var(--bg-card); 
+    border: 1px solid var(--border);
+    padding: 30px; border-radius: 12px; 
+    transition: 0.4s; position: relative; overflow: hidden;
+    backdrop-filter: blur(5px); /* গ্লাস ইফেক্ট */
+}
+.icon-box { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+
+/* FORMS */
+.form-input {
+    width: 100%; padding: 15px; 
+    background: rgba(0, 0, 0, 0.4); /* ইনপুট ফিল্ড একটু ডার্ক */
+    border: 1px solid var(--border); color: white; border-radius: 8px;
+    margin-bottom: 15px; font-family: inherit; font-size: 1rem;
+}
+.form-input:focus { border-color: var(--primary); outline: none; }
+
+/* FOOTER */
+footer { text-align: center; padding: 30px 0; border-top: 1px solid var(--border); color: var(--text-muted); margin-top: 40px; position: relative; z-index: 1; }
+
+/* MOBILE RESPONSIVE FIX */
+@media (max-width: 768px) {
+    .menu-btn { display: block; z-index: 1002; }
+    
+    .nav-links {
+        position: fixed; top: 0; right: -100%; width: 85%; height: 100vh;
+        background: #050810; /* খুব ডার্ক ব্যাকগ্রাউন্ড */
+        flex-direction: column; justify-content: center; align-items: center;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        border-left: 1px solid var(--border);
+        z-index: 1001;
+        padding-bottom: 50px;
+    }
+    .nav-links.active { right: 0; box-shadow: -10px 0 50px rgba(0,0,0,0.8); }
+    
+    .nav-links a { font-size: 1.3rem; display: block; padding: 15px; width: 100%; text-align: center; }
+    
+    h1 { font-size: 2.2rem; }
+    .card { padding: 25px; }
+}
 .logo img { height: 45px; width: auto; }
 
 /* DESKTOP MENU */
