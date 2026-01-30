@@ -3,101 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Xpert Sourodip | Global IT Solutions</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>IT Xpert Sourodip | Global Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div id="particles-js"></div>
 
     <nav class="navbar">
         <div class="container nav-wrapper">
-            <a href="index.html" class="logo">
-                <img src="logo.png" alt="Sourodip Logo" class="logo-img">
-            </a>
-            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+            <a href="index.html" class="logo"><img src="logo.png" alt="Logo"></a>
+            <div class="menu-btn"><i class="fas fa-bars"></i></div>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
                 <li><a href="reviews.html">Reviews</a></li>
-                <li><a href="contact.html" class="cta-btn">Contact Me</a></li>
+                <li><a href="contact.html" class="btn-nav">Get Support</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="hero-text" data-aos="fade-right">
-                <span class="badge">NSDA LEVEL 3 CERTIFIED</span>
-                <h1>Next-Gen <br> <span class="gradient-text typing-text"></span></h1>
-                <p>Delivering enterprise-grade IT infrastructure, cyber security, and creative branding solutions for businesses worldwide.</p>
-                <div class="btn-group">
-                    <a href="contact.html" class="btn btn-primary">Get Consultation <i class="fas fa-arrow-right"></i></a>
-                    <a href="projects.html" class="btn btn-glass">View Work</a>
-                </div>
-            </div>
-            <div class="hero-visual" data-aos="fade-left">
-                <div class="glass-card float-anim">
-                    <i class="fas fa-shield-alt shield-icon"></i>
-                    <div class="card-info">
-                        <h3>100% Secure</h3>
-                        <p>IT Infrastructure</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
+    <section class="section" style="height: 100vh; display: flex; align-items: center; text-align: center;">
         <div class="container">
-            <div class="section-header text-center">
-                <h2>Premium <span class="gradient-text">Services</span></h2>
-                <p>High-performance solutions for modern problems.</p>
-            </div>
-
-            <div class="grid-3">
-                <div class="glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
-                    <div class="icon-box"><i class="fas fa-server"></i></div>
-                    <h3>Server & Networking</h3>
-                    <p>Complete office network setup, router configuration, and server maintenance.</p>
-                </div>
-                <div class="glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
-                    <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
-                    <h3>Creative Branding</h3>
-                    <p>Professional logo design, social media kits, and brand identity using Canva Pro.</p>
-                </div>
-                <div class="glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
-                    <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
-                    <h3>IT Support 24/7</h3>
-                    <p>Instant remote troubleshooting for hardware, software, and OS issues.</p>
-                </div>
+            <span style="color: var(--primary); letter-spacing: 2px; font-size: 0.9rem; font-weight: 600;">NSDA CERTIFIED PROFESSIONAL</span>
+            <h1 style="margin-top: 20px; margin-bottom: 25px;">Empowering Business with <br> <span class="highlight">Advanced IT Solutions</span></h1>
+            <p class="lead">Providing enterprise-level network infrastructure, cyber security, and creative branding for clients worldwide.</p>
+            
+            <div style="margin-top: 40px;">
+                <a href="contact.html" class="btn-nav" style="padding: 15px 40px; font-size: 1.1rem;">Start Consultation</a>
+                <a href="portfolio.html" style="margin-left: 20px; color: white; text-decoration: none;">View Work &rarr;</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="container footer-content">
-            <p>&copy; 2024 IT Xpert Sourodip. All rights reserved.</p>
-            <div class="socials">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-        </div>
+        <div class="container"><p>&copy; 2024 IT Xpert Sourodip.</p></div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-    <script src="main.js"></script>
-    <script>
-        AOS.init({ duration: 1000 });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
