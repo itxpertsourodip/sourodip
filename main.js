@@ -1,38 +1,65 @@
 document.addEventListener('DOMContentLoaded', function() {
     
-    // ১. মোবাইল মেনু টগল (Mobile Menu Toggle)
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-            
-            // মেনু খোলা থাকলে বডি স্ক্রল বন্ধ রাখবে
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        
-        // লিংকে ক্লিক করলে মেনু অটোমেটিক বন্ধ হবে
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                menuToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            });
+    // ১. SPIDER WEB PARTICLES CONFIGURATION
+    if (document.getElementById('particles-js')) {
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80, // কতগুলো বিন্দু থাকবে
+                    "density": { "enable": true, "value_area": 800 }
+                },
+                "color": { "value": "#00f2ea" }, // বিন্দুর কালার (Cyan)
+                "shape": { "type": "circle" },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true
+                },
+                "size": {
+                    "value": 3,
+                    "random": true
+                },
+                "line_linked": { // এই অংশটি স্পাইডার নেট এফেক্ট তৈরি করে
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#00f2ea",
+                    "opacity": 0.2, // লাইনের স্বচ্ছতা
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 2, // চলার গতি
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": { "enable": true, "mode": "grab" }, // মাউস নিলেও লাইন কানেক্ট হবে
+                    "onclick": { "enable": true, "mode": "push" },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": { "distance": 140, "line_linked": { "opacity": 1 } },
+                    "push": { "particles_nb": 4 }
+                }
+            },
+            "retina_detect": true
         });
     }
 
-    // ২. টাইপিং টেক্সট অ্যানিমেশন (Typing Text Animation)
+    // ২. TYPING TEXT ANIMATION (প্রফেশনাল টেক্সট)
     const typingText = document.querySelector(".typing-text");
 
     if (typingText) {
         const textArray = [
-            "Professional IT Support Engineer", 
-            "Network Specialist", 
-            "Canva Designer", 
-            "MS Office Expert",
-            "NSDA Level 3 Certified"
+            "Seamless IT Solutions.", 
+            "Secure Networking.", 
+            "Creative Branding.", 
+            "Digital Excellence."
         ];
         let arrayIndex = 0;
         let charIndex = 0;
@@ -49,15 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 charIndex++;
             }
 
-            // টাইপিং স্পিড কন্ট্রোল
             let typeSpeed = isDeleting ? 50 : 100;
 
             if (!isDeleting && charIndex === currentString.length) {
-                // শব্দ শেষ হলে ২ সেকেন্ড থামবে
                 isDeleting = true;
                 typeSpeed = 2000; 
             } else if (isDeleting && charIndex === 0) {
-                // মোছা শেষ হলে পরের শব্দে যাবে
                 isDeleting = false;
                 arrayIndex++;
                 if (arrayIndex >= textArray.length) arrayIndex = 0;
@@ -66,30 +90,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
             setTimeout(type, typeSpeed);
         }
-        
-        // অ্যানিমেশন শুরু
         type();
     }
 
-    // ৩. স্মুথ স্ক্রলিং (Smooth Scrolling)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return; // শুধু # থাকলে কিছু করবে না
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                // হেডারের হাইট (80px) বাদ দিয়ে পজিশন ঠিক করা
-                const headerOffset = 80; 
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: "smooth"
-                });
-            }
+    // ৩. MOBILE MENU TOGGLE
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // আইকন এনিমেশন (যদি থাকে)
+            menuToggle.classList.toggle('active'); 
         });
-    });
+        
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
 });
