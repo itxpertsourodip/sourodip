@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IT Xpert Sourodip | Global Solutions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -23,15 +24,50 @@
         </div>
     </nav>
 
-    <section class="section" style="height: 100vh; display: flex; align-items: center; text-align: center;">
+    <section class="section hero-flex">
         <div class="container">
-            <span style="color: var(--primary); letter-spacing: 2px; font-size: 0.9rem; font-weight: 600;">NSDA CERTIFIED PROFESSIONAL</span>
-            <h1 style="margin-top: 20px; margin-bottom: 25px;">Empowering Business with <br> <span class="highlight">Advanced IT Solutions</span></h1>
-            <p class="lead">Providing enterprise-level network infrastructure, cyber security, and creative branding for clients worldwide.</p>
-            
-            <div style="margin-top: 40px;">
-                <a href="contact.html" class="btn-nav" style="padding: 15px 40px; font-size: 1.1rem;">Start Consultation</a>
-                <a href="portfolio.html" style="margin-left: 20px; color: white; text-decoration: none;">View Work &rarr;</a>
+            <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+                <span class="badge-neon">NSDA CERTIFIED PROFESSIONAL</span>
+                <h1>Empowering Business with <br> <span class="highlight typing-effect"></span></h1>
+                <p class="lead">Providing enterprise-level network infrastructure, cyber security, and creative branding for clients worldwide.</p>
+                
+                <div class="btn-group">
+                    <a href="contact.html" class="btn-primary">Start Consultation</a>
+                    <a href="portfolio.html" class="btn-outline">View My Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding: 50px 0;">
+        <div class="container">
+            <div class="grid-4" id="stats-grid">
+                </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="page-header" data-aos="fade-up">
+                <h1>My <span class="highlight">Workflow</span></h1>
+                <p class="lead">How I deliver international standard results.</p>
+            </div>
+            <div class="grid-3">
+                <div class="card" data-aos="flip-left" data-aos-delay="100">
+                    <div class="icon-box"><i class="fas fa-search"></i></div>
+                    <h3>1. Analyze</h3>
+                    <p>I diagnose the root cause of IT problems using scientific methods.</p>
+                </div>
+                <div class="card" data-aos="flip-left" data-aos-delay="200">
+                    <div class="icon-box"><i class="fas fa-code-branch"></i></div>
+                    <h3>2. Implement</h3>
+                    <p>Deploying secure and efficient solutions tailored to your needs.</p>
+                </div>
+                <div class="card" data-aos="flip-left" data-aos-delay="300">
+                    <div class="icon-box"><i class="fas fa-check-circle"></i></div>
+                    <h3>3. Support</h3>
+                    <p>Continuous monitoring and support to ensure zero downtime.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -41,6 +77,29 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="database.js"></script>
     <script src="script.js"></script>
+    <script>
+        AOS.init();
+        
+        // Typing Effect Logic
+        const textElement = document.querySelector('.typing-effect');
+        const texts = ["Advanced IT Solutions", "Cyber Security", "Creative Branding"];
+        let count = 0;
+        let index = 0;
+        let currentText = "";
+        let letter = "";
+
+        (function type() {
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            textElement.textContent = letter;
+            if (letter.length === currentText.length) {
+                count++; index = 0; setTimeout(type, 2000);
+            } else { setTimeout(type, 100); }
+        })();
+    </script>
 </body>
 </html>
