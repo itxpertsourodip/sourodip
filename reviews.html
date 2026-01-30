@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Reviews | IT Xpert Sourodip</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -26,21 +26,15 @@
             </ul>
         </div>
     </nav>
-
     <section class="section" style="padding-top: 150px;">
         <div class="container">
-            <div class="page-header">
-                <h1>Client <span class="highlight">Feedback</span></h1>
-                <button onclick="document.getElementById('reviewForm').style.display='block'" class="btn-nav" style="margin-top: 20px; cursor: pointer;">Write a Review</button>
-            </div>
-
+            <div class="page-header"><h1>Client <span class="highlight">Feedback</span></h1><button onclick="document.getElementById('reviewForm').style.display='block'" class="btn-nav" style="margin-top: 20px;">Write a Review</button></div>
             <div id="reviewForm" class="review-form">
                 <h3 style="margin-bottom: 20px;">Submit Experience</h3>
                 <form onsubmit="submitReview(event)">
                     <input type="text" id="rName" class="form-input" placeholder="Name" required>
                     <input type="text" id="rCompany" class="form-input" placeholder="Country / Company">
                     <input type="text" id="rService" class="form-input" placeholder="Service Taken (e.g. IT Support)" required>
-                    
                     <div class="star-rating" style="margin-bottom: 20px;">
                         <i class="fas fa-star" data-value="1"></i><i class="fas fa-star" data-value="2"></i><i class="fas fa-star" data-value="3"></i><i class="fas fa-star" data-value="4"></i><i class="fas fa-star" data-value="5"></i>
                     </div>
@@ -49,29 +43,23 @@
                     <button type="submit" class="btn-nav" style="width: 100%;">Submit to WhatsApp</button>
                 </form>
             </div>
-
             <div class="grid-3" id="reviews-grid"></div>
         </div>
     </section>
-
     <footer><div class="container"><p>&copy; 2024 IT Xpert Sourodip.</p></div></footer>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script src="database.js"></script>
     <script src="script.js"></script>
     <script>
-        const stars = document.querySelectorAll('.star-rating i');
-        stars.forEach(s => s.addEventListener('click', () => {
-            const v = s.getAttribute('data-value');
-            document.getElementById('rRating').value = v;
-            stars.forEach(st => st.getAttribute('data-value') <= v ? st.classList.add('active') : st.classList.remove('active'));
+        document.querySelectorAll('.star-rating i').forEach(s => s.addEventListener('click', () => {
+            const v = s.getAttribute('data-value'); document.getElementById('rRating').value = v;
+            document.querySelectorAll('.star-rating i').forEach(st => st.getAttribute('data-value') <= v ? st.classList.add('active') : st.classList.remove('active'));
         }));
-
         function submitReview(e) {
             e.preventDefault();
             const n = document.getElementById('rName').value, s = document.getElementById('rService').value, r = document.getElementById('rRating').value, m = document.getElementById('rMessage').value;
             if(r=="0") return alert("Rate us!");
-            const msg = `*New Review*\nName: ${n}\nService: ${s}\nRating: ${r}/5\nReview: ${m}`;
-            window.open(`https://wa.me/8801738677139?text=${encodeURIComponent(msg)}`, '_blank');
+            window.open(`https://wa.me/8801738677139?text=${encodeURIComponent(`*Review*\nName: ${n}\nService: ${s}\nRating: ${r}/5\nReview: ${m}`)}`, '_blank');
         }
     </script>
 </body>
