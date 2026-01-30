@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Xpert Sourodip | Enterprise IT Solutions</title>
+    <title>IT Xpert Sourodip | Global IT Solutions</title>
     
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,52 +15,39 @@
     <div id="particles-js"></div>
 
     <nav class="navbar">
-        <div class="container">
+        <div class="container nav-wrapper">
             <a href="index.html" class="logo">
-                <img src="logo.png" alt="IT Xpert Sourodip" class="logo-img">
+                <img src="logo.png" alt="Sourodip Logo" class="logo-img">
             </a>
-            
-            <button class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            
-            <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="services.html" class="nav-link">Solutions</a></li>
-                <li><a href="projects.html" class="nav-link">Portfolio</a></li>
-                <li><a href="about.html" class="nav-link">Profile</a></li>
-                <li><a href="contact.html" class="nav-link btn btn-primary">Get Support</a></li>
+            <div class="menu-icon"><i class="fas fa-bars"></i></div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Portfolio</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html" class="cta-btn">Contact Me</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <div class="hero-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>NSDA Certified Professional</span>
+        <div class="container hero-content">
+            <div class="hero-text" data-aos="fade-right">
+                <span class="badge">NSDA LEVEL 3 CERTIFIED</span>
+                <h1>Next-Gen <br> <span class="gradient-text typing-text"></span></h1>
+                <p>Delivering enterprise-grade IT infrastructure, cyber security, and creative branding solutions for businesses worldwide.</p>
+                <div class="btn-group">
+                    <a href="contact.html" class="btn btn-primary">Get Consultation <i class="fas fa-arrow-right"></i></a>
+                    <a href="projects.html" class="btn btn-glass">View Work</a>
                 </div>
-                
-                <h1 class="hero-title">
-                    Empowering Your Business with <br>
-                    <span class="typing-text accent"></span>
-                </h1>
-                
-                <p class="hero-description">
-                    We deliver enterprise-grade IT support, secure network infrastructure, and creative digital branding. 
-                    Ensuring your technology works as hard as you do.
-                </p>
-                
-                <div class="hero-cta">
-                    <a href="contact.html" class="btn btn-primary">
-                        Start Consultation <i class="fas fa-arrow-right"></i>
-                    </a>
-                    <a href="projects.html" class="btn btn-outline">
-                        View Portfolio
-                    </a>
+            </div>
+            <div class="hero-visual" data-aos="fade-left">
+                <div class="glass-card float-anim">
+                    <i class="fas fa-shield-alt shield-icon"></i>
+                    <div class="card-info">
+                        <h3>100% Secure</h3>
+                        <p>IT Infrastructure</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,48 +55,38 @@
 
     <section class="section">
         <div class="container">
-            <div class="section-header text-center" data-aos="fade-up">
-                <h2 class="section-title">Our <span class="accent">Expertise</span></h2>
-                <p>Comprehensive technical solutions tailored for modern businesses.</p>
+            <div class="section-header text-center">
+                <h2>Premium <span class="gradient-text">Services</span></h2>
+                <p>High-performance solutions for modern problems.</p>
             </div>
-            
-            <div class="quick-links">
-                <div class="quick-link-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="icon-box">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>IT Infrastructure</h3>
-                    <p>Complete network setup, server management, and hardware troubleshooting for seamless operations.</p>
+
+            <div class="grid-3">
+                <div class="glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
+                    <div class="icon-box"><i class="fas fa-server"></i></div>
+                    <h3>Server & Networking</h3>
+                    <p>Complete office network setup, router configuration, and server maintenance.</p>
                 </div>
-                
-                <div class="quick-link-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="icon-box">
-                        <i class="fas fa-pen-nib"></i>
-                    </div>
-                    <h3>Brand Identity</h3>
-                    <p>Professional logo design, visual branding, and marketing collateral using industry-standard tools.</p>
+                <div class="glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
+                    <div class="icon-box"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Creative Branding</h3>
+                    <p>Professional logo design, social media kits, and brand identity using Canva Pro.</p>
                 </div>
-                
-                <div class="quick-link-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="icon-box">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Technical Support</h3>
-                    <p>24/7 remote assistance for software conflicts, data recovery, and system optimization.</p>
+                <div class="glass-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5">
+                    <div class="icon-box"><i class="fas fa-laptop-code"></i></div>
+                    <h3>IT Support 24/7</h3>
+                    <p>Instant remote troubleshooting for hardware, software, and OS issues.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; 2024 IT Xpert Sourodip. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2024 IT Xpert Sourodip. All rights reserved.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </footer>
@@ -120,10 +94,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
     <script src="main.js"></script>
-    
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1000 });
     </script>
 </body>
 </html>
