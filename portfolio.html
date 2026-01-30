@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | IT Xpert Sourodip</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,9 +26,16 @@
 
     <section class="section" style="padding-top: 150px;">
         <div class="container">
-            <div class="page-header">
+            <div class="profile-card" data-aos="zoom-in">
+                <div id="profile-container" class="profile-layout"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="page-header" data-aos="fade-up">
                 <h1>My <span class="highlight">Expertise</span></h1>
-                <p class="lead">Comprehensive technical solutions tailored for modern enterprises.</p>
             </div>
             <div class="grid-3" id="services-grid"></div>
         </div>
@@ -35,9 +43,8 @@
 
     <section class="section">
         <div class="container">
-            <div class="page-header">
+            <div class="page-header" data-aos="fade-up">
                 <h1>Featured <span class="highlight">Projects</span></h1>
-                <p class="lead">A showcase of successful deployments and creative works.</p>
             </div>
             <div class="grid-3" id="projects-grid"></div>
         </div>
@@ -45,9 +52,8 @@
 
     <section class="section">
         <div class="container">
-            <div class="page-header">
+            <div class="page-header" data-aos="fade-up">
                 <h1>Professional <span class="highlight">Journey</span></h1>
-                <p class="lead">My academic background and professional certifications.</p>
             </div>
             <div style="max-width: 800px; margin: 0 auto;" id="experience-grid"></div>
         </div>
@@ -58,5 +64,9 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="database.js"></script> <script src="script.js"></script> </body>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="database.js"></script>
+    <script src="script.js"></script>
+    <script>AOS.init();</script>
+</body>
 </html>
