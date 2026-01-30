@@ -50,13 +50,3 @@ const reviewsData = [
     { name: "Sarah Jenkins", country: "USA", service: "Branding", rating: 5, review: "Professional design work." },
     { name: "Ahmed Al-Fayed", country: "UAE", service: "Data Recovery", rating: 5, review: "Saved my business data." }
 ];
-    { year: "2025 - Present", role: "NSDA Certified L3 Engineer", details: "Certified by Prime Minister's Office." },
-    { year: "2023 - 2025", role: "IT Consultant", details: "Freelance support for global clients." },
-    { year: "Academic", role: "Science Background", details: "Analytical problem solving approach." }
-];
-
-const reviewsData = [
-    { name: "David Morgan", country: "UK", service: "IT Support", rating: 5, review: "Fixed our network in 1 hour. Genius!" },
-    { name: "Sarah Jenkins", country: "USA", service: "Branding", rating: 5, review: "Professional design work." },
-    { name: "Ahmed Al-Fayed", country: "UAE", service: "Data Recovery", rating: 5, review: "Saved my business data." }
-];
