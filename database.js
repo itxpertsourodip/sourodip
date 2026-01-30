@@ -2,7 +2,26 @@
    YOUR CONTROL PANEL - EDIT THIS FILE ONLY
    ========================================================================== */
 
-// 1. SERVICES DATA
+// 1. PERSONAL PROFILE (PORTFOLIO HEADER)
+const profileData = {
+    name: "Sourodip Dash Roy",
+    title: "Enterprise IT Solutions Architect",
+    image: "profile.jpg", // আপনার ছবির নাম এখানে দিন (ফোল্ডারে ছবিটা রাখবেন)
+    bio: "Professional NSDA Certified Level 3 IT Support Engineer with a strong background in Science. I specialize in building secure network infrastructures, solving complex hardware issues, and creating digital brand identities for international businesses.",
+    email: "itxpertsourodip@gmail.com",
+    phone: "+880 1738 677139",
+    location: "Sylhet, Bangladesh"
+};
+
+// 2. HOMEPAGE STATS (INDEX PAGE)
+const statsData = [
+    { label: "Projects Completed", value: 150, suffix: "+" },
+    { label: "Happy Clients", value: 98, suffix: "%" },
+    { label: "Years Experience", value: 4, suffix: "+" },
+    { label: "Support Given", value: 24, suffix: "/7" }
+];
+
+// 3. SERVICES DATA
 const servicesData = [
     {
         icon: "fas fa-network-wired",
@@ -28,10 +47,15 @@ const servicesData = [
         icon: "fas fa-file-excel",
         title: "Data Management",
         description: "Complex data entry, Excel dashboard automation, and document organization for corporate efficiency."
+    },
+    {
+        icon: "fas fa-server",
+        title: "Server Maintenance",
+        description: "Regular maintenance, updates, and optimization of physical and cloud servers."
     }
 ];
 
-// 2. PROJECTS DATA
+// 4. PROJECTS DATA
 const projectsData = [
     {
         category: "Networking",
@@ -53,7 +77,7 @@ const projectsData = [
     }
 ];
 
-// 3. EXPERIENCE DATA
+// 5. EXPERIENCE DATA
 const experienceData = [
     {
         year: "2025 - Present",
@@ -72,7 +96,7 @@ const experienceData = [
     }
 ];
 
-// 4. REVIEWS DATA
+// 6. REVIEWS DATA
 const reviewsData = [
     {
         name: "David Morgan",
